@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!-- saved from url=(0169)https://forums.raywenderlich.com/embed/comments?embed_url=https%3A%2F%2Fwww.raywenderlich.com%2F60749%2Fgrand-central-dispatch-in-depth-part-1&discourse_username=Lolgrep -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+    <link rel="stylesheet" media="screen" href="./embed-d0b2364ca61d9f78c6ee78fb83ac794271cfc6a00600b21ebcc94ac4844f3c8a.css">
+      <link class="custom-css" rel="stylesheet" href="./7e202ef2-56d7-47d5-98d8-a9c8d15e57dd.css" type="text/css" media="all">
+    <script src="./break_string-cc617154cd957804f2f6a1f3bc68258c9cdca3d4b9a322bf777d145fed04790e.js"></script>
+
+      <title>Grand Central Dispatch In-Depth: Part 1/2 - Official Tutorials - RWForums</title>
+
+    <script>
+      (function() {
+
+        function postUp(msg) {
+          if (parent) {
+            parent.postMessage(msg, 'https://www.raywenderlich.com/60749/grand-central-dispatch-in-depth-part-1');
+          }
+        }
+
+        function clickPostLink(e) {
+          var postId = e.target.getAttribute('data-link-to-post');
+          if (postId) {
+            var postElement = document.getElementById('post-' + postId);
+            if (postElement) {
+              var rect = postElement.getBoundingClientRect();
+              if (rect && rect.top) {
+                postUp({type: 'discourse-scroll', top: rect.top});
+                e.preventDefault();
+                return false;
+              }
+            }
+          }
+        }
+
+        window.onload = function() {
+          // Send a post message with our loaded height
+          postUp({type: 'discourse-resize', height: document['body'].offsetHeight});
+
+          var postLinks = document.querySelectorAll("a[data-link-to-post]"),
+              i;
+
+          for (i=0; i<postLinks.length; i++) {
+            postLinks[i].onclick = clickPostLink;
+          }
+
+          // Make sure all links in the iframe point to _blank
+          var cookedLinks = document.querySelectorAll('.cooked a');
+          for (i=0; i<cookedLinks.length; i++) {
+            cookedLinks[i].target = "_blank";
+          }
+
+          // Adjust all names
+          var names = document.querySelectorAll('.username a');
+          for (i=0; i<names.length; i++) {
+            var username = names[i].innerHTML;
+            if (username) {
+              names[i].innerHTML = new BreakString(username).break();
+            }
+          }
+
+        };
+
+      })();
+    </script>
+  </head>
+  <body>
+    <header class="discourse">
+  <span class="replies">2 replies</span>
+</header>
+
+    <article class="post" id="post-36472">
+      <a title="February  8, 2017  8:54am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/grand-central-dispatch-in-depth-part-1-2/6518/2"> 8 Feb</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/u/elsammak" target="_blank"><img src="./56844_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/u/elsammak" target="_blank" class="new-user">elsammak</a>
+        </h3>
+        <p>In this part of the code<br>     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{ // 1<br>        UIImage *overlayImage = [self faceOverlayImageFromImage:_image];  // Download<br>        dispatch_async(dispatch_get_main_queue(), ^{ // 2<br>            [self fadeInNewImage:overlayImage]; // 3<br>        });<br>    });</p>
+
+<p>The queue DISPATCH_QUEUE_PRIORITY_HIGH is concurrent queue, so why does the // Download line waits till download is done to update the UI? the dispatch_async // 2 may start right after // Download line isn't it?</p>
+
+            <a data-link-to-post="42820" class="post-replies button" href="https://forums.raywenderlich.com/t/grand-central-dispatch-in-depth-part-1-2/6518/2" target="_blank">1 reply</a>
+      </div>
+    </article>
+    <article class="post" id="post-42820">
+      <a title="May 18, 2017  5:11am" class="post-date" target="_blank" href="https://forums.raywenderlich.com/t/grand-central-dispatch-in-depth-part-1-2/6518/3">18 May</a>
+        <a data-link-to-post="36472" class="in-reply-to" href="https://forums.raywenderlich.com/t/grand-central-dispatch-in-depth-part-1-2/6518/2">▶ elsammak</a>
+
+      <div class="author">
+        <a href="https://forums.raywenderlich.com/u/trand" target="_blank"><img src="./67379_1.png" alt=""></a>
+      </div>
+      <div class="cooked">
+        <h3 class="username">
+          <a href="https://forums.raywenderlich.com/u/trand" target="_blank" class="new-user">trand</a>
+        </h3>
+        <pre><code>dispatch_async(queue, block1);
+dispatch_async(queue, block2);
+dispatch_async(queue, block3);</code></pre>
+
+<p>block1, block2 and block3 are executed concurrently.<br>Lines in that blocks (such as // Download and // 2) are executed serially. There is no concurrency inside blocks.</p>
+
+      </div>
+    </article>
+
+    <footer class="clearfix">
+      <a target="_blank" href="https://forums.raywenderlich.com/"><img class="logo" src="./d0342684bc0d4ca22fe893a3af6083387ed8f474.png" alt="D0342684bc0d4ca22fe893a3af6083387ed8f474"></a>
+      <a class="button" target="_blank" href="https://forums.raywenderlich.com/t/grand-central-dispatch-in-depth-part-1-2/6518/3">Continue Discussion</a>
+    </footer>
+    <div class="clearfix"></div>
+
+
+  
+
+</body></html>
