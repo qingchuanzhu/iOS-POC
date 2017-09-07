@@ -30,6 +30,7 @@ class WhateverViewController: UIViewController {
   var position: UInt = 1
   var updateTimer: Timer?
   
+  var backgroundTask: UIBackgroundTaskIdentifier = UIBackgroundTaskInvalid
   
   @IBOutlet var resultsLabel: UILabel!
   
@@ -40,11 +41,18 @@ class WhateverViewController: UIViewController {
       updateTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self,
                                          selector: #selector(calculateNextNumber), userInfo: nil, repeats: true)
       // register background task
+      registerBackgroundTask()
     } else {
       updateTimer?.invalidate()
       updateTimer = nil
       // end background task
+      endBackgroundTask()
     }
+  }
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    NotificationCenter.default.addObserver(self, selector: #selector(reinstateBackgroundTask), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
   }
   
   func calculateNextNumber() {
@@ -61,15 +69,43 @@ class WhateverViewController: UIViewController {
     }
     
     let resultsMessage = "Position \(position) = \(current)"
-    resultsLabel.text = resultsMessage
-    
+    switch UIApplication.shared.applicationState {
+    case .active:
+      resultsLabel.text = resultsMessage
+    case .background:
+      print("App is backgrounded. Next number = \(resultsMessage)")
+      print("Background time remaining = \(UIApplication.shared.backgroundTimeRemaining) seconds")
+    case .inactive:
+      break
+    }
   }
  
+  func reinstateBackgroundTask() {
+    if updateTimer != nil && (backgroundTask == UIBackgroundTaskInvalid) {
+      registerBackgroundTask()
+    }
+  }
+  
   func resetCalculation() {
     previous = NSDecimalNumber.one
     current = NSDecimalNumber.one
     position = 1
   }
   
+  func registerBackgroundTask() {
+    backgroundTask = UIApplication.shared.beginBackgroundTask { [weak self] in
+      self?.endBackgroundTask()
+    }
+    assert(backgroundTask != UIBackgroundTaskInvalid)
+  }
   
+  func endBackgroundTask() {
+    print("Background task ended.")
+    UIApplication.shared.endBackgroundTask(backgroundTask)
+    backgroundTask = UIBackgroundTaskInvalid
+  }
+  
+  deinit {
+    NotificationCenter.default.removeObserver(self)
+  }
 }
