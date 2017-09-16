@@ -69,7 +69,7 @@ func rotationForLayer(_ layer: CALayer, byAngle angle: CGFloat) -> CAKeyframeAni
   let c = layer.value(forKeyPath: "transform.rotation.z")
   let currentAngle = c as? CGFloat ?? 0
   
-  let numberOfKeyFrames = Int(floor(abs(angle) / CGFloat(M_PI_4)) + 2)
+  let numberOfKeyFrames = Int(floor(abs(angle) / (.pi/4)) + 2)
   
   var times = [CGFloat]()
   var values = [CGFloat]()

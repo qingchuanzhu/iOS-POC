@@ -61,7 +61,7 @@ class RingTip : CALayer {
   }
   
   fileprivate var shadowMaskPath : CGPath {
-    return UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: CGFloat(M_PI_2), clockwise: true).cgPath
+    return UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: .pi/2, clockwise: true).cgPath
   }
   
   //MARK:- API Properties

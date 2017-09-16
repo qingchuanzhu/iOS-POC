@@ -24,7 +24,7 @@ import UIKit
 
 class RingLayer : CALayer {
 
-  fileprivate let angleOffsetForZero = CGFloat(-M_PI_2)
+    fileprivate let angleOffsetForZero:CGFloat = -(.pi/2)
   fileprivate lazy var gradientLayer : CircularGradientLayer = {
     let gradLayer = CircularGradientLayer()
     gradLayer.colors = self.ringColors
@@ -145,7 +145,7 @@ extension RingLayer {
   }
 
   fileprivate var backgroundPath : CGPath {
-    return UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: 2 * CGFloat(M_PI), clockwise: true).cgPath
+    return UIBezierPath(arcCenter: center, radius: radius, startAngle: 0, endAngle: 2 * .pi, clockwise: true).cgPath
   }
 
   fileprivate func maskPathForValue(_ value: CGFloat) -> CGPath {
@@ -153,7 +153,7 @@ extension RingLayer {
   }
 
   fileprivate func angleForValue(_ value: CGFloat) -> CGFloat {
-    return value * 2 * CGFloat(M_PI) + angleOffsetForZero
+    return value * 2 * .pi + angleOffsetForZero
   }
 }
 
@@ -174,7 +174,7 @@ extension RingLayer {
   }
 
   fileprivate func animateFromValue(_ fromValue: CGFloat, toValue: CGFloat) {
-    let angleDelta = (toValue - fromValue) * 2.0 * CGFloat(M_PI)
+    let angleDelta = (toValue - fromValue) * 2.0 * .pi
     if abs(angleDelta) < 0.001 {
       return
     }

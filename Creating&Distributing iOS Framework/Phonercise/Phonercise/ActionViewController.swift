@@ -66,7 +66,7 @@ class ActionViewController: UIViewController {
 
     manager.deviceMotionUpdateInterval = scanInterval
     manager.startDeviceMotionUpdates(to: OperationQueue.main) { motion, error in
-      if let upright = motion?.attitude.pitch , upright > M_PI_2 * 0.75 {
+      if let upright = motion?.attitude.pitch , upright > Double.pi / 2 * 0.75 {
         self.ringControl.stand += CGFloat(1.0 / (oneCircleLength / scanInterval))
       }
       if let rotationRate = motion?.rotationRate {
