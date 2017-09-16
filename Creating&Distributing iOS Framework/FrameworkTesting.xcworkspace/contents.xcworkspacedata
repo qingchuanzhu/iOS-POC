@@ -2,7 +2,10 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:Phonercise/../ThreeRingControl/ThreeRingControl.xcodeproj">
+      location = "group:ZQCUIComponents/ZQCUIComponents.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:ThreeRingControl/ThreeRingControl.xcodeproj">
    </FileRef>
    <FileRef
       location = "container:Phonercise/Phonercise.xcodeproj">

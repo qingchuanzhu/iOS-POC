@@ -23,7 +23,7 @@
 
 import UIKit
 import CoreMotion
-import ThreeRingControliPhone
+import ThreeRingControl
 
 private let oneCircleLength = 30.0 // 30s to fill a circle
 private let scanInterval = 0.5 // check each 1/2 second

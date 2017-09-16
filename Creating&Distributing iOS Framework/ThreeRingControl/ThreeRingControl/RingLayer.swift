@@ -118,7 +118,6 @@ class RingLayer : CALayer {
 extension RingLayer {
   fileprivate func sharedInitialization() {
     backgroundColor = UIColor.black.cgColor
-    let a = ClassA()
     [backgroundLayer, foregroundLayer, ringTipLayer].forEach { self.addSublayer($0) }
     self.value = 0.8
   }

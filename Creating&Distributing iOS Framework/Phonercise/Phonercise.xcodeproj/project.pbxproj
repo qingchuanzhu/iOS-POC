@@ -9,8 +9,9 @@
 /* Begin PBXBuildFile section */
 		1A0327641CAB7E8D00E9EAEC /* ThreeRingTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A0327631CAB7E8D00E9EAEC /* ThreeRingTest.swift */; };
 		1AFC805C1C68343C00BD26FA /* ActionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1AFC80521C68343C00BD26FA /* ActionViewController.swift */; };
-		359805C21E0122F600F46F94 /* ThreeRingControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359805C11E0122F600F46F94 /* ThreeRingControl.framework */; };
-		359805C31E0122F600F46F94 /* ThreeRingControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 359805C11E0122F600F46F94 /* ThreeRingControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3563BF311F6CD36100A642BD /* ThreeRingControl.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 359805C11E0122F600F46F94 /* ThreeRingControl.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		3563BF321F6CD3E800A642BD /* ThreeRingControl.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 359805C11E0122F600F46F94 /* ThreeRingControl.framework */; };
+		3563BF341F6CD43E00A642BD /* ZQCUIComponents.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3563BF331F6CD43E00A642BD /* ZQCUIComponents.framework */; };
 		4C8F765B1C681D8F000A64EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C8F765A1C681D8F000A64EB /* AppDelegate.swift */; };
 		4C8F76601C681D8F000A64EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C8F765E1C681D8F000A64EB /* Main.storyboard */; };
 		4C8F76621C681D8F000A64EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4C8F76611C681D8F000A64EB /* Assets.xcassets */; };
@@ -35,7 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				359805C31E0122F600F46F94 /* ThreeRingControl.framework in Embed Frameworks */,
+				3563BF311F6CD36100A642BD /* ThreeRingControl.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		1A0327631CAB7E8D00E9EAEC /* ThreeRingTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThreeRingTest.swift; sourceTree = "<group>"; };
 		1AFC80521C68343C00BD26FA /* ActionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionViewController.swift; sourceTree = "<group>"; };
+		3563BF331F6CD43E00A642BD /* ZQCUIComponents.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ZQCUIComponents.framework; path = "../ZQCUIComponents/build/Debug-iphoneos/ZQCUIComponents.framework"; sourceTree = "<group>"; };
 		359805C11E0122F600F46F94 /* ThreeRingControl.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ThreeRingControl.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8F76571C681D8F000A64EB /* Phonercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Phonercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4C8F765A1C681D8F000A64EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +64,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				359805C21E0122F600F46F94 /* ThreeRingControl.framework in Frameworks */,
+				3563BF341F6CD43E00A642BD /* ZQCUIComponents.framework in Frameworks */,
+				3563BF321F6CD3E800A642BD /* ThreeRingControl.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,6 +99,7 @@
 		359805C41E01232000F46F94 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				3563BF331F6CD43E00A642BD /* ZQCUIComponents.framework */,
 				359805C11E0122F600F46F94 /* ThreeRingControl.framework */,
 			);
 			name = Frameworks;
