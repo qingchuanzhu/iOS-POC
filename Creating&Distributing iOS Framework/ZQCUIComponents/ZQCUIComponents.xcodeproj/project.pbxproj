@@ -7,16 +7,27 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		355753C01F70D99200E0A731 /* ZQCMiniUIComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 355753BE1F70D99200E0A731 /* ZQCMiniUIComponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		3563BF2B1F6CD03E00A642BD /* ZQCUIComponents.h in Headers */ = {isa = PBXBuildFile; fileRef = 3563BF291F6CD03E00A642BD /* ZQCUIComponents.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		355753BC1F70D99200E0A731 /* ZQCMiniUIComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZQCMiniUIComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		355753BE1F70D99200E0A731 /* ZQCMiniUIComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQCMiniUIComponents.h; sourceTree = "<group>"; };
+		355753BF1F70D99200E0A731 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3563BF261F6CD03E00A642BD /* ZQCUIComponents.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ZQCUIComponents.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3563BF291F6CD03E00A642BD /* ZQCUIComponents.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ZQCUIComponents.h; sourceTree = "<group>"; };
 		3563BF2A1F6CD03E00A642BD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		355753B81F70D99200E0A731 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3563BF221F6CD03E00A642BD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -27,10 +38,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		355753BD1F70D99200E0A731 /* ZQCMiniUIComponents */ = {
+			isa = PBXGroup;
+			children = (
+				355753BE1F70D99200E0A731 /* ZQCMiniUIComponents.h */,
+				355753BF1F70D99200E0A731 /* Info.plist */,
+			);
+			path = ZQCMiniUIComponents;
+			sourceTree = "<group>";
+		};
 		3563BF1C1F6CD03E00A642BD = {
 			isa = PBXGroup;
 			children = (
 				3563BF281F6CD03E00A642BD /* ZQCUIComponents */,
+				355753BD1F70D99200E0A731 /* ZQCMiniUIComponents */,
 				3563BF271F6CD03E00A642BD /* Products */,
 			);
 			sourceTree = "<group>";
@@ -39,6 +60,7 @@
 			isa = PBXGroup;
 			children = (
 				3563BF261F6CD03E00A642BD /* ZQCUIComponents.framework */,
+				355753BC1F70D99200E0A731 /* ZQCMiniUIComponents.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -55,6 +77,14 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
+		355753B91F70D99200E0A731 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				355753C01F70D99200E0A731 /* ZQCMiniUIComponents.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3563BF231F6CD03E00A642BD /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -66,6 +96,24 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		355753BB1F70D99200E0A731 /* ZQCMiniUIComponents */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 355753C31F70D99200E0A731 /* Build configuration list for PBXNativeTarget "ZQCMiniUIComponents" */;
+			buildPhases = (
+				355753B71F70D99200E0A731 /* Sources */,
+				355753B81F70D99200E0A731 /* Frameworks */,
+				355753B91F70D99200E0A731 /* Headers */,
+				355753BA1F70D99200E0A731 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ZQCMiniUIComponents;
+			productName = ZQCMiniUIComponents;
+			productReference = 355753BC1F70D99200E0A731 /* ZQCMiniUIComponents.framework */;
+			productType = "com.apple.product-type.framework";
+		};
 		3563BF251F6CD03E00A642BD /* ZQCUIComponents */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3563BF2E1F6CD03E00A642BD /* Build configuration list for PBXNativeTarget "ZQCUIComponents" */;
@@ -93,6 +141,11 @@
 				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Qingchuan Zhu";
 				TargetAttributes = {
+					355753BB1F70D99200E0A731 = {
+						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = QQ7A795Y74;
+						ProvisioningStyle = Automatic;
+					};
 					3563BF251F6CD03E00A642BD = {
 						CreatedOnToolsVersion = 8.3.3;
 						DevelopmentTeam = QQ7A795Y74;
@@ -113,11 +166,19 @@
 			projectRoot = "";
 			targets = (
 				3563BF251F6CD03E00A642BD /* ZQCUIComponents */,
+				355753BB1F70D99200E0A731 /* ZQCMiniUIComponents */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		355753BA1F70D99200E0A731 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3563BF241F6CD03E00A642BD /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -128,6 +189,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		355753B71F70D99200E0A731 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		3563BF211F6CD03E00A642BD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -138,6 +206,44 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
+		355753C11F70D99200E0A731 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QQ7A795Y74;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ZQCMiniUIComponents/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.ZQCMiniUIComponents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		355753C21F70D99200E0A731 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = QQ7A795Y74;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = ZQCMiniUIComponents/Info.plist;
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.ZQCMiniUIComponents;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		3563BF2C1F6CD03E00A642BD /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -280,6 +386,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		355753C31F70D99200E0A731 /* Build configuration list for PBXNativeTarget "ZQCMiniUIComponents" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				355753C11F70D99200E0A731 /* Debug */,
+				355753C21F70D99200E0A731 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		3563BF201F6CD03E00A642BD /* Build configuration list for PBXProject "ZQCUIComponents" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -296,6 +410,7 @@
 				3563BF301F6CD03E00A642BD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
