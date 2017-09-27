@@ -55,7 +55,7 @@ class WhateverViewController: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(reinstateBackgroundTask), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
   }
   
-  func calculateNextNumber() {
+  @objc func calculateNextNumber() {
     let result = current.adding(previous)
     
     let bigNumber = NSDecimalNumber(mantissa: 1, exponent: 40, isNegative: false)
@@ -80,7 +80,7 @@ class WhateverViewController: UIViewController {
     }
   }
  
-  func reinstateBackgroundTask() {
+  @objc func reinstateBackgroundTask() {
     if updateTimer != nil && (backgroundTask == UIBackgroundTaskInvalid) {
       registerBackgroundTask()
     }
