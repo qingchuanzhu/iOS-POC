@@ -12,6 +12,8 @@
 		351B33EE1F81AB640000BAC1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 351B33EC1F81AB640000BAC1 /* Main.storyboard */; };
 		351B33F01F81AB640000BAC1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 351B33EF1F81AB640000BAC1 /* Assets.xcassets */; };
 		351B33F31F81AB640000BAC1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 351B33F11F81AB640000BAC1 /* LaunchScreen.storyboard */; };
+		351B33FB1F83412B0000BAC1 /* MyNumber.swift in Sources */ = {isa = PBXBuildFile; fileRef = 351B33FA1F83412B0000BAC1 /* MyNumber.swift */; };
+		351B33FF1F8343230000BAC1 /* ObjCUsr.m in Sources */ = {isa = PBXBuildFile; fileRef = 351B33FE1F8343230000BAC1 /* ObjCUsr.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,10 @@
 		351B33EF1F81AB640000BAC1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		351B33F21F81AB640000BAC1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		351B33F41F81AB640000BAC1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		351B33FA1F83412B0000BAC1 /* MyNumber.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyNumber.swift; sourceTree = "<group>"; };
+		351B33FC1F8343230000BAC1 /* swift4trail-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "swift4trail-Bridging-Header.h"; sourceTree = "<group>"; };
+		351B33FD1F8343230000BAC1 /* ObjCUsr.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ObjCUsr.h; sourceTree = "<group>"; };
+		351B33FE1F8343230000BAC1 /* ObjCUsr.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ObjCUsr.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,10 +62,14 @@
 			children = (
 				351B33E81F81AB640000BAC1 /* AppDelegate.swift */,
 				351B33EA1F81AB640000BAC1 /* ViewController.swift */,
+				351B33FA1F83412B0000BAC1 /* MyNumber.swift */,
+				351B33FD1F8343230000BAC1 /* ObjCUsr.h */,
+				351B33FE1F8343230000BAC1 /* ObjCUsr.m */,
 				351B33EC1F81AB640000BAC1 /* Main.storyboard */,
 				351B33EF1F81AB640000BAC1 /* Assets.xcassets */,
 				351B33F11F81AB640000BAC1 /* LaunchScreen.storyboard */,
 				351B33F41F81AB640000BAC1 /* Info.plist */,
+				351B33FC1F8343230000BAC1 /* swift4trail-Bridging-Header.h */,
 			);
 			path = swift4trail;
 			sourceTree = "<group>";
@@ -96,6 +106,7 @@
 				TargetAttributes = {
 					351B33E41F81AB640000BAC1 = {
 						CreatedOnToolsVersion = 9.0;
+						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -136,8 +147,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				351B33FF1F8343230000BAC1 /* ObjCUsr.m in Sources */,
 				351B33EB1F81AB640000BAC1 /* ViewController.swift in Sources */,
 				351B33E91F81AB640000BAC1 /* AppDelegate.swift in Sources */,
+				351B33FB1F83412B0000BAC1 /* MyNumber.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -274,12 +287,16 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = swift4trail/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.swift4trail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "swift4trail/swift4trail-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -289,12 +306,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = swift4trail/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.swift4trail;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "swift4trail/swift4trail-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
