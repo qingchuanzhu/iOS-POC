@@ -76,3 +76,21 @@ class MySubClass : MyClass {
 extension MySubClass {
     func wobble() { }   // implicitly @objc
 }
+
+// -------------------------------------------------------------------
+// Enabling/disabling @objc inference within an extension
+// -------------------------------------------------------------------
+class SwiftClass : NSObject { }
+
+@objc extension SwiftClass {
+    func foo() { }            // implicitly @objc
+}
+
+@objcMembers
+class MyClass2 : NSObject {
+    func wibble() { }    // implicitly @objc
+}
+
+@nonobjc extension MyClass2 {
+    func wobble() { }    // not @objc, despite @objcMembers
+}
