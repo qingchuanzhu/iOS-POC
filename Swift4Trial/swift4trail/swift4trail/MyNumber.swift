@@ -41,12 +41,38 @@ class MyNumber: NSObject {
     }
 }
 
+// -------------------------------------------------------------------
 // The declaration is an override of an @objc declaration
-class Super {
+// -------------------------------------------------------------------
+class Super: NSObject {
     @objc func foo() { }
 }
 
 class Sub : Super {
     /* inferred @objc */
     override func foo() { }
+}
+
+// -------------------------------------------------------------------
+// Re-enabling @objc inference within a class hierarchy
+// introduce a new attribute for classes in Swift, spelled @objcMembers, that re-enables @objc inference for the class, its extensions, its subclasses, and (by extension) all of their extensions.
+//  Without @objcMembers, none of the func will be visible in Objective-C
+// -------------------------------------------------------------------
+@objcMembers class MyClass : NSObject {
+    func foo() { }             // implicitly @objc
+    
+    func bar() -> (Int, Int) { return (4,4)}  // not @objc, because tuple returns
+    // aren't representable in Objective-C
+}
+
+extension MyClass {
+    func baz() { }   // implicitly @objc
+}
+
+class MySubClass : MyClass {
+    func wibble() { }   // implicitly @objc
+}
+
+extension MySubClass {
+    func wobble() { }   // implicitly @objc
 }
