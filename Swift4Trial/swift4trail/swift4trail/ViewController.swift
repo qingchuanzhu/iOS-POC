@@ -13,6 +13,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        // test out Strings
+        let galaxy = "Milky Way 🐮"
+        for char in galaxy {
+            print(char)
+        }
     }
 
     override func didReceiveMemoryWarning() {
