@@ -13,6 +13,7 @@
 		35DA49F41FCE84D300F6BC83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35DA49F31FCE84D300F6BC83 /* Assets.xcassets */; };
 		35DA49F71FCE84D300F6BC83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DA49F51FCE84D300F6BC83 /* LaunchScreen.storyboard */; };
 		35DA49FA1FCE84D300F6BC83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DA49F91FCE84D300F6BC83 /* main.m */; };
+		35DA4A031FCE873800F6BC83 /* BATabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DA4A021FCE873800F6BC83 /* BATabBarController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,8 @@
 		35DA49F61FCE84D300F6BC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35DA49F81FCE84D300F6BC83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35DA49F91FCE84D300F6BC83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		35DA4A011FCE873800F6BC83 /* BATabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BATabBarController.h; sourceTree = "<group>"; };
+		35DA4A021FCE873800F6BC83 /* BATabBarController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BATabBarController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +45,7 @@
 		35DA49DE1FCE84D300F6BC83 = {
 			isa = PBXGroup;
 			children = (
+				35DA4A001FCE86FC00F6BC83 /* TabBarController */,
 				35DA49E91FCE84D300F6BC83 /* BATabBarPOC */,
 				35DA49E81FCE84D300F6BC83 /* Products */,
 			);
@@ -69,6 +73,15 @@
 				35DA49F91FCE84D300F6BC83 /* main.m */,
 			);
 			path = BATabBarPOC;
+			sourceTree = "<group>";
+		};
+		35DA4A001FCE86FC00F6BC83 /* TabBarController */ = {
+			isa = PBXGroup;
+			children = (
+				35DA4A011FCE873800F6BC83 /* BATabBarController.h */,
+				35DA4A021FCE873800F6BC83 /* BATabBarController.m */,
+			);
+			path = TabBarController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +157,7 @@
 			files = (
 				35DA49EF1FCE84D300F6BC83 /* ViewController.m in Sources */,
 				35DA49FA1FCE84D300F6BC83 /* main.m in Sources */,
+				35DA4A031FCE873800F6BC83 /* BATabBarController.m in Sources */,
 				35DA49EC1FCE84D300F6BC83 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,6 +295,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = BATabBarPOC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.BATabBarPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -295,6 +310,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = BATabBarPOC/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.BATabBarPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
