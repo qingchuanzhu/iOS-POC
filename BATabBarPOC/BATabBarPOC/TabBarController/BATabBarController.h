@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BATabBarController : UITabBarController
+@interface BATabBarController : UIViewController
+
+@property (nonatomic, strong) NSArray *childViewControllers;
 
 @end
