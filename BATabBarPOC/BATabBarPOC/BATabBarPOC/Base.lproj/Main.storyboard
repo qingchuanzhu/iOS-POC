@@ -72,8 +72,8 @@
                                     <constraint firstItem="CrR-Jv-idO" firstAttribute="leading" secondItem="LGM-KV-DAx" secondAttribute="leading" id="Uum-l7-IaI"/>
                                     <constraint firstAttribute="bottom" secondItem="CrR-Jv-idO" secondAttribute="bottom" id="a6E-xu-JAb"/>
                                     <constraint firstItem="URa-kN-GIW" firstAttribute="centerX" secondItem="LGM-KV-DAx" secondAttribute="centerX" id="dpx-p3-Qok"/>
+                                    <constraint firstItem="CrR-Jv-idO" firstAttribute="top" secondItem="LGM-KV-DAx" secondAttribute="top" constant="142" id="ehz-ty-gg7"/>
                                     <constraint firstAttribute="trailing" secondItem="URa-kN-GIW" secondAttribute="trailing" id="hy7-aA-9aa"/>
-                                    <constraint firstItem="CrR-Jv-idO" firstAttribute="top" secondItem="URa-kN-GIW" secondAttribute="bottom" id="wC2-if-HGv"/>
                                     <constraint firstItem="URa-kN-GIW" firstAttribute="leading" secondItem="LGM-KV-DAx" secondAttribute="leading" id="y0w-I7-MLB"/>
                                 </constraints>
                             </scrollView>
@@ -82,6 +82,7 @@
                         <constraints>
                             <constraint firstItem="Aoe-Yo-bPs" firstAttribute="trailing" secondItem="LGM-KV-DAx" secondAttribute="trailing" id="1Tt-zf-ZPy"/>
                             <constraint firstItem="Aoe-Yo-bPs" firstAttribute="top" secondItem="LGM-KV-DAx" secondAttribute="top" id="5fz-Be-gru"/>
+                            <constraint firstItem="CrR-Jv-idO" firstAttribute="width" secondItem="VWP-uI-eUg" secondAttribute="width" id="Tir-c4-s8w"/>
                             <constraint firstItem="Aoe-Yo-bPs" firstAttribute="bottom" secondItem="LGM-KV-DAx" secondAttribute="bottom" id="ZKg-7U-Yu6"/>
                             <constraint firstItem="LGM-KV-DAx" firstAttribute="leading" secondItem="Aoe-Yo-bPs" secondAttribute="leading" id="dN9-dj-YCH"/>
                         </constraints>
