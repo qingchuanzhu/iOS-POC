@@ -7,6 +7,7 @@
 //
 
 #import "BottomViewController1.h"
+#import "BATabBarController.h"
 
 #define RESUECELL @"cell"
 
@@ -27,8 +28,15 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if ([self.parentViewController isKindOfClass:[BATabBarController class]]) {
+        [(BATabBarController *)self.parentViewController childViewAppearedWithView:self.view];
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 20;
+    return 15;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

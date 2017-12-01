@@ -13,4 +13,6 @@
 @property (nonatomic, strong) NSArray *childViewControllers;
 @property (nonatomic, strong) UIViewController *selectedController;
 
+- (void)childViewAppearedWithView:(UIView *)view;
+
 @end

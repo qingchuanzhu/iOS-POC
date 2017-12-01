@@ -59,20 +59,20 @@
                                         </items>
                                     </tabBar>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CrR-Jv-idO">
-                                        <rect key="frame" x="0.0" y="142" width="375" height="700"/>
+                                        <rect key="frame" x="0.0" y="142" width="375" height="592"/>
                                         <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="700" id="iJ3-O9-shX"/>
+                                            <constraint firstAttribute="height" constant="592" id="iJ3-O9-shX"/>
                                         </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" red="0.015686274510000001" green="0.87058823529999996" blue="0.4431372549" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="CrR-Jv-idO" firstAttribute="top" secondItem="LGM-KV-DAx" secondAttribute="top" constant="142" id="8JA-mv-tXz"/>
                                     <constraint firstAttribute="trailing" secondItem="CrR-Jv-idO" secondAttribute="trailing" id="Hq7-tT-a64"/>
                                     <constraint firstItem="URa-kN-GIW" firstAttribute="top" secondItem="LGM-KV-DAx" secondAttribute="top" constant="93" id="QL2-9z-cXH"/>
                                     <constraint firstItem="CrR-Jv-idO" firstAttribute="leading" secondItem="LGM-KV-DAx" secondAttribute="leading" id="Uum-l7-IaI"/>
                                     <constraint firstAttribute="bottom" secondItem="CrR-Jv-idO" secondAttribute="bottom" id="a6E-xu-JAb"/>
-                                    <constraint firstItem="CrR-Jv-idO" firstAttribute="top" secondItem="LGM-KV-DAx" secondAttribute="top" constant="142" id="ehz-ty-gg7"/>
                                     <constraint firstAttribute="trailing" secondItem="URa-kN-GIW" secondAttribute="trailing" id="hy7-aA-9aa"/>
                                     <constraint firstItem="URa-kN-GIW" firstAttribute="leading" secondItem="LGM-KV-DAx" secondAttribute="leading" id="y0w-I7-MLB"/>
                                 </constraints>

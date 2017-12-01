@@ -19,6 +19,8 @@
 @property (nonatomic, assign) CGFloat topViewHeight; // the height of view above the tab bar
 @property (nonatomic, assign) CGFloat tabBarHeight; // middle tab Bar height
 @property (nonatomic, assign) CGFloat bottomViewHeightRef; // the initial bottom view's height
+@property (nonatomic, assign) CGFloat extraScrollingSpace; // the maximum additional vertical scrolling space for the mainScrollView
+@property (nonatomic, assign) BOOL extraScrollingSpaceEnough; // Is extraScrollingSpace enough for scroll view in child VC if one has it as sub view?
 
 @property (nonatomic, assign) BOOL tabBarPinned;
 @property (nonatomic, assign) BOOL tabBarUnPinned;
@@ -33,7 +35,7 @@
     self.tabBarPinned = NO;
     self.tabBarUnPinned = YES;
     self.mainScrollView.alwaysBounceVertical = YES;
-    [self setSelectedController:self.childViewControllers[0]];
+    self.extraScrollingSpaceEnough = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,17 +57,52 @@
     CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
     self.bottomViewHeightConstraint.constant = screenHeight - self.topViewHeight - self.tabBarHeight - navBarHeight - statusBarHeight;
     self.bottomViewHeightRef = self.bottomViewHeightConstraint.constant;
-    CGFloat extraScrollingSpace = self.topViewHeight + self.tabBarHeight;
+    self.extraScrollingSpace = self.topViewHeight + self.tabBarHeight;
+    [self setSelectedController:self.childViewControllers[0]];
 }
 
 - (void)setSelectedController:(UIViewController *)selectedController{
     [self addChildViewController:selectedController];
-    [self configureChildView:selectedController.view];
+    [self addChildView:selectedController.view];
     [selectedController didMoveToParentViewController:self];
     _selectedController = selectedController;
 }
 
-- (void)configureChildView:(UIView *)view{
+- (void)childViewAppearedWithView:(UIView *)view{
+    UIScrollView *targetView = [self seekScrollViewFromView:view];
+    if (targetView != nil) {
+        targetView.scrollEnabled = NO;
+        CGSize targetViewContentSize = targetView.contentSize;
+        CGFloat diff = targetViewContentSize.height - self.bottomViewHeightRef;
+        if (diff < 0) {
+            // do nothing
+        } else if (diff < self.extraScrollingSpace){
+            self.mainScrollView.contentInset = UIEdgeInsetsMake(0, 0, self.extraScrollingSpace - diff, 0);
+            self.extraScrollingSpaceEnough = YES;
+        } else {
+            
+        }
+    }
+}
+
+- (void)addChildView:(UIView *)view{
+    /*
+     direct pinned to bottom view
+     if view is kind of scroll view
+        disable scroll view's scrolling
+        contentSize = compute scroll view content size
+        diff = contentSize.height - bottomViewHeightRef
+        if diff < 0
+            do nothing
+        else if diff < extraScrollingSpace
+            mainScrollView.contentInset.bottom = extraScrollingSpace - diff
+            adjust bottom view height as mainScroll view scrolls
+        else
+            mainScrollView.contentInset.bottom = extraScrollingSpace
+            adjust bottom view height as mainScroll view scrolls, but to the limit when tab Bar pinned to top,
+            as soon as tab Bar pinned, make scroll view scroll enabled.
+     */
+    
     [self.bottomView addSubview:view];
     view.translatesAutoresizingMaskIntoConstraints = NO;
     // set constraints
@@ -74,6 +111,16 @@
     NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
     NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
     [self.bottomView addConstraints:@[leading, trailing, top, bottom]];
+}
+
+- (UIScrollView *)seekScrollViewFromView:(UIView *)view{
+    if ([view isKindOfClass:[UIScrollView class]]) {
+        return (UIScrollView *)view;
+    }
+    for (UIView *subview in [view subviews]) {
+        return [self seekScrollViewFromView:subview];
+    }
+    return nil;
 }
 
 - (void)viewDidAppear:(BOOL)animated{
