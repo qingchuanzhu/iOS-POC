@@ -15,7 +15,9 @@
 @property (weak, nonatomic) IBOutlet UITabBar *middleTabBar;
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet UIView *holderView;
 
+@property (nonatomic, assign) CGFloat bottomHeightThreshold;
 @property (nonatomic, assign) CGFloat topViewHeight; // the height of view above the tab bar
 @property (nonatomic, assign) CGFloat tabBarHeight; // middle tab Bar height
 @property (nonatomic, assign) CGFloat bottomViewHeightRef; // the initial bottom view's height
@@ -69,23 +71,6 @@
 }
 
 - (void)childViewAppearedWithView:(UIView *)view{
-    UIScrollView *targetView = [self seekScrollViewFromView:view];
-    if (targetView != nil) {
-        targetView.scrollEnabled = NO;
-        CGSize targetViewContentSize = targetView.contentSize;
-        CGFloat diff = targetViewContentSize.height - self.bottomViewHeightRef;
-        if (diff < 0) {
-            // do nothing
-        } else if (diff < self.extraScrollingSpace){
-            self.mainScrollView.contentInset = UIEdgeInsetsMake(0, 0, self.extraScrollingSpace - diff, 0);
-            self.extraScrollingSpaceEnough = YES;
-        } else {
-            
-        }
-    }
-}
-
-- (void)addChildView:(UIView *)view{
     /*
      direct pinned to bottom view
      if view is kind of scroll view
@@ -102,7 +87,24 @@
             adjust bottom view height as mainScroll view scrolls, but to the limit when tab Bar pinned to top,
             as soon as tab Bar pinned, make scroll view scroll enabled.
      */
-    
+    UIScrollView *targetView = [self seekScrollViewFromView:view];
+    if (targetView != nil) {
+        targetView.scrollEnabled = NO;
+        CGSize targetViewContentSize = targetView.contentSize;
+        CGFloat diff = targetViewContentSize.height - self.bottomViewHeightRef;
+        if (diff < 0) {
+            // do nothing
+        } else if (diff < self.extraScrollingSpace){
+            self.bottomViewHeightConstraint.constant = self.bottomViewHeightRef + diff;
+            self.mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.bottomView.frame), self.bottomView.frame.origin.y + self.bottomViewHeightConstraint.constant);
+            self.extraScrollingSpaceEnough = YES;
+        } else {
+            
+        }
+    }
+}
+
+- (void)addChildView:(UIView *)view{
     [self.bottomView addSubview:view];
     view.translatesAutoresizingMaskIntoConstraints = NO;
     // set constraints
@@ -154,19 +156,15 @@
         // remove all constraints of tab bar
         [self.middleTabBar removeConstraints:self.middleTabBar.constraints];
         // add tab bar to self.view
-        [self.mainScrollView addSubview:self.middleTabBar];
+        [self.holderView addSubview:self.middleTabBar];
         // add new constraints to pinned tab bar
-        NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.mainScrollView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
-        NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.mainScrollView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
-        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.mainScrollView attribute:NSLayoutAttributeTopMargin multiplier:1.0 constant:self.topViewHeight];
+        NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.holderView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
+        NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.holderView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.holderView attribute:NSLayoutAttributeTopMargin multiplier:1.0 constant:self.topViewHeight];
         NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:self.tabBarHeight];
-        [self.mainScrollView addConstraints:@[leading, trailing, top, height]];
-        [self.mainScrollView setNeedsLayout];
+        [self.holderView addConstraints:@[leading, trailing, top, height]];
+        [self.holderView setNeedsLayout];
     }
-    
-    // change content size of bottom view
-//    CGFloat diffToAdjust = contentOffset.y;
-//    self.bottomViewHeightConstraint.constant = self.bottomViewHeightRef + diffToAdjust;
 }
 /*
 #pragma mark - Navigation
