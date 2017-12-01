@@ -33,6 +33,7 @@
     self.tabBarPinned = NO;
     self.tabBarUnPinned = YES;
     self.mainScrollView.alwaysBounceVertical = YES;
+    [self setSelectedController:self.childViewControllers[0]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +59,21 @@
 }
 
 - (void)setSelectedController:(UIViewController *)selectedController{
-    
+    [self addChildViewController:selectedController];
+    [self configureChildView:selectedController.view];
+    [selectedController didMoveToParentViewController:self];
+    _selectedController = selectedController;
+}
+
+- (void)configureChildView:(UIView *)view{
+    [self.bottomView addSubview:view];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    // set constraints
+    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.bottomView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
+    [self.bottomView addConstraints:@[leading, trailing, top, bottom]];
 }
 
 - (void)viewDidAppear:(BOOL)animated{
