@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface BottomViewController1 : UIViewController
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end

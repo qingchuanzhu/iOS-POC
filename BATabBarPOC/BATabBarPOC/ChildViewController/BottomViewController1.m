@@ -8,7 +8,9 @@
 
 #import "BottomViewController1.h"
 
-@interface BottomViewController1 ()
+#define RESUECELL @"cell"
+
+@interface BottomViewController1 ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -17,6 +19,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:RESUECELL];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,6 +27,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:RESUECELL forIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:RESUECELL];
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 35.0f;
+}
 /*
 #pragma mark - Navigation
 
