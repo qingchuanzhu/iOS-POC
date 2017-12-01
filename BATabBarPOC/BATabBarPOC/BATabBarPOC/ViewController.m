@@ -7,6 +7,10 @@
 //
 
 #import "ViewController.h"
+#import "BATabBarController.h"
+#import "BottomViewController1.h"
+#import "BottomViewController2.h"
+#import "TopViewController.h"
 
 @interface ViewController ()
 
@@ -25,5 +29,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([[segue destinationViewController] isKindOfClass:[BATabBarController class]]) {
+        BATabBarController *destVC = (BATabBarController *)[segue destinationViewController];
+        BottomViewController1 *vc1 = [BottomViewController1 new];
+        BottomViewController2 *vc2 = [BottomViewController2 new];
+        destVC.childViewControllers = @[vc1, vc2];
+    }
+}
 
 @end
