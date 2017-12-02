@@ -8,7 +8,7 @@
 
 #import "BATabBarController.h"
 
-@interface BATabBarController ()
+@interface BATabBarController ()<UITabBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
@@ -16,6 +16,8 @@
 @property (weak, nonatomic) IBOutlet UIView *bottomView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *holderView;
+
+@property (nonatomic, strong) NSArray<UITabBarItem *> *tabBarItems;
 
 @property (nonatomic, assign) CGFloat bottomHeightThreshold;
 @property (nonatomic, assign) CGFloat topViewHeight; // the height of view above the tab bar
@@ -38,6 +40,8 @@
     self.tabBarUnPinned = YES;
     self.mainScrollView.alwaysBounceVertical = YES;
     self.extraScrollingSpaceEnough = NO;
+    self.tabBarItems = self.middleTabBar.items;
+    self.middleTabBar.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,8 +67,16 @@
     [self setSelectedController:self.childViewControllers[0]];
 }
 
+- (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
+    NSUInteger selectedIndex = [self.tabBarItems indexOfObject:item];
+    UIViewController *selectedVC = self.childViewControllers[selectedIndex];
+    [self setSelectedController:selectedVC];
+}
+
 - (void)setSelectedController:(UIViewController *)selectedController{
     [self addChildViewController:selectedController];
+    NSUInteger selectedIndex = [self.childViewControllers indexOfObject:selectedController];
+    [self.middleTabBar setSelectedItem:self.tabBarItems[selectedIndex]];
     [self addChildView:selectedController.view];
     [selectedController didMoveToParentViewController:self];
     _selectedController = selectedController;

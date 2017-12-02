@@ -67,6 +67,9 @@
                                                     <tabBarItem systemItem="favorites" id="6hB-xA-2gD"/>
                                                     <tabBarItem systemItem="more" id="OX3-ea-KlV"/>
                                                 </items>
+                                                <connections>
+                                                    <outlet property="delegate" destination="TPb-e6-SxP" id="ScP-f0-cLf"/>
+                                                </connections>
                                             </tabBar>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
