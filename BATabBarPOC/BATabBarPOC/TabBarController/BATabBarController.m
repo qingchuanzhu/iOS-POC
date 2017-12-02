@@ -11,7 +11,7 @@
 static int contextOfMainScrollView;
 static int contextOfTargetScrollView;
 
-@interface BATabBarController ()<UITabBarDelegate>
+@interface BATabBarController ()<UITabBarDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
@@ -35,6 +35,11 @@ static int contextOfTargetScrollView;
 @property (nonatomic, assign) BOOL tabBarPinned;
 @property (nonatomic, assign) BOOL tabBarUnPinned;
 
+// scroll view speed
+@property (nonatomic, assign) CGPoint lastOffset;
+@property (nonatomic, assign) NSTimeInterval lastOffsetCapture;
+@property (nonatomic, assign) CGFloat scrollSpeed;
+
 @end
 
 @implementation BATabBarController
@@ -50,6 +55,7 @@ static int contextOfTargetScrollView;
     self.middleTabBar.delegate = self;
     self.scrollHandlerMutalLock = NO;
     self.targetScrollViewScrolled = NO;
+    self.mainScrollView.delegate = self;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -59,8 +65,6 @@ static int contextOfTargetScrollView;
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.mainScrollView removeObserver:self forKeyPath:@"contentOffset" context:&contextOfMainScrollView];
-    [self.targetedScrollView removeObserver:self forKeyPath:@"contentOffset" context:&contextOfTargetScrollView];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -83,9 +87,6 @@ static int contextOfTargetScrollView;
 }
 
 - (void)setSelectedController:(UIViewController *)selectedController{
-    if (self.targetedScrollView) {
-        [self.targetedScrollView removeObserver:self forKeyPath:@"contentOffset" context:&contextOfTargetScrollView];
-    }
     UIViewController *controllerToRemove = _selectedController;
     [controllerToRemove willMoveToParentViewController:nil];
     [self addChildViewController:selectedController];
@@ -118,7 +119,7 @@ static int contextOfTargetScrollView;
     UIScrollView *targetView = [self seekScrollViewFromView:view];
     if (targetView != nil) {
         self.targetedScrollView = targetView;
-        [self.targetedScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:&contextOfTargetScrollView];
+        self.targetedScrollView.delegate = self;
         targetView.scrollEnabled = NO;
         CGSize targetViewContentSize = targetView.contentSize;
         CGFloat diff = targetViewContentSize.height - self.bottomViewHeightRef;
@@ -162,25 +163,11 @@ static int contextOfTargetScrollView;
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.mainScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:&contextOfMainScrollView];
-}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    CGPoint contentOffset = [[change objectForKey:NSKeyValueChangeNewKey] CGPointValue];
-    if (self.scrollHandlerMutalLock == NO) {
-        // none of handler is currently handling
-        if (context == &contextOfMainScrollView) {
-            [self handleContentOffsetOfMainScrollView:contentOffset];
-        } else {
-            [self handleContentOffsetOfTargetedScrollView:contentOffset];
-        }
-        self.scrollHandlerMutalLock = NO;
-    }
 }
 
 - (void)handleContentOffsetOfMainScrollView:(CGPoint)contentOffset{
     self.scrollHandlerMutalLock = YES;
-    if (contentOffset.y > self.topViewHeight && self.tabBarPinned == NO) {
+    if (contentOffset.y >= self.topViewHeight) {
         self.tabBarPinned = YES;
         self.tabBarUnPinned = NO;
         // remove tab bar from scrollview
@@ -224,14 +211,28 @@ static int contextOfTargetScrollView;
 
 - (void)handleContentOffsetOfTargetedScrollView:(CGPoint)contentOffset{
     self.scrollHandlerMutalLock = YES;
-    /*handle contentOffset.y == 0 is a special case, at the first moment before scroll happens, it is 0, we should not disable targetScrollView at this momemnt*/
-    if (contentOffset.y > 0 && self.targetScrollViewScrolled == NO) {
-        // target scroll view starts scroll, mainScroll view is scroll disabled
-        self.targetScrollViewScrolled = YES;
-    } else if(contentOffset.y <= 0 && self.targetScrollViewScrolled == YES){
-        self.targetedScrollView.scrollEnabled = NO;
+    if (self.extraScrollingSpaceEnough == NO && contentOffset.y <= 0 && self.scrollSpeed < 0) {
         self.mainScrollView.scrollEnabled = YES;
-        self.targetScrollViewScrolled = NO;
+        self.targetedScrollView.scrollEnabled = NO;
+    }
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (self.targetedScrollView == scrollView) {
+        CGPoint currentOffset = scrollView.contentOffset;
+        NSTimeInterval currentTime = [NSDate timeIntervalSinceReferenceDate];
+        
+        NSTimeInterval timeDiff = currentTime - self.lastOffsetCapture;
+        if(timeDiff > 0.1) {
+            CGFloat distance = currentOffset.y - self.lastOffset.y;
+            self.scrollSpeed = distance / timeDiff; //points in seconds
+            self.lastOffset = currentOffset;
+            self.lastOffsetCapture = currentTime;
+        }
+        [self handleContentOffsetOfTargetedScrollView:currentOffset];
+    } else {
+        CGPoint currentOffset = scrollView.contentOffset;
+        [self handleContentOffsetOfMainScrollView:currentOffset];
     }
 }
 /*

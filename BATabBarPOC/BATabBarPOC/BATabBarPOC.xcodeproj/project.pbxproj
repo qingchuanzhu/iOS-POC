@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3556270E1FD278E00054305B /* iOSNativeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3556270D1FD278E00054305B /* iOSNativeTableViewController.m */; };
 		35DA49EC1FCE84D300F6BC83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DA49EB1FCE84D300F6BC83 /* AppDelegate.m */; };
 		35DA49EF1FCE84D300F6BC83 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DA49EE1FCE84D300F6BC83 /* ViewController.m */; };
 		35DA49F21FCE84D300F6BC83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DA49F01FCE84D300F6BC83 /* Main.storyboard */; };
@@ -23,6 +24,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3556270C1FD278E00054305B /* iOSNativeTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = iOSNativeTableViewController.h; sourceTree = "<group>"; };
+		3556270D1FD278E00054305B /* iOSNativeTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = iOSNativeTableViewController.m; sourceTree = "<group>"; };
 		35DA49E71FCE84D300F6BC83 /* BATabBarPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BATabBarPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DA49EA1FCE84D300F6BC83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35DA49EB1FCE84D300F6BC83 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -82,6 +85,8 @@
 				35DA49EB1FCE84D300F6BC83 /* AppDelegate.m */,
 				35DA49ED1FCE84D300F6BC83 /* ViewController.h */,
 				35DA49EE1FCE84D300F6BC83 /* ViewController.m */,
+				3556270C1FD278E00054305B /* iOSNativeTableViewController.h */,
+				3556270D1FD278E00054305B /* iOSNativeTableViewController.m */,
 				35DA49F01FCE84D300F6BC83 /* Main.storyboard */,
 				35DA49F31FCE84D300F6BC83 /* Assets.xcassets */,
 				35DA49F51FCE84D300F6BC83 /* LaunchScreen.storyboard */,
@@ -192,6 +197,7 @@
 			files = (
 				35DA4A081FCF3FA200F6BC83 /* TopViewController.m in Sources */,
 				35DA4A0D1FCF3FD700F6BC83 /* BottomViewController1.m in Sources */,
+				3556270E1FD278E00054305B /* iOSNativeTableViewController.m in Sources */,
 				35DA49EF1FCE84D300F6BC83 /* ViewController.m in Sources */,
 				35DA49FA1FCE84D300F6BC83 /* main.m in Sources */,
 				35DA4A121FCF3FEB00F6BC83 /* BottomViewController2.m in Sources */,
