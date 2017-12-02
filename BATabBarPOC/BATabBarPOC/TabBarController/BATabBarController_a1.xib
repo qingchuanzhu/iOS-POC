@@ -15,6 +15,8 @@
                 <outlet property="childViewHolder" destination="tdr-N9-8iH" id="tAg-Yd-cUh"/>
                 <outlet property="middleTabBar" destination="SXy-GL-Xib" id="0bx-ca-oZt"/>
                 <outlet property="topView" destination="0mr-45-rbs" id="TiR-Lw-Rbo"/>
+                <outlet property="topViewHeightConstraint" destination="HAd-k5-BrY" id="TGU-O2-Mr7"/>
+                <outlet property="topViewTopConstraint" destination="bMY-Ws-ZHZ" id="ThB-bP-NYK"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -24,7 +26,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdr-N9-8iH">
-                    <rect key="frame" x="0.0" y="142" width="375" height="525"/>
+                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                     <color key="backgroundColor" red="0.1333333333" green="0.43137254899999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mr-45-rbs">
@@ -39,7 +41,7 @@
                             </items>
                         </tabBar>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.88375946969999997" green="0.4380046131" blue="0.7999937895" alpha="0.34000000000000002" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="122" id="HAd-k5-BrY"/>
                         <constraint firstAttribute="trailing" secondItem="SXy-GL-Xib" secondAttribute="trailing" id="HMc-eA-LGD"/>
@@ -52,11 +54,11 @@
             <constraints>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="tdr-N9-8iH" secondAttribute="bottom" id="C0t-If-EUG"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="top" secondItem="0mr-45-rbs" secondAttribute="top" id="bMY-Ws-ZHZ"/>
-                <constraint firstItem="tdr-N9-8iH" firstAttribute="top" secondItem="0mr-45-rbs" secondAttribute="bottom" id="dlH-HZ-J6c"/>
                 <constraint firstItem="tdr-N9-8iH" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="iqv-rL-eOA"/>
                 <constraint firstItem="0mr-45-rbs" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="kgc-NJ-La3"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="0mr-45-rbs" secondAttribute="trailing" id="pJt-XS-9Ob"/>
                 <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="tdr-N9-8iH" secondAttribute="trailing" id="qV2-Ob-Qz6"/>
+                <constraint firstItem="tdr-N9-8iH" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="yaa-XO-T3a"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>

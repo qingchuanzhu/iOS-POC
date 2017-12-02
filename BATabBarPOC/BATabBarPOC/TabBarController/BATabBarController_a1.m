@@ -8,12 +8,15 @@
 
 #import "BATabBarController_a1.h"
 
-@interface BATabBarController_a1 ()<UITabBarDelegate>
+@interface BATabBarController_a1 ()<UITabBarDelegate, UIScrollViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *childViewHolder;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UITabBar *middleTabBar;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewTopConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
 
 @property (nonatomic, strong) NSArray<UITabBarItem *> *tabBarItems;
+@property (nonatomic, strong) UIScrollView *targetedScrollView;
 
 @end
 
@@ -24,6 +27,7 @@
     // Do any additional setup after loading the view from its nib.
     self.tabBarItems = self.middleTabBar.items;
     self.middleTabBar.delegate = self;
+    self.topView.alpha = 0.5;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -58,7 +62,10 @@
 - (void)childViewAppearedWithView:(UIView *)view{
     UIScrollView *targetView = [self seekScrollViewFromView:view];
     if (targetView != nil) {
-        
+        self.targetedScrollView = targetView;
+        self.targetedScrollView.delegate = self;
+        self.targetedScrollView.contentOffset = CGPointMake(0, -self.topViewHeightConstraint.constant);
+        self.targetedScrollView.contentInset = UIEdgeInsetsMake(self.topViewHeightConstraint.constant, 0, 0, 0);
     }
 }
 
@@ -81,6 +88,19 @@
         return [self seekScrollViewFromView:subview];
     }
     return nil;
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    if (self.targetedScrollView == scrollView) {
+        CGPoint currentOffset = scrollView.contentOffset;
+        CGFloat yPosition = currentOffset.y;
+        if (yPosition > 0) {
+            // move top view up by y points
+            self.topViewTopConstraint.constant = yPosition;
+        } else {
+            
+        }
+    }
 }
 /*
 #pragma mark - Navigation

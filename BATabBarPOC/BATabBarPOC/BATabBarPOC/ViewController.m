@@ -34,6 +34,8 @@
     BATabBarController_a1 *tabBar2 = [BATabBarController_a1 new];
     BottomViewController1 *vc1 = [BottomViewController1 new];
     BottomViewController2 *vc2 = [BottomViewController2 new];
+    vc1.tabBarDelegate = tabBar2;
+    vc2.tabBarDelegate = tabBar2;
     tabBar2.childViewControllers = @[vc1, vc2];
     [self.navigationController pushViewController:tabBar2 animated:YES];
 }

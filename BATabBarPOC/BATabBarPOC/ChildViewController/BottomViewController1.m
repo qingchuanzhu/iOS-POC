@@ -30,10 +30,14 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.tabBarDelegate childViewAppearedWithView:self.view];
     if ([self.parentViewController isKindOfClass:[BATabBarController class]]) {
         [(BATabBarController *)self.parentViewController childViewAppearedWithView:self.view];
     }
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    [self.tabBarDelegate childViewAppearedWithView:self.view];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
