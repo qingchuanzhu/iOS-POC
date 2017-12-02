@@ -29,6 +29,8 @@ static int contextOfTargetScrollView;
 @property (nonatomic, assign) CGFloat bottomViewHeightRef; // the initial bottom view's height
 @property (nonatomic, assign) CGFloat extraScrollingSpace; // the maximum additional vertical scrolling space for the mainScrollView
 @property (nonatomic, assign) BOOL extraScrollingSpaceEnough; // Is extraScrollingSpace enough for scroll view in child VC if one has it as sub view?
+@property (nonatomic, assign) BOOL scrollHandlerMutalLock;
+@property (nonatomic, assign) BOOL targetScrollViewScrolled;
 
 @property (nonatomic, assign) BOOL tabBarPinned;
 @property (nonatomic, assign) BOOL tabBarUnPinned;
@@ -46,6 +48,8 @@ static int contextOfTargetScrollView;
     self.extraScrollingSpaceEnough = NO;
     self.tabBarItems = self.middleTabBar.items;
     self.middleTabBar.delegate = self;
+    self.scrollHandlerMutalLock = NO;
+    self.targetScrollViewScrolled = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,7 +59,8 @@ static int contextOfTargetScrollView;
 
 - (void)viewWillDisappear:(BOOL)animated{
     [super viewWillDisappear:animated];
-    [self.mainScrollView removeObserver:self forKeyPath:@"contentOffset"];
+    [self.mainScrollView removeObserver:self forKeyPath:@"contentOffset" context:&contextOfMainScrollView];
+    [self.targetedScrollView removeObserver:self forKeyPath:@"contentOffset" context:&contextOfTargetScrollView];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -78,9 +83,16 @@ static int contextOfTargetScrollView;
 }
 
 - (void)setSelectedController:(UIViewController *)selectedController{
+    if (self.targetedScrollView) {
+        [self.targetedScrollView removeObserver:self forKeyPath:@"contentOffset" context:&contextOfTargetScrollView];
+    }
+    UIViewController *controllerToRemove = _selectedController;
+    [controllerToRemove willMoveToParentViewController:nil];
     [self addChildViewController:selectedController];
     NSUInteger selectedIndex = [self.childViewControllers indexOfObject:selectedController];
     [self.middleTabBar setSelectedItem:self.tabBarItems[selectedIndex]];
+    [controllerToRemove removeFromParentViewController];
+    [controllerToRemove.view removeFromSuperview];
     [self addChildView:selectedController.view];
     [selectedController didMoveToParentViewController:self];
     _selectedController = selectedController;
@@ -155,6 +167,19 @@ static int contextOfTargetScrollView;
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
     CGPoint contentOffset = [[change objectForKey:NSKeyValueChangeNewKey] CGPointValue];
+    if (self.scrollHandlerMutalLock == NO) {
+        // none of handler is currently handling
+        if (context == &contextOfMainScrollView) {
+            [self handleContentOffsetOfMainScrollView:contentOffset];
+        } else {
+            [self handleContentOffsetOfTargetedScrollView:contentOffset];
+        }
+        self.scrollHandlerMutalLock = NO;
+    }
+}
+
+- (void)handleContentOffsetOfMainScrollView:(CGPoint)contentOffset{
+    self.scrollHandlerMutalLock = YES;
     if (contentOffset.y > self.topViewHeight && self.tabBarPinned == NO) {
         self.tabBarPinned = YES;
         self.tabBarUnPinned = NO;
@@ -197,12 +222,17 @@ static int contextOfTargetScrollView;
     }
 }
 
-- (void)handleContentOffsetOfMainScrollView:(CGPoint)contentOffset{
-    
-}
-
 - (void)handleContentOffsetOfTargetedScrollView:(CGPoint)contentOffset{
-    
+    self.scrollHandlerMutalLock = YES;
+    /*handle contentOffset.y == 0 is a special case, at the first moment before scroll happens, it is 0, we should not disable targetScrollView at this momemnt*/
+    if (contentOffset.y > 0 && self.targetScrollViewScrolled == NO) {
+        // target scroll view starts scroll, mainScroll view is scroll disabled
+        self.targetScrollViewScrolled = YES;
+    } else if(contentOffset.y <= 0 && self.targetScrollViewScrolled == YES){
+        self.targetedScrollView.scrollEnabled = NO;
+        self.mainScrollView.scrollEnabled = YES;
+        self.targetScrollViewScrolled = NO;
+    }
 }
 /*
 #pragma mark - Navigation
