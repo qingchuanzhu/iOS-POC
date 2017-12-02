@@ -8,9 +8,6 @@
 
 #import "BATabBarController.h"
 
-static int contextOfMainScrollView;
-static int contextOfTargetScrollView;
-
 @interface BATabBarController ()<UITabBarDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
@@ -78,6 +75,7 @@ static int contextOfTargetScrollView;
     self.bottomViewHeightRef = self.bottomViewHeightConstraint.constant;
     self.extraScrollingSpace = self.topViewHeight;
     [self setSelectedController:self.childViewControllers[0]];
+    self.mainScrollView.contentOffset = CGPointMake(0, 0);
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
@@ -163,6 +161,7 @@ static int contextOfTargetScrollView;
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
+    self.mainScrollView.contentOffset = CGPointMake(0, 0);
 }
 
 - (void)handleContentOffsetOfMainScrollView:(CGPoint)contentOffset{
@@ -177,9 +176,9 @@ static int contextOfTargetScrollView;
         // add tab bar to self.view
         [self.view addSubview:self.middleTabBar];
         // add new constraints to pinned tab bar
-        NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
-        NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
-        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.view attribute:NSLayoutAttributeTopMargin multiplier:1.0 constant:0.0];
+        NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.holderView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
+        NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.holderView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.mainScrollView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
         NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:self.tabBarHeight];
         [self.view addConstraints:@[leading, trailing, top, height]];
         [self.view setNeedsLayout];
@@ -202,7 +201,7 @@ static int contextOfTargetScrollView;
         // add new constraints to pinned tab bar
         NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.holderView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
         NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.holderView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
-        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.holderView attribute:NSLayoutAttributeTopMargin multiplier:1.0 constant:self.topViewHeight];
+        NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.holderView attribute:NSLayoutAttributeTop multiplier:1.0 constant:self.topViewHeight];
         NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:self.tabBarHeight];
         [self.holderView addConstraints:@[leading, trailing, top, height]];
         [self.holderView setNeedsLayout];

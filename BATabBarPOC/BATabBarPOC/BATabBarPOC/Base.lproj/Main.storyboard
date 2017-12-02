@@ -97,18 +97,18 @@
                                     <constraint firstAttribute="bottom" secondItem="p9o-5j-PK8" secondAttribute="bottom" id="DTR-uk-wTj"/>
                                     <constraint firstItem="p9o-5j-PK8" firstAttribute="top" secondItem="LGM-KV-DAx" secondAttribute="top" id="Mog-aU-z0L"/>
                                     <constraint firstItem="p9o-5j-PK8" firstAttribute="leading" secondItem="LGM-KV-DAx" secondAttribute="leading" id="Uet-Ot-2rK"/>
+                                    <constraint firstItem="p9o-5j-PK8" firstAttribute="height" secondItem="LGM-KV-DAx" secondAttribute="height" id="ZQD-s9-PS0"/>
                                     <constraint firstAttribute="trailing" secondItem="p9o-5j-PK8" secondAttribute="trailing" id="bxy-UT-nWN"/>
-                                    <constraint firstItem="p9o-5j-PK8" firstAttribute="centerY" secondItem="LGM-KV-DAx" secondAttribute="centerY" id="gJe-3F-gUj"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="Aoe-Yo-bPs" firstAttribute="trailing" secondItem="LGM-KV-DAx" secondAttribute="trailing" id="1Tt-zf-ZPy"/>
+                            <constraint firstAttribute="trailing" secondItem="LGM-KV-DAx" secondAttribute="trailing" id="1Tt-zf-ZPy"/>
                             <constraint firstItem="Aoe-Yo-bPs" firstAttribute="top" secondItem="LGM-KV-DAx" secondAttribute="top" id="5fz-Be-gru"/>
                             <constraint firstItem="p9o-5j-PK8" firstAttribute="width" secondItem="VWP-uI-eUg" secondAttribute="width" id="C26-7s-ARt"/>
-                            <constraint firstItem="Aoe-Yo-bPs" firstAttribute="bottom" secondItem="LGM-KV-DAx" secondAttribute="bottom" id="ZKg-7U-Yu6"/>
-                            <constraint firstItem="LGM-KV-DAx" firstAttribute="leading" secondItem="Aoe-Yo-bPs" secondAttribute="leading" id="dN9-dj-YCH"/>
+                            <constraint firstAttribute="bottom" secondItem="LGM-KV-DAx" secondAttribute="bottom" id="ZKg-7U-Yu6"/>
+                            <constraint firstItem="LGM-KV-DAx" firstAttribute="leading" secondItem="VWP-uI-eUg" secondAttribute="leading" id="dN9-dj-YCH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Aoe-Yo-bPs"/>
                     </view>
