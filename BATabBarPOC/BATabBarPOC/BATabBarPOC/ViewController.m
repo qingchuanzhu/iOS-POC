@@ -11,6 +11,7 @@
 #import "BottomViewController1.h"
 #import "BottomViewController2.h"
 #import "TopViewController.h"
+#import "BATabBarController_a1.h"
 
 @interface ViewController ()
 
@@ -28,8 +29,13 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)testForNewWay:(id)sender {
-    
+    BATabBarController_a1 *tabBar2 = [BATabBarController_a1 new];
+    BottomViewController1 *vc1 = [BottomViewController1 new];
+    BottomViewController2 *vc2 = [BottomViewController2 new];
+    tabBar2.childViewControllers = @[vc1, vc2];
+    [self.navigationController pushViewController:tabBar2 animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{

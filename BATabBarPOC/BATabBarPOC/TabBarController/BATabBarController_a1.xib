@@ -12,6 +12,9 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BATabBarController_a1">
             <connections>
+                <outlet property="childViewHolder" destination="tdr-N9-8iH" id="tAg-Yd-cUh"/>
+                <outlet property="middleTabBar" destination="SXy-GL-Xib" id="0bx-ca-oZt"/>
+                <outlet property="topView" destination="0mr-45-rbs" id="TiR-Lw-Rbo"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>

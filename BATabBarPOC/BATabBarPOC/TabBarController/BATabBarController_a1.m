@@ -9,6 +9,9 @@
 #import "BATabBarController_a1.h"
 
 @interface BATabBarController_a1 ()
+@property (weak, nonatomic) IBOutlet UIView *childViewHolder;
+@property (weak, nonatomic) IBOutlet UIView *topView;
+@property (weak, nonatomic) IBOutlet UITabBar *middleTabBar;
 
 @end
 
@@ -24,6 +27,9 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)childViewAppearedWithView:(UIView *)view{
+    
+}
 /*
 #pragma mark - Navigation
 
