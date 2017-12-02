@@ -7,8 +7,11 @@
 //
 
 #import "BottomViewController2.h"
+#import "BATabBarController.h"
 
-@interface BottomViewController2 ()
+#define RESUECELL @"cell"
+
+@interface BottomViewController2 ()<UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -17,11 +20,39 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:RESUECELL];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    if ([self.parentViewController isKindOfClass:[BATabBarController class]]) {
+        [(BATabBarController *)self.parentViewController childViewAppearedWithView:self.view];
+    }
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 20;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    UITableViewCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:RESUECELL forIndexPath:indexPath];
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:RESUECELL];
+    }
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+    
+    return cell;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return 35.0f;
 }
 
 /*

@@ -8,6 +8,9 @@
 
 #import "BATabBarController.h"
 
+static int contextOfMainScrollView;
+static int contextOfTargetScrollView;
+
 @interface BATabBarController ()<UITabBarDelegate>
 
 @property (weak, nonatomic) IBOutlet UIScrollView *mainScrollView;
@@ -17,6 +20,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *bottomViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet UIView *holderView;
 
+@property (nonatomic, strong) UIScrollView *targetedScrollView;
 @property (nonatomic, strong) NSArray<UITabBarItem *> *tabBarItems;
 
 @property (nonatomic, assign) CGFloat bottomHeightThreshold;
@@ -63,7 +67,7 @@
     CGFloat statusBarHeight = [UIApplication sharedApplication].statusBarFrame.size.height;
     self.bottomViewHeightConstraint.constant = screenHeight - self.topViewHeight - self.tabBarHeight - navBarHeight - statusBarHeight;
     self.bottomViewHeightRef = self.bottomViewHeightConstraint.constant;
-    self.extraScrollingSpace = self.topViewHeight + self.tabBarHeight;
+    self.extraScrollingSpace = self.topViewHeight;
     [self setSelectedController:self.childViewControllers[0]];
 }
 
@@ -101,6 +105,8 @@
      */
     UIScrollView *targetView = [self seekScrollViewFromView:view];
     if (targetView != nil) {
+        self.targetedScrollView = targetView;
+        [self.targetedScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:&contextOfTargetScrollView];
         targetView.scrollEnabled = NO;
         CGSize targetViewContentSize = targetView.contentSize;
         CGFloat diff = targetViewContentSize.height - self.bottomViewHeightRef;
@@ -111,8 +117,13 @@
             self.mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.bottomView.frame), self.bottomView.frame.origin.y + self.bottomViewHeightConstraint.constant);
             self.extraScrollingSpaceEnough = YES;
         } else {
-            
+            self.bottomViewHeightConstraint.constant = self.bottomViewHeightRef + self.extraScrollingSpace;
+            self.mainScrollView.contentSize = CGSizeMake(CGRectGetWidth(self.bottomView.frame), self.bottomView.frame.origin.y + self.bottomViewHeightConstraint.constant);
+            self.extraScrollingSpaceEnough = NO;
         }
+    } else {
+        self.targetedScrollView = nil;
+        self.extraScrollingSpaceEnough = YES;
     }
 }
 
@@ -139,7 +150,7 @@
 
 - (void)viewDidAppear:(BOOL)animated{
     [super viewDidAppear:animated];
-    [self.mainScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:nil];
+    [self.mainScrollView addObserver:self forKeyPath:@"contentOffset" options:NSKeyValueObservingOptionNew context:&contextOfMainScrollView];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
@@ -160,6 +171,13 @@
         NSLayoutConstraint *height = [NSLayoutConstraint constraintWithItem:self.middleTabBar attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0.0 constant:self.tabBarHeight];
         [self.view addConstraints:@[leading, trailing, top, height]];
         [self.view setNeedsLayout];
+        
+        // enable scrolling if we have targeted scroll view and extraScrollingSpaceEnough == NO
+        if (self.targetedScrollView != nil && self.extraScrollingSpaceEnough == NO) {
+            self.targetedScrollView.scrollEnabled = YES;
+            self.mainScrollView.scrollEnabled = NO;
+        }
+        
     } else if(contentOffset.y < self.topViewHeight && self.tabBarPinned == YES){
         self.tabBarUnPinned = YES;
         self.tabBarPinned = NO;
@@ -177,6 +195,14 @@
         [self.holderView addConstraints:@[leading, trailing, top, height]];
         [self.holderView setNeedsLayout];
     }
+}
+
+- (void)handleContentOffsetOfMainScrollView:(CGPoint)contentOffset{
+    
+}
+
+- (void)handleContentOffsetOfTargetedScrollView:(CGPoint)contentOffset{
+    
 }
 /*
 #pragma mark - Navigation
