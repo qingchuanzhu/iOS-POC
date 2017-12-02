@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "BATabBarController_a1.h"
 
 @interface BottomViewController1 : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) UIViewController<BATabBarControllera1Delegate> *tabBarDelegate;
 
 @end

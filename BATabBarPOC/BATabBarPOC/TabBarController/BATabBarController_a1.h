@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BATabBarController_a1 : UIViewController
+@protocol BATabBarControllera1Delegate
+
+- (void)childViewAppearedWithView:(UIView *)view;
+
+@end
+
+@interface BATabBarController_a1 : UIViewController<BATabBarControllera1Delegate>
 
 @property (nonatomic, strong) NSArray *childViewControllers;
 @property (nonatomic, strong) UIViewController *selectedController;
-
-- (void)childViewAppearedWithView:(UIView *)view;
 
 @end
