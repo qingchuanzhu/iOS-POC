@@ -53,15 +53,15 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="bottom" secondItem="tdr-N9-8iH" secondAttribute="bottom" id="C0t-If-EUG"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="top" secondItem="0mr-45-rbs" secondAttribute="top" id="bMY-Ws-ZHZ"/>
-                <constraint firstItem="tdr-N9-8iH" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="iqv-rL-eOA"/>
-                <constraint firstItem="0mr-45-rbs" firstAttribute="leading" secondItem="Q5M-cg-NOt" secondAttribute="leading" id="kgc-NJ-La3"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="0mr-45-rbs" secondAttribute="trailing" id="pJt-XS-9Ob"/>
-                <constraint firstItem="Q5M-cg-NOt" firstAttribute="trailing" secondItem="tdr-N9-8iH" secondAttribute="trailing" id="qV2-Ob-Qz6"/>
-                <constraint firstItem="tdr-N9-8iH" firstAttribute="top" secondItem="Q5M-cg-NOt" secondAttribute="top" id="yaa-XO-T3a"/>
+                <constraint firstAttribute="bottom" secondItem="tdr-N9-8iH" secondAttribute="bottom" id="C0t-If-EUG"/>
+                <constraint firstItem="7vz-qP-I8i" firstAttribute="top" secondItem="0mr-45-rbs" secondAttribute="top" id="bMY-Ws-ZHZ"/>
+                <constraint firstItem="tdr-N9-8iH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iqv-rL-eOA"/>
+                <constraint firstItem="0mr-45-rbs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kgc-NJ-La3"/>
+                <constraint firstAttribute="trailing" secondItem="0mr-45-rbs" secondAttribute="trailing" id="pJt-XS-9Ob"/>
+                <constraint firstAttribute="trailing" secondItem="tdr-N9-8iH" secondAttribute="trailing" id="qV2-Ob-Qz6"/>
+                <constraint firstItem="tdr-N9-8iH" firstAttribute="top" secondItem="7vz-qP-I8i" secondAttribute="top" id="yaa-XO-T3a"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="Q5M-cg-NOt"/>
+            <viewLayoutGuide key="safeArea" id="7vz-qP-I8i"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>
         </view>
     </objects>

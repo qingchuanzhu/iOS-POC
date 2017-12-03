@@ -31,6 +31,7 @@
     // Do any additional setup after loading the view from its nib.
     self.tabBarItems = self.middleTabBar.items;
     self.middleTabBar.delegate = self;
+    self.edgesForExtendedLayout = UIRectEdgeNone;
 }
 
 - (void)viewWillAppear:(BOOL)animated{
