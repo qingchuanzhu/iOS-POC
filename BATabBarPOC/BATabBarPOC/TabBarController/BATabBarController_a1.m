@@ -14,6 +14,10 @@
 @property (weak, nonatomic) IBOutlet UITabBar *middleTabBar;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *middleTabBarBottomConstraint;
+
+@property (nonatomic, assign) CGFloat tabBarHeight;
+@property (nonatomic, assign) CGFloat topTileHeight; // topView's height - tabBarheight
 
 @property (nonatomic, strong) NSArray<UITabBarItem *> *tabBarItems;
 @property (nonatomic, strong) UIScrollView *targetedScrollView;
@@ -27,17 +31,13 @@
     // Do any additional setup after loading the view from its nib.
     self.tabBarItems = self.middleTabBar.items;
     self.middleTabBar.delegate = self;
-    self.topView.alpha = 0.5;
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
     [self setSelectedController:self.childViewControllers[0]];
+    self.tabBarHeight = CGRectGetHeight(self.middleTabBar.frame);
+    self.topTileHeight = self.topViewHeightConstraint.constant - self.tabBarHeight;
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
@@ -97,19 +97,18 @@
         if (yPosition > -self.topViewHeightConstraint.constant) {
             // move top view up by y points
             self.topViewTopConstraint.constant = yPosition + self.topViewHeightConstraint.constant;
+            if (self.topViewTopConstraint.constant > self.topTileHeight) {
+                // change middle tab bar bottom constraint to pin it
+                CGFloat diff = self.topViewTopConstraint.constant - self.topTileHeight;
+                self.middleTabBarBottomConstraint.constant = -diff;
+            } else {
+                // unpin the middle tab bar
+                self.middleTabBarBottomConstraint.constant = 0;
+            }
         } else {
             
         }
     }
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

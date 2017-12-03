@@ -14,6 +14,7 @@
             <connections>
                 <outlet property="childViewHolder" destination="tdr-N9-8iH" id="tAg-Yd-cUh"/>
                 <outlet property="middleTabBar" destination="SXy-GL-Xib" id="0bx-ca-oZt"/>
+                <outlet property="middleTabBarBottomConstraint" destination="YEU-pj-PBX" id="Md8-fc-UDO"/>
                 <outlet property="topView" destination="0mr-45-rbs" id="TiR-Lw-Rbo"/>
                 <outlet property="topViewHeightConstraint" destination="HAd-k5-BrY" id="TGU-O2-Mr7"/>
                 <outlet property="topViewTopConstraint" destination="bMY-Ws-ZHZ" id="ThB-bP-NYK"/>
