@@ -94,9 +94,9 @@
     if (self.targetedScrollView == scrollView) {
         CGPoint currentOffset = scrollView.contentOffset;
         CGFloat yPosition = currentOffset.y;
-        if (yPosition > 0) {
+        if (yPosition > -self.topViewHeightConstraint.constant) {
             // move top view up by y points
-            self.topViewTopConstraint.constant = yPosition;
+            self.topViewTopConstraint.constant = yPosition + self.topViewHeightConstraint.constant;
         } else {
             
         }
