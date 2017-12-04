@@ -16,6 +16,9 @@
 
 @interface ViewController ()
 
+@property (weak, nonatomic) IBOutlet UISwitch *pinnedButtonCtl;
+@property (nonatomic, assign) BOOL shouldShowPinnedButton;
+
 @end
 
 @implementation ViewController
@@ -23,8 +26,16 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view, typically from a nib.
+    self.pinnedButtonCtl.on = NO;
 }
 
+- (IBAction)switchChanged:(UISwitch *)sender {
+    if (sender.on) {
+        self.shouldShowPinnedButton = YES;
+    } else {
+        self.shouldShowPinnedButton = NO;
+    }
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
