@@ -60,6 +60,9 @@
     return 35.0f;
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView{
+    [self.tabBarDelegate scrollViewDidScroll:scrollView];
+}
 /*
 #pragma mark - Navigation
 

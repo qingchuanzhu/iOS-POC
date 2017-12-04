@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol BATabBarControllera1Delegate
+@protocol BATabBarControllera1Delegate<UIScrollViewDelegate>
 
 - (void)childViewAppearedWithView:(UIView *)view;
 

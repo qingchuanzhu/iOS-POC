@@ -31,11 +31,11 @@
 }
 
 - (IBAction)declineButtonAction:(id)sender {
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)acceptButtonAction:(id)sender {
-    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 /*

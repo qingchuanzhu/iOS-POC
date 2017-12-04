@@ -8,7 +8,7 @@
 
 #import "BATabBarController_a1.h"
 
-@interface BATabBarController_a1 ()<UITabBarDelegate, UIScrollViewDelegate>
+@interface BATabBarController_a1 ()<UITabBarDelegate>
 @property (weak, nonatomic) IBOutlet UIView *childViewHolder;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UITabBar *middleTabBar;
@@ -86,7 +86,6 @@
     UIScrollView *targetView = [self seekScrollViewFromView:view];
     if (targetView != nil) {
         self.targetedScrollView = targetView;
-        self.targetedScrollView.delegate = self;
         self.targetedScrollView.contentOffset = CGPointMake(0, -self.topViewHeightConstraint.constant);
         self.targetedScrollView.contentInset = UIEdgeInsetsMake(self.topViewHeightConstraint.constant, 0, 0, 0);
     }
