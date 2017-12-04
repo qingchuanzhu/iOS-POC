@@ -15,6 +15,8 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *topViewHeightConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *middleTabBarBottomConstraint;
+@property (weak, nonatomic) IBOutlet UIView *pinnedButtonView;
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *childHolderBottomConstraint;
 
 @property (nonatomic, assign) CGFloat tabBarHeight;
 @property (nonatomic, assign) CGFloat topTileHeight; // topView's height - tabBarheight
@@ -44,6 +46,14 @@
     }
     [self setSelectedController:self.childViewControllers[0]];
     self.topTileHeight = self.topViewHeightConstraint.constant - self.tabBarHeight;
+    if (self.showPinnedButton) {
+        self.pinnedButtonView.hidden = NO;
+        // adjust constraints
+        self.childHolderBottomConstraint.constant = CGRectGetHeight(self.pinnedButtonView.frame);
+    } else {
+        self.pinnedButtonView.hidden = YES;
+        self.childHolderBottomConstraint.constant = 0;
+    }
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
@@ -130,7 +140,7 @@
                 self.middleTabBarBottomConstraint.constant = 0;
             }
         } else {
-            
+            self.topViewTopConstraint.constant = 0;
         }
     }
 }

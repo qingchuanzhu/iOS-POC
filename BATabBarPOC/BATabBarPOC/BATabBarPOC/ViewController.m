@@ -51,6 +51,7 @@
     vc2.tabBarDelegate = tabBar2;
     tabBar2.topViewController = topVC;
     tabBar2.childViewControllers = @[vc1, vc2];
+    tabBar2.showPinnedButton = self.shouldShowPinnedButton;
     [self.navigationController pushViewController:tabBar2 animated:YES];
 }
 

@@ -1,20 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13770" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13527"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13770"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BATabBarController_a1">
             <connections>
+                <outlet property="childHolderBottomConstraint" destination="C0t-If-EUG" id="eMQ-Ua-3A1"/>
                 <outlet property="childViewHolder" destination="tdr-N9-8iH" id="tAg-Yd-cUh"/>
                 <outlet property="middleTabBar" destination="SXy-GL-Xib" id="0bx-ca-oZt"/>
                 <outlet property="middleTabBarBottomConstraint" destination="YEU-pj-PBX" id="Md8-fc-UDO"/>
+                <outlet property="pinnedButtonView" destination="VvX-FN-Wlc" id="uJh-dr-F16"/>
                 <outlet property="topView" destination="0mr-45-rbs" id="TiR-Lw-Rbo"/>
                 <outlet property="topViewHeightConstraint" destination="HAd-k5-BrY" id="TGU-O2-Mr7"/>
                 <outlet property="topViewTopConstraint" destination="bMY-Ws-ZHZ" id="ThB-bP-NYK"/>
@@ -26,12 +28,33 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VvX-FN-Wlc">
+                    <rect key="frame" x="0.0" y="623" width="375" height="44"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7Ds-Qq-4YY">
+                            <rect key="frame" x="87.5" y="7" width="200" height="30"/>
+                            <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="200" id="0Bk-fK-1wc"/>
+                            </constraints>
+                            <state key="normal" title="Enroll Now">
+                                <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="44" id="4yH-PC-dbA"/>
+                        <constraint firstItem="7Ds-Qq-4YY" firstAttribute="centerY" secondItem="VvX-FN-Wlc" secondAttribute="centerY" id="Uyt-iK-cEv"/>
+                        <constraint firstItem="7Ds-Qq-4YY" firstAttribute="centerX" secondItem="VvX-FN-Wlc" secondAttribute="centerX" id="bnR-h7-t4m"/>
+                    </constraints>
+                </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tdr-N9-8iH">
-                    <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <color key="backgroundColor" red="0.1333333333" green="0.43137254899999999" blue="0.3921568627" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mr-45-rbs">
-                    <rect key="frame" x="0.0" y="20" width="375" height="122"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
                     <subviews>
                         <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXy-GL-Xib">
                             <rect key="frame" x="0.0" y="73" width="375" height="49"/>
@@ -54,12 +77,15 @@
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="tdr-N9-8iH" secondAttribute="bottom" id="C0t-If-EUG"/>
-                <constraint firstItem="7vz-qP-I8i" firstAttribute="top" secondItem="0mr-45-rbs" secondAttribute="top" id="bMY-Ws-ZHZ"/>
+                <constraint firstAttribute="top" secondItem="0mr-45-rbs" secondAttribute="top" id="bMY-Ws-ZHZ"/>
+                <constraint firstItem="7vz-qP-I8i" firstAttribute="bottom" secondItem="VvX-FN-Wlc" secondAttribute="bottom" id="dvl-Pz-WtR"/>
                 <constraint firstItem="tdr-N9-8iH" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="iqv-rL-eOA"/>
                 <constraint firstItem="0mr-45-rbs" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="kgc-NJ-La3"/>
                 <constraint firstAttribute="trailing" secondItem="0mr-45-rbs" secondAttribute="trailing" id="pJt-XS-9Ob"/>
                 <constraint firstAttribute="trailing" secondItem="tdr-N9-8iH" secondAttribute="trailing" id="qV2-Ob-Qz6"/>
-                <constraint firstItem="tdr-N9-8iH" firstAttribute="top" secondItem="7vz-qP-I8i" secondAttribute="top" id="yaa-XO-T3a"/>
+                <constraint firstItem="tdr-N9-8iH" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="yaa-XO-T3a"/>
+                <constraint firstItem="VvX-FN-Wlc" firstAttribute="leading" secondItem="7vz-qP-I8i" secondAttribute="leading" id="zP9-6G-ywX"/>
+                <constraint firstItem="7vz-qP-I8i" firstAttribute="trailing" secondItem="VvX-FN-Wlc" secondAttribute="trailing" id="zRS-im-D7k"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="7vz-qP-I8i"/>
             <point key="canvasLocation" x="33.5" y="53.5"/>
