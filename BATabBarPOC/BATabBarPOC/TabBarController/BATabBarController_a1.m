@@ -36,8 +36,13 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self setSelectedController:self.childViewControllers[0]];
     self.tabBarHeight = CGRectGetHeight(self.middleTabBar.frame);
+    if (self.topViewController.parentViewController == self) {
+        // If already added top VC, won't added it again.
+    } else {
+        [self setTopViewFromVC:self.topViewController];
+    }
+    [self setSelectedController:self.childViewControllers[0]];
     self.topTileHeight = self.topViewHeightConstraint.constant - self.tabBarHeight;
 }
 
@@ -45,6 +50,13 @@
     NSUInteger selectedIndex = [self.tabBarItems indexOfObject:item];
     UIViewController *selectedVC = self.childViewControllers[selectedIndex];
     [self setSelectedController:selectedVC];
+}
+
+- (void)setTopViewFromVC:(UIViewController *)topViewController{
+    // no view controller will be conflict with this, so no need to remove any VC.
+    [self addChildViewController:topViewController];
+    [self addTopView:topViewController.view];
+    [topViewController didMoveToParentViewController:self];
 }
 
 - (void)setSelectedController:(UIViewController *)selectedController{
@@ -68,6 +80,17 @@
         self.targetedScrollView.contentOffset = CGPointMake(0, -self.topViewHeightConstraint.constant);
         self.targetedScrollView.contentInset = UIEdgeInsetsMake(self.topViewHeightConstraint.constant, 0, 0, 0);
     }
+}
+
+- (void)addTopView:(UIView *)view{
+    [self.topView addSubview:view];
+    view.translatesAutoresizingMaskIntoConstraints = NO;
+    self.topViewHeightConstraint.constant = CGRectGetHeight(view.frame) + self.tabBarHeight;
+    NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.topView attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.topView attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.topView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.topView attribute:NSLayoutAttributeBottom multiplier:1.0 constant:-self.tabBarHeight];
+    [self.topView addConstraints:@[leading, trailing, top, bottom]];
 }
 
 - (void)addChildView:(UIView *)view{
