@@ -18,5 +18,6 @@
 
 @property (nonatomic, strong) NSArray *childViewControllers;
 @property (nonatomic, strong) UIViewController *selectedController;
+@property (nonatomic, strong) UIViewController *topViewController;
 
 @end
