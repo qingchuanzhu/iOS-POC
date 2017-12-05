@@ -73,6 +73,7 @@
     UIViewController *settingsVC = [UIViewController new];
     [self.childViewControllers insertObject:settingsVC atIndex:1];
 }
+
 - (void)removeSettinsTabBarItem{
     if (self.tabBarItems[1].tag == 1) {
         [self.tabBarItems removeObjectAtIndex:1];
@@ -131,11 +132,18 @@
 
 - (void)addChildView:(UIView *)view{
     [self.childViewHolder addSubview:view];
+    BOOL isViewScrollView = [view isKindOfClass:[UIScrollView class]];
     view.translatesAutoresizingMaskIntoConstraints = NO;
     // set constraints
     NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.childViewHolder attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
     NSLayoutConstraint *trailing = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeTrailing relatedBy:NSLayoutRelationEqual toItem:self.childViewHolder attribute:NSLayoutAttributeTrailing multiplier:1.0 constant:0.0];
-    NSLayoutConstraint *top = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.childViewHolder attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+    NSLayoutConstraint *top;
+    if (isViewScrollView) {
+        top = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.childViewHolder attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
+    } else {
+        top = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeTop relatedBy:NSLayoutRelationEqual toItem:self.childViewHolder attribute:NSLayoutAttributeTop multiplier:1.0 constant:self.topViewHeightConstraint.constant];
+    }
+    
     NSLayoutConstraint *bottom = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.childViewHolder attribute:NSLayoutAttributeBottom multiplier:1.0 constant:0.0];
     [self.childViewHolder addConstraints:@[leading, trailing, top, bottom]];
 }
