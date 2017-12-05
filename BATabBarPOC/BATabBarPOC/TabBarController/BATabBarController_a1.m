@@ -70,13 +70,15 @@
 }
 
 - (void)setSelectedController:(UIViewController *)selectedController{
+    // remove the selected vc
     UIViewController *controllerToRemove = _selectedController;
+    [controllerToRemove removeFromParentViewController];
+    [controllerToRemove.view removeFromSuperview];
     [controllerToRemove willMoveToParentViewController:nil];
+    // add the to-be vc, to-be vc can be the same one as selected vc
     [self addChildViewController:selectedController];
     NSUInteger selectedIndex = [self.childViewControllers indexOfObject:selectedController];
     [self.middleTabBar setSelectedItem:self.tabBarItems[selectedIndex]];
-    [controllerToRemove removeFromParentViewController];
-    [controllerToRemove.view removeFromSuperview];
     [self addChildView:selectedController.view];
     [selectedController didMoveToParentViewController:self];
     _selectedController = selectedController;
