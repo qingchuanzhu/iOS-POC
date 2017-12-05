@@ -8,7 +8,7 @@
 
 #import "BottomViewController1.h"
 #import "BATabBarController.h"
-#import "T&CViewController.h"
+#import "T_CViewController.h"
 
 #define RESUECELL @"cell"
 

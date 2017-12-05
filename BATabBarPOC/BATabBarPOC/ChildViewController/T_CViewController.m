@@ -6,7 +6,7 @@
 //  Copyright © 2017 Qingchuan Zhu. All rights reserved.
 //
 
-#import "T&CViewController.h"
+#import "T_CViewController.h"
 #import "BATabBarViewModel.h"
 
 @interface T_CViewController ()
@@ -23,11 +23,16 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     self.viewModel = [BATabBarViewModel sharedInstance];
+    self.view.frame = [UIScreen mainScreen].bounds;
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
 }
 
 - (IBAction)declineButtonAction:(id)sender {

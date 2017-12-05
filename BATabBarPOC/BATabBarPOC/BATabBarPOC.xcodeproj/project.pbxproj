@@ -10,8 +10,8 @@
 		3556270E1FD278E00054305B /* iOSNativeTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3556270D1FD278E00054305B /* iOSNativeTableViewController.m */; };
 		355627121FD361880054305B /* BATabBarController_a1.m in Sources */ = {isa = PBXBuildFile; fileRef = 355627101FD361880054305B /* BATabBarController_a1.m */; };
 		355627131FD361880054305B /* BATabBarController_a1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355627111FD361880054305B /* BATabBarController_a1.xib */; };
-		35B528C01FD602FD00B1A349 /* T&CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B528BE1FD602FD00B1A349 /* T&CViewController.m */; };
-		35B528C11FD602FD00B1A349 /* T&CViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35B528BF1FD602FD00B1A349 /* T&CViewController.xib */; };
+		35B528C01FD602FD00B1A349 /* T_CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B528BE1FD602FD00B1A349 /* T_CViewController.m */; };
+		35B528C11FD602FD00B1A349 /* T_CViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35B528BF1FD602FD00B1A349 /* T_CViewController.xib */; };
 		35B528C41FD6057F00B1A349 /* BATabBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B528C31FD6057F00B1A349 /* BATabBarViewModel.m */; };
 		35DA49EC1FCE84D300F6BC83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DA49EB1FCE84D300F6BC83 /* AppDelegate.m */; };
 		35DA49EF1FCE84D300F6BC83 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DA49EE1FCE84D300F6BC83 /* ViewController.m */; };
@@ -34,9 +34,9 @@
 		3556270F1FD361880054305B /* BATabBarController_a1.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BATabBarController_a1.h; sourceTree = "<group>"; };
 		355627101FD361880054305B /* BATabBarController_a1.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BATabBarController_a1.m; sourceTree = "<group>"; };
 		355627111FD361880054305B /* BATabBarController_a1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BATabBarController_a1.xib; sourceTree = "<group>"; };
-		35B528BD1FD602FD00B1A349 /* T&CViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "T&CViewController.h"; sourceTree = "<group>"; };
-		35B528BE1FD602FD00B1A349 /* T&CViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "T&CViewController.m"; sourceTree = "<group>"; };
-		35B528BF1FD602FD00B1A349 /* T&CViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = "T&CViewController.xib"; sourceTree = "<group>"; };
+		35B528BD1FD602FD00B1A349 /* T_CViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = T_CViewController.h; sourceTree = "<group>"; };
+		35B528BE1FD602FD00B1A349 /* T_CViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = T_CViewController.m; sourceTree = "<group>"; };
+		35B528BF1FD602FD00B1A349 /* T_CViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = T_CViewController.xib; sourceTree = "<group>"; };
 		35B528C21FD6057F00B1A349 /* BATabBarViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BATabBarViewModel.h; sourceTree = "<group>"; };
 		35B528C31FD6057F00B1A349 /* BATabBarViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BATabBarViewModel.m; sourceTree = "<group>"; };
 		35DA49E71FCE84D300F6BC83 /* BATabBarPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BATabBarPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -135,9 +135,9 @@
 				35DA4A0F1FCF3FEB00F6BC83 /* BottomViewController2.h */,
 				35DA4A101FCF3FEB00F6BC83 /* BottomViewController2.m */,
 				35DA4A111FCF3FEB00F6BC83 /* BottomViewController2.xib */,
-				35B528BD1FD602FD00B1A349 /* T&CViewController.h */,
-				35B528BE1FD602FD00B1A349 /* T&CViewController.m */,
-				35B528BF1FD602FD00B1A349 /* T&CViewController.xib */,
+				35B528BD1FD602FD00B1A349 /* T_CViewController.h */,
+				35B528BE1FD602FD00B1A349 /* T_CViewController.m */,
+				35B528BF1FD602FD00B1A349 /* T_CViewController.xib */,
 			);
 			path = ChildViewController;
 			sourceTree = "<group>";
@@ -202,7 +202,7 @@
 			files = (
 				35DA4A091FCF3FA200F6BC83 /* TopViewController.xib in Resources */,
 				35DA4A0E1FCF3FD700F6BC83 /* BottomViewController1.xib in Resources */,
-				35B528C11FD602FD00B1A349 /* T&CViewController.xib in Resources */,
+				35B528C11FD602FD00B1A349 /* T_CViewController.xib in Resources */,
 				355627131FD361880054305B /* BATabBarController_a1.xib in Resources */,
 				35DA4A131FCF3FEB00F6BC83 /* BottomViewController2.xib in Resources */,
 				35DA49F71FCE84D300F6BC83 /* LaunchScreen.storyboard in Resources */,
@@ -218,7 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35B528C01FD602FD00B1A349 /* T&CViewController.m in Sources */,
+				35B528C01FD602FD00B1A349 /* T_CViewController.m in Sources */,
 				35DA4A081FCF3FA200F6BC83 /* TopViewController.m in Sources */,
 				35DA4A0D1FCF3FD700F6BC83 /* BottomViewController1.m in Sources */,
 				3556270E1FD278E00054305B /* iOSNativeTableViewController.m in Sources */,
