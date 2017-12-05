@@ -13,6 +13,8 @@
 		35B528C01FD602FD00B1A349 /* T_CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B528BE1FD602FD00B1A349 /* T_CViewController.m */; };
 		35B528C11FD602FD00B1A349 /* T_CViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35B528BF1FD602FD00B1A349 /* T_CViewController.xib */; };
 		35B528C41FD6057F00B1A349 /* BATabBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B528C31FD6057F00B1A349 /* BATabBarViewModel.m */; };
+		35B528C81FD7570E00B1A349 /* BottomSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B528C61FD7570E00B1A349 /* BottomSettingsViewController.m */; };
+		35B528C91FD7570E00B1A349 /* BottomSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35B528C71FD7570E00B1A349 /* BottomSettingsViewController.xib */; };
 		35DA49EC1FCE84D300F6BC83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DA49EB1FCE84D300F6BC83 /* AppDelegate.m */; };
 		35DA49EF1FCE84D300F6BC83 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35DA49EE1FCE84D300F6BC83 /* ViewController.m */; };
 		35DA49F21FCE84D300F6BC83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35DA49F01FCE84D300F6BC83 /* Main.storyboard */; };
@@ -39,6 +41,9 @@
 		35B528BF1FD602FD00B1A349 /* T_CViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = T_CViewController.xib; sourceTree = "<group>"; };
 		35B528C21FD6057F00B1A349 /* BATabBarViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BATabBarViewModel.h; sourceTree = "<group>"; };
 		35B528C31FD6057F00B1A349 /* BATabBarViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BATabBarViewModel.m; sourceTree = "<group>"; };
+		35B528C51FD7570E00B1A349 /* BottomSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomSettingsViewController.h; sourceTree = "<group>"; };
+		35B528C61FD7570E00B1A349 /* BottomSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomSettingsViewController.m; sourceTree = "<group>"; };
+		35B528C71FD7570E00B1A349 /* BottomSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSettingsViewController.xib; sourceTree = "<group>"; };
 		35DA49E71FCE84D300F6BC83 /* BATabBarPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BATabBarPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DA49EA1FCE84D300F6BC83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35DA49EB1FCE84D300F6BC83 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -138,6 +143,9 @@
 				35B528BD1FD602FD00B1A349 /* T_CViewController.h */,
 				35B528BE1FD602FD00B1A349 /* T_CViewController.m */,
 				35B528BF1FD602FD00B1A349 /* T_CViewController.xib */,
+				35B528C51FD7570E00B1A349 /* BottomSettingsViewController.h */,
+				35B528C61FD7570E00B1A349 /* BottomSettingsViewController.m */,
+				35B528C71FD7570E00B1A349 /* BottomSettingsViewController.xib */,
 			);
 			path = ChildViewController;
 			sourceTree = "<group>";
@@ -200,6 +208,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35B528C91FD7570E00B1A349 /* BottomSettingsViewController.xib in Resources */,
 				35DA4A091FCF3FA200F6BC83 /* TopViewController.xib in Resources */,
 				35DA4A0E1FCF3FD700F6BC83 /* BottomViewController1.xib in Resources */,
 				35B528C11FD602FD00B1A349 /* T_CViewController.xib in Resources */,
@@ -220,6 +229,7 @@
 			files = (
 				35B528C01FD602FD00B1A349 /* T_CViewController.m in Sources */,
 				35DA4A081FCF3FA200F6BC83 /* TopViewController.m in Sources */,
+				35B528C81FD7570E00B1A349 /* BottomSettingsViewController.m in Sources */,
 				35DA4A0D1FCF3FD700F6BC83 /* BottomViewController1.m in Sources */,
 				3556270E1FD278E00054305B /* iOSNativeTableViewController.m in Sources */,
 				355627121FD361880054305B /* BATabBarController_a1.m in Sources */,

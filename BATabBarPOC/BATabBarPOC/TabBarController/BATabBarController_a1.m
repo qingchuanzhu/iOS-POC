@@ -8,6 +8,7 @@
 
 #import "BATabBarController_a1.h"
 #import "BATabBarViewModel.h"
+#import "BottomSettingsViewController.h"
 
 @interface BATabBarController_a1 ()<UITabBarDelegate>
 @property (weak, nonatomic) IBOutlet UIView *childViewHolder;
@@ -70,7 +71,7 @@
     UITabBarItem *item = [[UITabBarItem alloc] initWithTabBarSystemItem:UITabBarSystemItemRecents tag:1];
     [self.tabBarItems insertObject:item atIndex:1];
     [self.middleTabBar setItems:self.tabBarItems];
-    UIViewController *settingsVC = [UIViewController new];
+    BottomSettingsViewController *settingsVC = [BottomSettingsViewController new];
     [self.childViewControllers insertObject:settingsVC atIndex:1];
 }
 
@@ -132,7 +133,7 @@
 
 - (void)addChildView:(UIView *)view{
     [self.childViewHolder addSubview:view];
-    BOOL isViewScrollView = [view isKindOfClass:[UIScrollView class]];
+    BOOL isViewScrollView = [self seekScrollViewFromView:view]!=nil;
     view.translatesAutoresizingMaskIntoConstraints = NO;
     // set constraints
     NSLayoutConstraint *leading = [NSLayoutConstraint constraintWithItem:view attribute:NSLayoutAttributeLeading relatedBy:NSLayoutRelationEqual toItem:self.childViewHolder attribute:NSLayoutAttributeLeading multiplier:1.0 constant:0.0];
