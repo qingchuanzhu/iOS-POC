@@ -10,7 +10,10 @@
 
 @interface BATabBarViewModel : NSObject
 
+@property (nonatomic, assign) BOOL userEnrolled;
+
 + (instancetype)sharedInstance;
 - (instancetype)init __unavailable;
+- (void)setUserEnrolled:(BOOL)enrolled;
 
 @end

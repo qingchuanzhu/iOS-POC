@@ -36,10 +36,12 @@
 }
 
 - (IBAction)declineButtonAction:(id)sender {
+    [self.viewModel setUserEnrolled:NO];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (IBAction)acceptButtonAction:(id)sender {
+    [self.viewModel setUserEnrolled:YES];
     [self.navigationController popViewControllerAnimated:YES];
 }
 

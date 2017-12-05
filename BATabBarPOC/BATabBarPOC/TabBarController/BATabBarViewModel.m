@@ -10,8 +10,6 @@
 
 @interface BATabBarViewModel()
 
-
-
 @end
 
 @implementation BATabBarViewModel
@@ -27,9 +25,13 @@
 
 - (instancetype)init{
     if (self = [super init]) {
-        
+        self.userEnrolled = NO;
     }
     return self;
+}
+
+- (void)setUserEnrolled:(BOOL)enrolled{
+    _userEnrolled = enrolled;
 }
 
 @end

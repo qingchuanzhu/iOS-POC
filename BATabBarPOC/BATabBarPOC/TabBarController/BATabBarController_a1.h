@@ -16,7 +16,7 @@
 
 @interface BATabBarController_a1 : UIViewController<BATabBarControllera1Delegate>
 
-@property (nonatomic, strong) NSArray *childViewControllers;
+@property (nonatomic, strong) NSMutableArray *childViewControllers;
 @property (nonatomic, strong) UIViewController *selectedController;
 @property (nonatomic, strong) UIViewController *topViewController;
 @property (nonatomic, assign) BOOL showPinnedButton;
