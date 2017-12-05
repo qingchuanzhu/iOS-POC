@@ -14,9 +14,13 @@
 
 @implementation BottomSettingsViewController
 
+@synthesize needVerticalScrolling;
+@synthesize verticalScrollView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.needVerticalScrolling = NO;
 }
 
 - (void)didReceiveMemoryWarning {

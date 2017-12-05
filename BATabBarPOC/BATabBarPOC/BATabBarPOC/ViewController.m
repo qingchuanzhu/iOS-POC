@@ -50,7 +50,7 @@
     vc1.tabBarDelegate = tabBar2;
     vc2.tabBarDelegate = tabBar2;
     tabBar2.topViewController = topVC;
-    tabBar2.childViewControllers = [NSMutableArray arrayWithArray:@[vc1, vc2]];
+    tabBar2.childViewControllers = (NSMutableArray<BARRTabBarChildProtocol>*)[NSMutableArray arrayWithArray:@[vc1, vc2]];
     tabBar2.showPinnedButton = self.shouldShowPinnedButton;
     [self.navigationController pushViewController:tabBar2 animated:YES];
 }

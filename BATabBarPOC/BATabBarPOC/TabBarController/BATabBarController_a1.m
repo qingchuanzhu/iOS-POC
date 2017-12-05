@@ -85,7 +85,7 @@
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     NSUInteger selectedIndex = [self.tabBarItems indexOfObject:item];
-    UIViewController *selectedVC = self.childViewControllers[selectedIndex];
+    UIViewController<BARRTabBarChildProtocol> *selectedVC = self.childViewControllers[selectedIndex];
     [self setSelectedController:selectedVC];
 }
 
@@ -96,23 +96,26 @@
     [topViewController didMoveToParentViewController:self];
 }
 
-- (void)setSelectedController:(UIViewController *)selectedController{
+- (void)setSelectedController:(UIViewController<BARRTabBarChildProtocol> *)selectedController{
     // remove the selected vc
     UIViewController *controllerToRemove = _selectedController;
     [controllerToRemove removeFromParentViewController];
     [controllerToRemove.view removeFromSuperview];
     [controllerToRemove willMoveToParentViewController:nil];
     // add the to-be vc, to-be vc can be the same one as selected vc
+    _selectedController = selectedController;
     [self addChildViewController:selectedController];
     NSUInteger selectedIndex = [self.childViewControllers indexOfObject:selectedController];
     [self.middleTabBar setSelectedItem:self.tabBarItems[selectedIndex]];
     [self addChildView:selectedController.view];
     [selectedController didMoveToParentViewController:self];
-    _selectedController = selectedController;
 }
 
-- (void)childViewAppearedWithView:(UIView *)view{
-    UIScrollView *targetView = [self seekScrollViewFromView:view];
+- (void)childViewAppearedWithView{
+    UIScrollView *targetView;
+    if (_selectedController.verticalScrollView != nil) {
+        targetView = _selectedController.verticalScrollView;
+    }
     if (targetView != nil) {
         self.targetedScrollView = targetView;
         self.targetedScrollView.contentOffset = CGPointMake(0, -self.topViewHeightConstraint.constant);

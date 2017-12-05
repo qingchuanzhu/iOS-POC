@@ -10,7 +10,7 @@
 #import "BATabBarController_a1.h"
 #import "BATabBarProtocolBundle.h"
 
-@interface BottomViewController1 : UIViewController
+@interface BottomViewController1 : UIViewController<BARRTabBarChildProtocol>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (weak, nonatomic) UIViewController<BATabBarControllera1Delegate> *tabBarDelegate;

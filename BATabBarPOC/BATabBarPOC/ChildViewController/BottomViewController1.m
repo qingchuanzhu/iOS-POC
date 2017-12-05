@@ -18,10 +18,14 @@
 
 @implementation BottomViewController1
 
+@synthesize needVerticalScrolling;
+@synthesize verticalScrollView;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:RESUECELL];
+    self.needVerticalScrolling = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,7 +42,8 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    [self.tabBarDelegate childViewAppearedWithView:self.view];
+    self.verticalScrollView = self.tableView;
+    [self.tabBarDelegate childViewAppearedWithView];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
