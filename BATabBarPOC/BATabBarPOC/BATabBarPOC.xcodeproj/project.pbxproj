@@ -44,6 +44,7 @@
 		35B528C51FD7570E00B1A349 /* BottomSettingsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BottomSettingsViewController.h; sourceTree = "<group>"; };
 		35B528C61FD7570E00B1A349 /* BottomSettingsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BottomSettingsViewController.m; sourceTree = "<group>"; };
 		35B528C71FD7570E00B1A349 /* BottomSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSettingsViewController.xib; sourceTree = "<group>"; };
+		35B528CA1FD75ACC00B1A349 /* BATabBarProtocolBundle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BATabBarProtocolBundle.h; sourceTree = "<group>"; };
 		35DA49E71FCE84D300F6BC83 /* BATabBarPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BATabBarPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35DA49EA1FCE84D300F6BC83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35DA49EB1FCE84D300F6BC83 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -124,6 +125,7 @@
 				355627111FD361880054305B /* BATabBarController_a1.xib */,
 				35B528C21FD6057F00B1A349 /* BATabBarViewModel.h */,
 				35B528C31FD6057F00B1A349 /* BATabBarViewModel.m */,
+				35B528CA1FD75ACC00B1A349 /* BATabBarProtocolBundle.h */,
 			);
 			path = TabBarController;
 			sourceTree = "<group>";

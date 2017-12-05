@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "BATabBarProtocolBundle.h"
 
 @interface BottomSettingsViewController : ViewController
 

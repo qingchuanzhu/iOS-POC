@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "BATabBarController_a1.h"
+#import "BATabBarProtocolBundle.h"
 
 @interface BottomViewController2 : UIViewController
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
