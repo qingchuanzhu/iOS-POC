@@ -8,6 +8,7 @@
 
 #import "BottomViewController2.h"
 #import "BATabBarController.h"
+#import "T_CViewController.h"
 
 #define RESUECELL @"cell"
 
@@ -67,6 +68,12 @@
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView{
     [self.tabBarDelegate scrollViewDidScroll:scrollView];
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    T_CViewController *vc = [T_CViewController new];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 /*
 #pragma mark - Navigation
