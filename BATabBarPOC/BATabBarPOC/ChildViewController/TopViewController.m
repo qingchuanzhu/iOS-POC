@@ -31,9 +31,6 @@
     self.titleLabel.preferredMaxLayoutWidth = CGRectGetWidth([UIScreen mainScreen].bounds) - (16 + 50 + 33 + 20);
     self.subTitleLabel.preferredMaxLayoutWidth = CGRectGetWidth([UIScreen mainScreen].bounds) - 32;
     CGSize newSize = [self.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-//    self.view.translatesAutoresizingMaskIntoConstraints = NO;
-//    [self.view addConstraint:[NSLayoutConstraint constraintWithItem:self.view attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:NSLayoutAttributeNotAnAttribute multiplier:0 constant:newSize.height]];
-//    [self.view setNeedsUpdateConstraints];
     CGRect newFrame = self.view.frame;
     newFrame.size = newSize;
     self.view.frame = newFrame;
