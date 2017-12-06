@@ -49,6 +49,7 @@
         // If already added top VC, won't added it again.
     } else {
         [self setTopViewFromVC:self.topViewController];
+        [self.topViewController beginAppearanceTransition:YES animated:animated];
     }
     [self setSelectedController:self.childViewControllers[0]];
     self.topTileHeight = self.topViewHeightConstraint.constant - self.tabBarHeight;
@@ -109,6 +110,7 @@
     [self.middleTabBar setSelectedItem:self.tabBarItems[selectedIndex]];
     [self addChildView:selectedController.view];
     [selectedController didMoveToParentViewController:self];
+    [_selectedController beginAppearanceTransition:YES animated:YES];
 }
 
 - (void)childViewAppearedWithView{
@@ -172,4 +174,7 @@
     }
 }
 
+- (BOOL)shouldAutomaticallyForwardAppearanceMethods{
+    return NO;
+}
 @end

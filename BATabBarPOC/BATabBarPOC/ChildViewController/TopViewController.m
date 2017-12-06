@@ -24,6 +24,17 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    CGSize newSize = [self.view systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    CGRect newFrame = self.view.frame;
+    newFrame.size = newSize;
+    self.view.frame = newFrame;
+}
+
+- (void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+}
 /*
 #pragma mark - Navigation
 

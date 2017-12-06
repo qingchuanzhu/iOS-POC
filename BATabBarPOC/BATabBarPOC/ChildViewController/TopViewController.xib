@@ -27,14 +27,14 @@
                         <constraint firstAttribute="width" constant="50" id="uzx-nL-FXA"/>
                     </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get more rewards with your typical business banking" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13y-KJ-4NA">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Get more rewards with your typical business banking" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="13y-KJ-4NA">
                     <rect key="frame" x="99" y="24.5" width="256" height="41"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="750" text="Lorem ipsim dolor sit amet, consectetur adiposcing elit. Aenean eusimod bibendum laoreet." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXa-ZJ-QRz">
-                    <rect key="frame" x="16" y="73" width="343" height="27"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Lorem ipsim dolor sit amet, consectetur adiposcing elit. Aenean eusimod bibendum laoreet." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bXa-ZJ-QRz">
+                    <rect key="frame" x="16" y="76" width="343" height="24"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -46,7 +46,8 @@
                 <constraint firstItem="13y-KJ-4NA" firstAttribute="leading" secondItem="0bp-lI-pXq" secondAttribute="trailing" constant="33" id="Dk6-pt-B3e"/>
                 <constraint firstAttribute="bottom" secondItem="bXa-ZJ-QRz" secondAttribute="bottom" constant="5" id="F7y-rS-47h"/>
                 <constraint firstItem="0bp-lI-pXq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="16" id="PXV-eQ-rZ7"/>
-                <constraint firstItem="bXa-ZJ-QRz" firstAttribute="top" secondItem="0bp-lI-pXq" secondAttribute="bottom" constant="3" id="Ut0-X2-D6z"/>
+                <constraint firstItem="bXa-ZJ-QRz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="13y-KJ-4NA" secondAttribute="bottom" constant="5" id="R1D-hf-ipQ"/>
+                <constraint firstItem="bXa-ZJ-QRz" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0bp-lI-pXq" secondAttribute="bottom" constant="3" id="Ut0-X2-D6z"/>
                 <constraint firstAttribute="trailing" secondItem="13y-KJ-4NA" secondAttribute="trailing" constant="20" id="ZkU-lr-73Q"/>
                 <constraint firstAttribute="trailing" secondItem="bXa-ZJ-QRz" secondAttribute="trailing" constant="16" id="dj2-UB-LSy"/>
                 <constraint firstItem="bXa-ZJ-QRz" firstAttribute="leading" secondItem="0bp-lI-pXq" secondAttribute="leading" id="jQ2-CH-ahX"/>
