@@ -52,7 +52,13 @@
         [self.topViewController beginAppearanceTransition:YES animated:animated];
         [self setTopViewFromVC:self.topViewController];
     }
-    [self setSelectedController:self.childViewControllers[0]];
+    
+    if (_selectedController != nil) {
+        [self setSelectedController:_selectedController];
+    } else {
+        [self setSelectedController:self.childViewControllers[0]];
+    }
+    
     self.topTileHeight = self.topViewHeightConstraint.constant - self.tabBarHeight;
     if (self.showPinnedButton) {
         self.pinnedButtonView.hidden = NO;
