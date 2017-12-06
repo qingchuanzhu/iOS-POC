@@ -48,8 +48,9 @@
     if (self.topViewController.parentViewController == self) {
         // If already added top VC, won't added it again.
     } else {
-        [self setTopViewFromVC:self.topViewController];
+        /*topViewController's view will appear needs to be called first in order to provide correct contentSize. The correct height of topView will be used to adjust the constraints of this tab Bar's child view*/
         [self.topViewController beginAppearanceTransition:YES animated:animated];
+        [self setTopViewFromVC:self.topViewController];
     }
     [self setSelectedController:self.childViewControllers[0]];
     self.topTileHeight = self.topViewHeightConstraint.constant - self.tabBarHeight;
@@ -110,6 +111,7 @@
     [self.middleTabBar setSelectedItem:self.tabBarItems[selectedIndex]];
     [self addChildView:selectedController.view];
     [selectedController didMoveToParentViewController:self];
+    /*forward the view will appear to the bottom child view*/
     [_selectedController beginAppearanceTransition:YES animated:YES];
 }
 
