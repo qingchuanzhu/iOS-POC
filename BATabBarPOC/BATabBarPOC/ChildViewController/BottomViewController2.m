@@ -14,6 +14,8 @@
 
 @interface BottomViewController2 ()<UITableViewDelegate, UITableViewDataSource>
 
+@property (nonatomic, assign) BOOL cellInserted;
+
 @end
 
 @implementation BottomViewController2
@@ -26,6 +28,7 @@
     // Do any additional setup after loading the view from its nib.
     self.needVerticalScrolling = YES;
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:RESUECELL];
+    self.cellInserted = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -47,7 +50,11 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 25;
+    NSUInteger numberOfInsertedRow = 0;
+    if (self.cellInserted) {
+        numberOfInsertedRow = 1;
+    }
+    return 25 + numberOfInsertedRow;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
@@ -57,7 +64,13 @@
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleValue1 reuseIdentifier:RESUECELL];
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%ld",indexPath.row];
+    NSString *cellText = @"";
+    if (indexPath.row == 1 && self.cellInserted) {
+        cellText = @"Inserted Cell";
+    } else {
+        cellText = @"Normal Cell";
+    }
+    cell.textLabel.text = cellText;
     
     return cell;
 }
@@ -71,9 +84,23 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    T_CViewController *vc = [T_CViewController new];
-    [self.navigationController pushViewController:vc animated:YES];
+    if (indexPath.row == 0) {
+        if (self.cellInserted) {
+            //remove the cell at row1
+            self.cellInserted = NO;
+            [self.tableView beginUpdates];
+            [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]]  withRowAnimation:UITableViewRowAnimationBottom];
+            [self.tableView endUpdates];
+        } else {
+            //insert the cell at row1
+            self.cellInserted = YES;
+            [self.tableView beginUpdates];
+            [self.tableView insertRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:1 inSection:0]] withRowAnimation:UITableViewRowAnimationTop];
+            [self.tableView endUpdates];
+        }
+    } else {
+        
+    }
 }
 /*
 #pragma mark - Navigation

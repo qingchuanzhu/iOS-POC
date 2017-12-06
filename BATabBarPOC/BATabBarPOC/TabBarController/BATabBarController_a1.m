@@ -105,7 +105,7 @@
 }
 
 - (void)setSelectedController:(UIViewController<BARRTabBarChildProtocol> *)selectedController{
-    // remove the selected vc
+    // remove the selected vc, save some memory at least, actually no need to remove
     UIViewController *controllerToRemove = _selectedController;
     [controllerToRemove removeFromParentViewController];
     [controllerToRemove.view removeFromSuperview];
