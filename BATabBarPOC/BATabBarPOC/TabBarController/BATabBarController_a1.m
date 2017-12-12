@@ -19,6 +19,7 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *middleTabBarBottomConstraint;
 @property (weak, nonatomic) IBOutlet UIView *pinnedButtonView;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *childHolderBottomConstraint;
+@property (nonatomic, strong) NSLayoutConstraint *childHolderToPinnedButtonConstraint;
 
 @property (nonatomic, assign) CGFloat tabBarHeight;
 @property (nonatomic, assign) CGFloat topTileHeight; // topView's height - tabBarheight
@@ -40,6 +41,7 @@
     self.middleTabBar.delegate = self;
     self.edgesForExtendedLayout = UIRectEdgeNone;
     self.viewModel = [BATabBarViewModel sharedInstance];
+    self.childHolderToPinnedButtonConstraint = [NSLayoutConstraint constraintWithItem:self.childViewHolder attribute:NSLayoutAttributeBottom relatedBy:NSLayoutRelationEqual toItem:self.pinnedButtonView attribute:NSLayoutAttributeTop multiplier:1.0 constant:0.0];
 }
 
 - (void)viewWillAppear:(BOOL)animated{
@@ -63,10 +65,12 @@
     if (self.showPinnedButton) {
         self.pinnedButtonView.hidden = NO;
         // adjust constraints
-        self.childHolderBottomConstraint.constant = CGRectGetHeight(self.pinnedButtonView.frame);
+        self.childHolderBottomConstraint.active = NO;
+        self.childHolderToPinnedButtonConstraint.active = YES;
     } else {
         self.pinnedButtonView.hidden = YES;
-        self.childHolderBottomConstraint.constant = 0;
+        self.childHolderBottomConstraint.active = YES;
+        self.childHolderToPinnedButtonConstraint.active = NO;
     }
     if (self.viewModel.userEnrolled) {
         [self addSettinsTabBarItem];
