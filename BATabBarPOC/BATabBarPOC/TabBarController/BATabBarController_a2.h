@@ -8,14 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "BATabBarProtocolBundle.h"
+#import "BATabBarController_a1.h"
 
-@protocol BATabBarControllera1Delegate<UIScrollViewDelegate>
-
-- (void)childViewAppearedWithView;
-
-@end
-
-@interface BATabBarController_a1 : UIViewController<BATabBarControllera1Delegate>
+@interface BATabBarController_a2 : UIViewController<BATabBarControllera1Delegate>
 
 @property (nonatomic, strong) NSMutableArray<BARRTabBarChildProtocol> *childViewControllers;
 @property (nonatomic, strong) UIViewController<BARRTabBarChildProtocol> *selectedController;

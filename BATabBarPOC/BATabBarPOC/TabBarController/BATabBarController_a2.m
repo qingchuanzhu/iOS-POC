@@ -6,11 +6,11 @@
 //  Copyright © 2017 Qingchuan Zhu. All rights reserved.
 //
 
-#import "BATabBarController_a1.h"
+#import "BATabBarController_a2.h"
 #import "BATabBarViewModel.h"
 #import "BottomSettingsViewController.h"
 
-@interface BATabBarController_a1 ()<UITabBarDelegate>
+@interface BATabBarController_a2 ()<UITabBarDelegate>
 @property (weak, nonatomic) IBOutlet UIView *childViewHolder;
 @property (weak, nonatomic) IBOutlet UIView *topView;
 @property (weak, nonatomic) IBOutlet UITabBar *middleTabBar;
@@ -32,7 +32,7 @@
 
 @end
 
-@implementation BATabBarController_a1
+@implementation BATabBarController_a2
 
 - (void)viewDidLoad {
     [super viewDidLoad];

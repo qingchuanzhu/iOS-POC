@@ -13,6 +13,7 @@
 #import "TopViewController.h"
 #import "TopViewController.h"
 #import "BATabBarController_a1.h"
+#import "BATabBarController_a2.h"
 
 @interface ViewController ()
 
@@ -53,6 +54,19 @@
     tabBar2.childViewControllers = (NSMutableArray<BARRTabBarChildProtocol>*)[NSMutableArray arrayWithArray:@[vc1, vc2]];
     tabBar2.showPinnedButton = self.shouldShowPinnedButton;
     [self.navigationController pushViewController:tabBar2 animated:YES];
+}
+
+- (IBAction)testForAlpha2Way:(id)sender {
+    BATabBarController_a2 *tabBar3 = [BATabBarController_a2 new];
+    TopViewController *topVC = [TopViewController new];
+    BottomViewController1 *vc1 = [BottomViewController1 new];
+    BottomViewController2 *vc2 = [BottomViewController2 new];
+    vc1.tabBarDelegate = tabBar3;
+    vc2.tabBarDelegate = tabBar3;
+    tabBar3.topViewController = topVC;
+    tabBar3.childViewControllers = (NSMutableArray<BARRTabBarChildProtocol>*)[NSMutableArray arrayWithArray:@[vc1, vc2]];
+    tabBar3.showPinnedButton = self.shouldShowPinnedButton;
+    [self.navigationController pushViewController:tabBar3 animated:YES];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
