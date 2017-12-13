@@ -56,7 +56,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0mr-45-rbs">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="122"/>
                     <subviews>
-                        <tabBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SXy-GL-Xib">
+                        <tabBar contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXy-GL-Xib">
                             <rect key="frame" x="0.0" y="73" width="375" height="49"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <items>

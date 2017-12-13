@@ -171,15 +171,22 @@
         CGFloat yPosition = currentOffset.y;
         if (yPosition > -self.topViewHeightConstraint.constant) {
             // move top view up by y points
-            self.topViewTopConstraint.constant = yPosition + self.topViewHeightConstraint.constant;
-            if (self.topViewTopConstraint.constant > self.topTileHeight) {
-                // change middle tab bar bottom constraint to pin it
-                CGFloat diff = self.topViewTopConstraint.constant - self.topTileHeight;
-                self.middleTabBarBottomConstraint.constant = -diff;
+            CGFloat topViewDiff = yPosition + self.topViewHeightConstraint.constant;
+            if (topViewDiff >= self.topTileHeight) {
+                // pin the whole topView
+                self.topViewTopConstraint.constant = self.topTileHeight;
             } else {
-                // unpin the middle tab bar
-                self.middleTabBarBottomConstraint.constant = 0;
+                self.topViewTopConstraint.constant = topViewDiff;
             }
+//            self.topViewTopConstraint.constant = yPosition + self.topViewHeightConstraint.constant;
+//            if (self.topViewTopConstraint.constant > self.topTileHeight) {
+//                // change middle tab bar bottom constraint to pin it
+//                CGFloat diff = self.topViewTopConstraint.constant - self.topTileHeight;
+//                self.middleTabBarBottomConstraint.constant = -diff;
+//            } else {
+//                // unpin the middle tab bar
+//                self.middleTabBarBottomConstraint.constant = 0;
+//            }
         } else {
             self.topViewTopConstraint.constant = 0;
         }
@@ -189,4 +196,5 @@
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods{
     return NO;
 }
+
 @end
