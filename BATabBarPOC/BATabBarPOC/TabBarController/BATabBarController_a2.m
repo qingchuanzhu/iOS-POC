@@ -125,8 +125,6 @@
     [self.middleTabBar setSelectedItem:self.tabBarItems[selectedIndex]];
     [self addChildView:selectedController.view];
     [selectedController didMoveToParentViewController:self];
-    [self resetMiddleTabBarPosition];
-    
 }
 
 - (void)childViewAppearedWithView{
@@ -136,7 +134,15 @@
     }
     if (targetView != nil) {
         self.targetedScrollView = targetView;
-        self.targetedScrollView.contentOffset = CGPointMake(0, -self.topViewHeightConstraint.constant);
+        // if the target scroll view has not enough scroll content, we need to add some scroll inset for it, otherwise the scroll behavior is not so smooth
+        CGSize targetViewContentSize = self.targetedScrollView.contentSize;
+        if (targetViewContentSize.height < CGRectGetHeight(self.view.frame) - self.topViewHeightConstraint.constant) {
+            targetViewContentSize.height = CGRectGetHeight(self.view.frame) - self.topViewHeightConstraint.constant;
+            self.targetedScrollView.contentSize = targetViewContentSize;
+        }
+        // we need to dynamically adjust content off set when user lands on the tab, since tab bar may be moved before in another tab
+        CGFloat adjustedContentOffset = -(self.topViewHeightConstraint.constant - self.topViewTopConstraint.constant);
+        self.targetedScrollView.contentOffset = CGPointMake(0, adjustedContentOffset);
         self.targetedScrollView.contentInset = UIEdgeInsetsMake(self.topViewHeightConstraint.constant, 0, 0, 0);
     }
 }
@@ -195,9 +201,5 @@
             self.topViewTopConstraint.constant = 0;
         }
     }
-}
-
-- (void)resetMiddleTabBarPosition{
-    self.topViewTopConstraint.constant = 0;
 }
 @end
