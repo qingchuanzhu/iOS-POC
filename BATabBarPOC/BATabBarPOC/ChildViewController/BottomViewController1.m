@@ -42,7 +42,6 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.verticalScrollView = self.tableView;
 }
 
 - (void)didMoveToParentViewController:(UIViewController *)parent{

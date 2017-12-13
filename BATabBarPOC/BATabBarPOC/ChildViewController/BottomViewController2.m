@@ -50,7 +50,7 @@
 - (void)didMoveToParentViewController:(UIViewController *)parent{
     if (parent) {
         self.verticalScrollView = self.tableView;
-       [self.tabBarDelegate childViewAppearedWithView];
+        [self.tabBarDelegate childViewAppearedWithView];
     }
 }
 

@@ -200,9 +200,4 @@
 - (void)resetMiddleTabBarPosition{
     self.topViewTopConstraint.constant = 0;
 }
-
-- (BOOL)shouldAutomaticallyForwardAppearanceMethods{
-    return NO;
-}
-
 @end
