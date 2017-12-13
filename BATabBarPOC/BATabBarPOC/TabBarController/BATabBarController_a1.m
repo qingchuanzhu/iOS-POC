@@ -121,6 +121,7 @@
     [self.middleTabBar setSelectedItem:self.tabBarItems[selectedIndex]];
     [self addChildView:selectedController.view];
     [selectedController didMoveToParentViewController:self];
+    [self resetMiddleTabBarPosition];
     /*forward the view will appear to the bottom child view*/
     [_selectedController beginAppearanceTransition:YES animated:YES];
 }
@@ -191,6 +192,10 @@
             self.topViewTopConstraint.constant = 0;
         }
     }
+}
+
+- (void)resetMiddleTabBarPosition{
+    self.topViewTopConstraint.constant = 0;
 }
 
 - (BOOL)shouldAutomaticallyForwardAppearanceMethods{
