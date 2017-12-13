@@ -134,12 +134,6 @@
     }
     if (targetView != nil) {
         self.targetedScrollView = targetView;
-        // if the target scroll view has not enough scroll content, we need to add some scroll inset for it, otherwise the scroll behavior is not so smooth
-        CGSize targetViewContentSize = self.targetedScrollView.contentSize;
-        if (targetViewContentSize.height < CGRectGetHeight(self.view.frame) - self.topViewHeightConstraint.constant) {
-            targetViewContentSize.height = CGRectGetHeight(self.view.frame) - self.topViewHeightConstraint.constant;
-            self.targetedScrollView.contentSize = targetViewContentSize;
-        }
         // we need to dynamically adjust content off set when user lands on the tab, since tab bar may be moved before in another tab
         CGFloat adjustedContentOffset = -(self.topViewHeightConstraint.constant - self.topViewTopConstraint.constant);
         self.targetedScrollView.contentOffset = CGPointMake(0, adjustedContentOffset);
@@ -188,15 +182,6 @@
             } else {
                 self.topViewTopConstraint.constant = topViewDiff;
             }
-//            self.topViewTopConstraint.constant = yPosition + self.topViewHeightConstraint.constant;
-//            if (self.topViewTopConstraint.constant > self.topTileHeight) {
-//                // change middle tab bar bottom constraint to pin it
-//                CGFloat diff = self.topViewTopConstraint.constant - self.topTileHeight;
-//                self.middleTabBarBottomConstraint.constant = -diff;
-//            } else {
-//                // unpin the middle tab bar
-//                self.middleTabBarBottomConstraint.constant = 0;
-//            }
         } else {
             self.topViewTopConstraint.constant = 0;
         }
