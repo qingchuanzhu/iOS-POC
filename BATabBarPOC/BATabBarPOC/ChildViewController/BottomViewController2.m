@@ -45,8 +45,13 @@
 
 - (void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    self.verticalScrollView = self.tableView;
-    [self.tabBarDelegate childViewAppearedWithView];
+}
+
+- (void)didMoveToParentViewController:(UIViewController *)parent{
+    if (parent) {
+        self.verticalScrollView = self.tableView;
+       [self.tabBarDelegate childViewAppearedWithView];
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{

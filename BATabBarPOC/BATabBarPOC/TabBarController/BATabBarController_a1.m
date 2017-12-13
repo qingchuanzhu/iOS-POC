@@ -98,7 +98,11 @@
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item{
     NSUInteger selectedIndex = [self.tabBarItems indexOfObject:item];
     UIViewController<BARRTabBarChildProtocol> *selectedVC = self.childViewControllers[selectedIndex];
-    [self setSelectedController:selectedVC];
+    if (selectedVC == _selectedController) {
+        // same tab will do nothing
+    } else {
+        [self setSelectedController:selectedVC];
+    }
 }
 
 - (void)setTopViewFromVC:(UIViewController *)topViewController{
@@ -122,8 +126,7 @@
     [self addChildView:selectedController.view];
     [selectedController didMoveToParentViewController:self];
     [self resetMiddleTabBarPosition];
-    /*forward the view will appear to the bottom child view*/
-    [_selectedController beginAppearanceTransition:YES animated:YES];
+    
 }
 
 - (void)childViewAppearedWithView{
