@@ -26,6 +26,9 @@
     // Do any additional setup after loading the view from its nib.
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:RESUECELL];
     self.needVerticalScrolling = YES;
+    UIView *tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, CGRectGetWidth(self.view.frame), 120)];
+    tableHeaderView.backgroundColor = [UIColor greenColor];
+    self.tableView.tableHeaderView = tableHeaderView;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -66,6 +69,7 @@
     
     return cell;
 }
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     return 35.0f;
