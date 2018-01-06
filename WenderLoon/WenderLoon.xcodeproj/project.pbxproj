@@ -31,6 +31,7 @@
 		22F33A2C1D4626FE00836D54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22F33A2A1D4626FE00836D54 /* LaunchScreen.storyboard */; };
 		353B42B420016D9100E5A0CE /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B42B320016D9100E5A0CE /* IntentHandler.swift */; };
 		353B42B820016D9100E5A0CE /* RideRequestExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 353B42B120016D9100E5A0CE /* RideRequestExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		353B42BD20016FBA00E5A0CE /* RideRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B42BC20016FBA00E5A0CE /* RideRequestHandler.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -104,6 +105,7 @@
 		353B42B120016D9100E5A0CE /* RideRequestExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RideRequestExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		353B42B320016D9100E5A0CE /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
 		353B42B520016D9100E5A0CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		353B42BC20016FBA00E5A0CE /* RideRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestHandler.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -228,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				353B42B320016D9100E5A0CE /* IntentHandler.swift */,
+				353B42BC20016FBA00E5A0CE /* RideRequestHandler.swift */,
 				353B42B520016D9100E5A0CE /* Info.plist */,
 			);
 			path = RideRequestExtension;
@@ -426,6 +429,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				353B42BD20016FBA00E5A0CE /* RideRequestHandler.swift in Sources */,
 				353B42B420016D9100E5A0CE /* IntentHandler.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
