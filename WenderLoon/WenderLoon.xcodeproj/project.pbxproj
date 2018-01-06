@@ -29,6 +29,8 @@
 		22F33A271D4626FE00836D54 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22F33A251D4626FE00836D54 /* Main.storyboard */; };
 		22F33A291D4626FE00836D54 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F33A281D4626FE00836D54 /* Assets.xcassets */; };
 		22F33A2C1D4626FE00836D54 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22F33A2A1D4626FE00836D54 /* LaunchScreen.storyboard */; };
+		353B42B420016D9100E5A0CE /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B42B320016D9100E5A0CE /* IntentHandler.swift */; };
+		353B42B820016D9100E5A0CE /* RideRequestExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 353B42B120016D9100E5A0CE /* RideRequestExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +40,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 220B8F5B1D47B77B00FD0A84;
 			remoteInfo = WenderLoonCore;
+		};
+		353B42B620016D9100E5A0CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22F33A161D4626FE00836D54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 353B42B020016D9100E5A0CE;
+			remoteInfo = RideRequestExtension;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -59,6 +68,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				353B42B820016D9100E5A0CE /* RideRequestExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -91,6 +101,9 @@
 		22F33A281D4626FE00836D54 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22F33A2B1D4626FE00836D54 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22F33A2D1D4626FE00836D54 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		353B42B120016D9100E5A0CE /* RideRequestExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = RideRequestExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		353B42B320016D9100E5A0CE /* IntentHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentHandler.swift; sourceTree = "<group>"; };
+		353B42B520016D9100E5A0CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +120,13 @@
 			files = (
 				22619B8F1D48E59E008F5AF6 /* MapKit.framework in Frameworks */,
 				220B8F631D47B77B00FD0A84 /* WenderLoonCore.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		353B42AE20016D9100E5A0CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -173,6 +193,7 @@
 			children = (
 				22F33A201D4626FE00836D54 /* WenderLoon */,
 				220B8F5D1D47B77B00FD0A84 /* WenderLoonCore */,
+				353B42B220016D9100E5A0CE /* RideRequestExtension */,
 				22F33A1F1D4626FE00836D54 /* Products */,
 				22619B8D1D48E59E008F5AF6 /* Frameworks */,
 			);
@@ -185,6 +206,7 @@
 			children = (
 				22F33A1E1D4626FE00836D54 /* WenderLoon.app */,
 				220B8F5C1D47B77B00FD0A84 /* WenderLoonCore.framework */,
+				353B42B120016D9100E5A0CE /* RideRequestExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -200,6 +222,15 @@
 				22F33A2D1D4626FE00836D54 /* Info.plist */,
 			);
 			path = WenderLoon;
+			sourceTree = "<group>";
+		};
+		353B42B220016D9100E5A0CE /* RideRequestExtension */ = {
+			isa = PBXGroup;
+			children = (
+				353B42B320016D9100E5A0CE /* IntentHandler.swift */,
+				353B42B520016D9100E5A0CE /* Info.plist */,
+			);
+			path = RideRequestExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,11 +279,29 @@
 			);
 			dependencies = (
 				220B8F621D47B77B00FD0A84 /* PBXTargetDependency */,
+				353B42B720016D9100E5A0CE /* PBXTargetDependency */,
 			);
 			name = WenderLoon;
 			productName = WenderLoon;
 			productReference = 22F33A1E1D4626FE00836D54 /* WenderLoon.app */;
 			productType = "com.apple.product-type.application";
+		};
+		353B42B020016D9100E5A0CE /* RideRequestExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 353B42BB20016D9100E5A0CE /* Build configuration list for PBXNativeTarget "RideRequestExtension" */;
+			buildPhases = (
+				353B42AD20016D9100E5A0CE /* Sources */,
+				353B42AE20016D9100E5A0CE /* Frameworks */,
+				353B42AF20016D9100E5A0CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RideRequestExtension;
+			productName = RideRequestExtension;
+			productReference = 353B42B120016D9100E5A0CE /* RideRequestExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -260,7 +309,7 @@
 		22F33A161D4626FE00836D54 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
+				LastSwiftUpdateCheck = 0920;
 				LastUpgradeCheck = 0920;
 				ORGANIZATIONNAME = Razeware;
 				TargetAttributes = {
@@ -289,6 +338,11 @@
 							};
 						};
 					};
+					353B42B020016D9100E5A0CE = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = QQ7A795Y74;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 22F33A191D4626FE00836D54 /* Build configuration list for PBXProject "WenderLoon" */;
@@ -306,6 +360,7 @@
 			targets = (
 				22F33A1D1D4626FE00836D54 /* WenderLoon */,
 				220B8F5B1D47B77B00FD0A84 /* WenderLoonCore */,
+				353B42B020016D9100E5A0CE /* RideRequestExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -336,6 +391,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		353B42AF20016D9100E5A0CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -360,6 +422,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		353B42AD20016D9100E5A0CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				353B42B420016D9100E5A0CE /* IntentHandler.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -367,6 +437,11 @@
 			isa = PBXTargetDependency;
 			target = 220B8F5B1D47B77B00FD0A84 /* WenderLoonCore */;
 			targetProxy = 220B8F611D47B77B00FD0A84 /* PBXContainerItemProxy */;
+		};
+		353B42B720016D9100E5A0CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 353B42B020016D9100E5A0CE /* RideRequestExtension */;
+			targetProxy = 353B42B620016D9100E5A0CE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -552,6 +627,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = WenderLoon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -567,6 +643,7 @@
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = WenderLoon/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -574,6 +651,48 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
+			};
+			name = Release;
+		};
+		353B42B920016D9100E5A0CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QQ7A795Y74;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RideRequestExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanSiriKit.WenderLoon.RideRequestExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		353B42BA20016D9100E5A0CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QQ7A795Y74;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = RideRequestExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanSiriKit.WenderLoon.RideRequestExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -603,6 +722,15 @@
 			buildConfigurations = (
 				22F33A311D4626FE00836D54 /* Debug */,
 				22F33A321D4626FE00836D54 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		353B42BB20016D9100E5A0CE /* Build configuration list for PBXNativeTarget "RideRequestExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				353B42B920016D9100E5A0CE /* Debug */,
+				353B42BA20016D9100E5A0CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
