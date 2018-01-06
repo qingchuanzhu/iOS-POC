@@ -21,6 +21,7 @@
  */
 
 import UIKit
+import Intents
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -34,6 +35,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
   fileprivate func requestAuthorisation() {
     // TODO
+    INPreferences.requestSiriAuthorization { status in
+      if status == .authorized {
+        print("Hey, Siri")
+      } else {
+        print("Nay, Siri")
+      }
+    }
   }
 
 }
