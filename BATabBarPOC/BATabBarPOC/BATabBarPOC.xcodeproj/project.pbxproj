@@ -12,6 +12,8 @@
 		355627131FD361880054305B /* BATabBarController_a1.xib in Resources */ = {isa = PBXBuildFile; fileRef = 355627111FD361880054305B /* BATabBarController_a1.xib */; };
 		3566607E1FE1AC2600696C4E /* BATabBarController_a2.m in Sources */ = {isa = PBXBuildFile; fileRef = 3566607B1FE1AC2500696C4E /* BATabBarController_a2.m */; };
 		3566607F1FE1AC2600696C4E /* BATabBarController_a2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3566607C1FE1AC2600696C4E /* BATabBarController_a2.xib */; };
+		356660831FF597D000696C4E /* TopViewController_a2.m in Sources */ = {isa = PBXBuildFile; fileRef = 356660811FF597D000696C4E /* TopViewController_a2.m */; };
+		356660841FF597D000696C4E /* TopViewController_a2.xib in Resources */ = {isa = PBXBuildFile; fileRef = 356660821FF597D000696C4E /* TopViewController_a2.xib */; };
 		35B528C01FD602FD00B1A349 /* T_CViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B528BE1FD602FD00B1A349 /* T_CViewController.m */; };
 		35B528C11FD602FD00B1A349 /* T_CViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 35B528BF1FD602FD00B1A349 /* T_CViewController.xib */; };
 		35B528C41FD6057F00B1A349 /* BATabBarViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B528C31FD6057F00B1A349 /* BATabBarViewModel.m */; };
@@ -41,6 +43,9 @@
 		3566607B1FE1AC2500696C4E /* BATabBarController_a2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BATabBarController_a2.m; sourceTree = "<group>"; };
 		3566607C1FE1AC2600696C4E /* BATabBarController_a2.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BATabBarController_a2.xib; sourceTree = "<group>"; };
 		3566607D1FE1AC2600696C4E /* BATabBarController_a2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BATabBarController_a2.h; sourceTree = "<group>"; };
+		356660801FF597D000696C4E /* TopViewController_a2.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopViewController_a2.h; sourceTree = "<group>"; };
+		356660811FF597D000696C4E /* TopViewController_a2.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopViewController_a2.m; sourceTree = "<group>"; };
+		356660821FF597D000696C4E /* TopViewController_a2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TopViewController_a2.xib; sourceTree = "<group>"; };
 		35B528BD1FD602FD00B1A349 /* T_CViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = T_CViewController.h; sourceTree = "<group>"; };
 		35B528BE1FD602FD00B1A349 /* T_CViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = T_CViewController.m; sourceTree = "<group>"; };
 		35B528BF1FD602FD00B1A349 /* T_CViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = T_CViewController.xib; sourceTree = "<group>"; };
@@ -156,6 +161,9 @@
 				35B528C51FD7570E00B1A349 /* BottomSettingsViewController.h */,
 				35B528C61FD7570E00B1A349 /* BottomSettingsViewController.m */,
 				35B528C71FD7570E00B1A349 /* BottomSettingsViewController.xib */,
+				356660801FF597D000696C4E /* TopViewController_a2.h */,
+				356660811FF597D000696C4E /* TopViewController_a2.m */,
+				356660821FF597D000696C4E /* TopViewController_a2.xib */,
 			);
 			path = ChildViewController;
 			sourceTree = "<group>";
@@ -223,6 +231,7 @@
 				35DA4A0E1FCF3FD700F6BC83 /* BottomViewController1.xib in Resources */,
 				35B528C11FD602FD00B1A349 /* T_CViewController.xib in Resources */,
 				355627131FD361880054305B /* BATabBarController_a1.xib in Resources */,
+				356660841FF597D000696C4E /* TopViewController_a2.xib in Resources */,
 				35DA4A131FCF3FEB00F6BC83 /* BottomViewController2.xib in Resources */,
 				35DA49F71FCE84D300F6BC83 /* LaunchScreen.storyboard in Resources */,
 				35DA49F41FCE84D300F6BC83 /* Assets.xcassets in Resources */,
@@ -241,6 +250,7 @@
 				3566607E1FE1AC2600696C4E /* BATabBarController_a2.m in Sources */,
 				35B528C01FD602FD00B1A349 /* T_CViewController.m in Sources */,
 				35DA4A081FCF3FA200F6BC83 /* TopViewController.m in Sources */,
+				356660831FF597D000696C4E /* TopViewController_a2.m in Sources */,
 				35B528C81FD7570E00B1A349 /* BottomSettingsViewController.m in Sources */,
 				35DA4A0D1FCF3FD700F6BC83 /* BottomViewController1.m in Sources */,
 				3556270E1FD278E00054305B /* iOSNativeTableViewController.m in Sources */,
@@ -384,6 +394,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = BATabBarPOC/Info.plist;
@@ -391,6 +402,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.BATabBarPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -399,6 +412,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = BATabBarPOC/Info.plist;
@@ -406,6 +420,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.BATabBarPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

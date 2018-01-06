@@ -11,7 +11,7 @@
 #import "BottomViewController1.h"
 #import "BottomViewController2.h"
 #import "TopViewController.h"
-#import "TopViewController.h"
+#import "TopViewController_a2.h"
 #import "BATabBarController_a1.h"
 #import "BATabBarController_a2.h"
 
@@ -45,7 +45,7 @@
 
 - (IBAction)testForNewWay:(id)sender {
     BATabBarController_a1 *tabBar2 = [BATabBarController_a1 new];
-    TopViewController *topVC = [TopViewController new];
+    TopViewController_a2 *topVC = [TopViewController_a2 new];
     BottomViewController1 *vc1 = [BottomViewController1 new];
     BottomViewController2 *vc2 = [BottomViewController2 new];
     vc1.tabBarDelegate = tabBar2;
