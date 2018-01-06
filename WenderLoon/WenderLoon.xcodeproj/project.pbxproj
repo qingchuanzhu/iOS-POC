@@ -32,6 +32,7 @@
 		353B42B420016D9100E5A0CE /* IntentHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B42B320016D9100E5A0CE /* IntentHandler.swift */; };
 		353B42B820016D9100E5A0CE /* RideRequestExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 353B42B120016D9100E5A0CE /* RideRequestExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		353B42BD20016FBA00E5A0CE /* RideRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B42BC20016FBA00E5A0CE /* RideRequestHandler.swift */; };
+		353B42C020018B2C00E5A0CE /* IntentsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B42BF20018B2C00E5A0CE /* IntentsModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 353B42B020016D9100E5A0CE;
 			remoteInfo = RideRequestExtension;
+		};
+		353B42C120018C4A00E5A0CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22F33A161D4626FE00836D54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 220B8F5B1D47B77B00FD0A84;
+			remoteInfo = WenderLoonCore;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -107,6 +115,7 @@
 		353B42B520016D9100E5A0CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		353B42BC20016FBA00E5A0CE /* RideRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestHandler.swift; sourceTree = "<group>"; };
 		353B42BE2001763200E5A0CE /* WenderLoon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WenderLoon.entitlements; sourceTree = "<group>"; };
+		353B42BF20018B2C00E5A0CE /* IntentsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentsModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				22A47F791D48A5EE004E4156 /* CLLocation+Random.swift */,
+				353B42BF20018B2C00E5A0CE /* IntentsModels.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -302,6 +312,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				353B42C220018C4A00E5A0CE /* PBXTargetDependency */,
 			);
 			name = RideRequestExtension;
 			productName = RideRequestExtension;
@@ -413,6 +424,7 @@
 				220B8F6F1D47BBBC00FD0A84 /* Balloon.swift in Sources */,
 				220B8F6A1D47B89F00FD0A84 /* WenderLoonSimulator.swift in Sources */,
 				22A47F7A1D48A5EE004E4156 /* CLLocation+Random.swift in Sources */,
+				353B42C020018B2C00E5A0CE /* IntentsModels.swift in Sources */,
 				220B8F731D48998100FD0A84 /* Motion.swift in Sources */,
 				220B8F6D1D47B90300FD0A84 /* Driver.swift in Sources */,
 			);
@@ -448,6 +460,11 @@
 			isa = PBXTargetDependency;
 			target = 353B42B020016D9100E5A0CE /* RideRequestExtension */;
 			targetProxy = 353B42B620016D9100E5A0CE /* PBXContainerItemProxy */;
+		};
+		353B42C220018C4A00E5A0CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 220B8F5B1D47B77B00FD0A84 /* WenderLoonCore */;
+			targetProxy = 353B42C120018C4A00E5A0CE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 

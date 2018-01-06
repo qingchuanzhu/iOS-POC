@@ -66,7 +66,7 @@ extension WenderLoonSimulator {
   
   public func pickupWithinRange(_ pickup: CLLocation) -> Bool {
     if let closestBalloon = closestAvailableBalloon(location: pickup) {
-      return closestBalloon.location.distance(from: pickup) < 50000
+      return closestBalloon.location.distance(from: pickup) < 50000000000000000
     }
     return false
   }
