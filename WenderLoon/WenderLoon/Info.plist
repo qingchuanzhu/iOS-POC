@@ -24,6 +24,8 @@
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>WenderLoon wants to see where you are</string>
+	<key>NSSiriUsageDescription</key>
+	<string> WenderLoon wants you to ba able to book ride with Siri</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
