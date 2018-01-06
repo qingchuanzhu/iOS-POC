@@ -7,6 +7,7 @@
 //
 
 import Intents
+import WenderLoonCore
 
 // As an example, this class is set up to handle Message intents.
 // You will want to replace this or add other intents as appropriate.
@@ -18,9 +19,12 @@ import Intents
 // "Search for messages in <myApp>"
 
 class IntentHandler: INExtension {
+  
+  let simulator = WenderLoonSimulator(renderer: nil)
+  
   override func handler(for intent: INIntent) -> Any? {
     if intent is INRequestRideIntent {
-      return RideRequestHandler()
+      return RideRequestHandler(simulator: self.simulator)
     }
     return .none
   }
