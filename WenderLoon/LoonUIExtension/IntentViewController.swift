@@ -7,6 +7,7 @@
 //
 
 import IntentsUI
+import WenderLoonCore
 
 // As an example, this extension's Info.plist has been configured to handle interactions for INSendMessageIntent.
 // You will want to replace this or add other intents as appropriate.
@@ -34,15 +35,38 @@ class IntentViewController: UIViewController, INUIHostedViewControlling {
     }
     
     // MARK: - INUIHostedViewControlling
-    
-    // Prepare your view controller for the interaction to handle.
-    func configureView(for parameters: Set<INParameter>, of interaction: INInteraction, interactiveBehavior: INUIInteractiveBehavior, context: INUIHostedViewContext, completion: @escaping (Bool, Set<INParameter>, CGSize) -> Void) {
-        // Do configuration here, including preparing views and calculating a desired size for presentation.
-        completion(true, parameters, self.desiredSize)
+  func configure(with interaction: INInteraction, context: INUIHostedViewContext, completion: @escaping (CGSize) -> Void) {
+    // 1
+    guard let response = interaction.intentResponse as? INRequestRideIntentResponse
+      else {
+        driverImageView.image = nil
+        balloonImageView.image = nil
+        subtitleLabel.text = ""
+        completion(self.desiredSize)
+        return
     }
     
+    // 2
+    if let driver = response.rideStatus?.driver {
+      let name = driver.displayName
+      driverImageView.image = WenderLoonSimulator.imageForDriver(name: name)
+      balloonImageView.image = WenderLoonSimulator.imageForBallon(driverName: name)
+      subtitleLabel.text = "\(name) will arrive soon!"
+    } else {
+      // 3
+      driverImageView.image = nil
+      balloonImageView.image = nil
+      subtitleLabel.text = "Preparing..."
+    }
+    
+    // 4
+    completion(self.desiredSize)
+  }
+    
     var desiredSize: CGSize {
-        return self.extensionContext!.hostedViewMaximumAllowedSize
+        var defaultSize = self.extensionContext!.hostedViewMaximumAllowedSize
+        defaultSize.height = 80
+        return defaultSize
     }
     
 }
