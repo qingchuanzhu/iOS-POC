@@ -33,6 +33,10 @@
 		353B42B820016D9100E5A0CE /* RideRequestExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 353B42B120016D9100E5A0CE /* RideRequestExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		353B42BD20016FBA00E5A0CE /* RideRequestHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B42BC20016FBA00E5A0CE /* RideRequestHandler.swift */; };
 		353B42C020018B2C00E5A0CE /* IntentsModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B42BF20018B2C00E5A0CE /* IntentsModels.swift */; };
+		353B42C820018E2800E5A0CE /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 220D03731D4955D0003C7E97 /* IntentsUI.framework */; };
+		353B42CB20018E2800E5A0CE /* IntentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 353B42CA20018E2800E5A0CE /* IntentViewController.swift */; };
+		353B42CE20018E2800E5A0CE /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 353B42CC20018E2800E5A0CE /* MainInterface.storyboard */; };
+		353B42D220018E2900E5A0CE /* LoonUIExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 353B42C720018E2800E5A0CE /* LoonUIExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +61,13 @@
 			remoteGlobalIDString = 220B8F5B1D47B77B00FD0A84;
 			remoteInfo = WenderLoonCore;
 		};
+		353B42D020018E2900E5A0CE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22F33A161D4626FE00836D54 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 353B42C620018E2800E5A0CE;
+			remoteInfo = LoonUIExtension;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -77,6 +88,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
+				353B42D220018E2900E5A0CE /* LoonUIExtension.appex in Embed App Extensions */,
 				353B42B820016D9100E5A0CE /* RideRequestExtension.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
@@ -116,6 +128,10 @@
 		353B42BC20016FBA00E5A0CE /* RideRequestHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RideRequestHandler.swift; sourceTree = "<group>"; };
 		353B42BE2001763200E5A0CE /* WenderLoon.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WenderLoon.entitlements; sourceTree = "<group>"; };
 		353B42BF20018B2C00E5A0CE /* IntentsModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentsModels.swift; sourceTree = "<group>"; };
+		353B42C720018E2800E5A0CE /* LoonUIExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = LoonUIExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		353B42CA20018E2800E5A0CE /* IntentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntentViewController.swift; sourceTree = "<group>"; };
+		353B42CD20018E2800E5A0CE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
+		353B42CF20018E2900E5A0CE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +155,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		353B42C420018E2800E5A0CE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				353B42C820018E2800E5A0CE /* IntentsUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,6 +231,7 @@
 				22F33A201D4626FE00836D54 /* WenderLoon */,
 				220B8F5D1D47B77B00FD0A84 /* WenderLoonCore */,
 				353B42B220016D9100E5A0CE /* RideRequestExtension */,
+				353B42C920018E2800E5A0CE /* LoonUIExtension */,
 				22F33A1F1D4626FE00836D54 /* Products */,
 				22619B8D1D48E59E008F5AF6 /* Frameworks */,
 			);
@@ -220,6 +245,7 @@
 				22F33A1E1D4626FE00836D54 /* WenderLoon.app */,
 				220B8F5C1D47B77B00FD0A84 /* WenderLoonCore.framework */,
 				353B42B120016D9100E5A0CE /* RideRequestExtension.appex */,
+				353B42C720018E2800E5A0CE /* LoonUIExtension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -246,6 +272,16 @@
 				353B42B520016D9100E5A0CE /* Info.plist */,
 			);
 			path = RideRequestExtension;
+			sourceTree = "<group>";
+		};
+		353B42C920018E2800E5A0CE /* LoonUIExtension */ = {
+			isa = PBXGroup;
+			children = (
+				353B42CA20018E2800E5A0CE /* IntentViewController.swift */,
+				353B42CC20018E2800E5A0CE /* MainInterface.storyboard */,
+				353B42CF20018E2900E5A0CE /* Info.plist */,
+			);
+			path = LoonUIExtension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -295,6 +331,7 @@
 			dependencies = (
 				220B8F621D47B77B00FD0A84 /* PBXTargetDependency */,
 				353B42B720016D9100E5A0CE /* PBXTargetDependency */,
+				353B42D120018E2900E5A0CE /* PBXTargetDependency */,
 			);
 			name = WenderLoon;
 			productName = WenderLoon;
@@ -317,6 +354,23 @@
 			name = RideRequestExtension;
 			productName = RideRequestExtension;
 			productReference = 353B42B120016D9100E5A0CE /* RideRequestExtension.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
+		353B42C620018E2800E5A0CE /* LoonUIExtension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 353B42D320018E2900E5A0CE /* Build configuration list for PBXNativeTarget "LoonUIExtension" */;
+			buildPhases = (
+				353B42C320018E2800E5A0CE /* Sources */,
+				353B42C420018E2800E5A0CE /* Frameworks */,
+				353B42C520018E2800E5A0CE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LoonUIExtension;
+			productName = LoonUIExtension;
+			productReference = 353B42C720018E2800E5A0CE /* LoonUIExtension.appex */;
 			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
@@ -359,6 +413,11 @@
 						DevelopmentTeam = QQ7A795Y74;
 						ProvisioningStyle = Automatic;
 					};
+					353B42C620018E2800E5A0CE = {
+						CreatedOnToolsVersion = 9.2;
+						DevelopmentTeam = QQ7A795Y74;
+						ProvisioningStyle = Automatic;
+					};
 				};
 			};
 			buildConfigurationList = 22F33A191D4626FE00836D54 /* Build configuration list for PBXProject "WenderLoon" */;
@@ -377,6 +436,7 @@
 				22F33A1D1D4626FE00836D54 /* WenderLoon */,
 				220B8F5B1D47B77B00FD0A84 /* WenderLoonCore */,
 				353B42B020016D9100E5A0CE /* RideRequestExtension */,
+				353B42C620018E2800E5A0CE /* LoonUIExtension */,
 			);
 		};
 /* End PBXProject section */
@@ -414,6 +474,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		353B42C520018E2800E5A0CE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				353B42CE20018E2800E5A0CE /* MainInterface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -448,6 +516,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		353B42C320018E2800E5A0CE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				353B42CB20018E2800E5A0CE /* IntentViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -466,6 +542,11 @@
 			target = 220B8F5B1D47B77B00FD0A84 /* WenderLoonCore */;
 			targetProxy = 353B42C120018C4A00E5A0CE /* PBXContainerItemProxy */;
 		};
+		353B42D120018E2900E5A0CE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 353B42C620018E2800E5A0CE /* LoonUIExtension */;
+			targetProxy = 353B42D020018E2900E5A0CE /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -483,6 +564,14 @@
 				22F33A2B1D4626FE00836D54 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		353B42CC20018E2800E5A0CE /* MainInterface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				353B42CD20018E2800E5A0CE /* Base */,
+			);
+			name = MainInterface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -721,6 +810,48 @@
 			};
 			name = Release;
 		};
+		353B42D420018E2900E5A0CE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QQ7A795Y74;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LoonUIExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanSiriKit.WenderLoon.LoonUIExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		353B42D520018E2900E5A0CE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QQ7A795Y74;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = LoonUIExtension/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanSiriKit.WenderLoon.LoonUIExtension;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -756,6 +887,15 @@
 			buildConfigurations = (
 				353B42B920016D9100E5A0CE /* Debug */,
 				353B42BA20016D9100E5A0CE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		353B42D320018E2900E5A0CE /* Build configuration list for PBXNativeTarget "LoonUIExtension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				353B42D420018E2900E5A0CE /* Debug */,
+				353B42D520018E2900E5A0CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
