@@ -17,6 +17,12 @@ import IntentsUI
 
 class IntentViewController: UIViewController, INUIHostedViewControlling {
     
+    @IBOutlet var balloonImageView: UIImageView!
+    @IBOutlet var driverImageView: UIImageView!
+    @IBOutlet var subtitleLabel: UILabel!
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
