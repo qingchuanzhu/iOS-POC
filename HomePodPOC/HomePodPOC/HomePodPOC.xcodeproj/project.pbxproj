@@ -13,7 +13,33 @@
 		35B286E5202E2D7800797EDC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35B286E4202E2D7800797EDC /* Assets.xcassets */; };
 		35B286E8202E2D7800797EDC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35B286E6202E2D7800797EDC /* LaunchScreen.storyboard */; };
 		35B286EB202E2D7800797EDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B286EA202E2D7800797EDC /* main.m */; };
+		35B286F9202E2E2700797EDC /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B286F8202E2E2700797EDC /* IntentHandler.m */; };
+		35B286FD202E2E2700797EDC /* HomePodPOCSiri.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 35B286F5202E2E2700797EDC /* HomePodPOCSiri.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		35B286FB202E2E2700797EDC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35B286D0202E2D7800797EDC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35B286F4202E2E2700797EDC;
+			remoteInfo = HomePodPOCSiri;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		35B28701202E2E2700797EDC /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				35B286FD202E2E2700797EDC /* HomePodPOCSiri.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		35B286D8202E2D7800797EDC /* HomePodPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePodPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -26,10 +52,22 @@
 		35B286E7202E2D7800797EDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		35B286E9202E2D7800797EDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35B286EA202E2D7800797EDC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		35B286F5202E2E2700797EDC /* HomePodPOCSiri.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = HomePodPOCSiri.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		35B286F7202E2E2700797EDC /* IntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntentHandler.h; sourceTree = "<group>"; };
+		35B286F8202E2E2700797EDC /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
+		35B286FA202E2E2700797EDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35B28702202E2E3D00797EDC /* HomePodPOC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HomePodPOC.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		35B286D5202E2D7800797EDC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35B286F2202E2E2700797EDC /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -43,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				35B286DA202E2D7800797EDC /* HomePodPOC */,
+				35B286F6202E2E2700797EDC /* HomePodPOCSiri */,
 				35B286D9202E2D7800797EDC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -51,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				35B286D8202E2D7800797EDC /* HomePodPOC.app */,
+				35B286F5202E2E2700797EDC /* HomePodPOCSiri.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +98,7 @@
 		35B286DA202E2D7800797EDC /* HomePodPOC */ = {
 			isa = PBXGroup;
 			children = (
+				35B28702202E2E3D00797EDC /* HomePodPOC.entitlements */,
 				35B286DB202E2D7800797EDC /* AppDelegate.h */,
 				35B286DC202E2D7800797EDC /* AppDelegate.m */,
 				35B286DE202E2D7800797EDC /* ViewController.h */,
@@ -71,6 +112,16 @@
 			path = HomePodPOC;
 			sourceTree = "<group>";
 		};
+		35B286F6202E2E2700797EDC /* HomePodPOCSiri */ = {
+			isa = PBXGroup;
+			children = (
+				35B286F7202E2E2700797EDC /* IntentHandler.h */,
+				35B286F8202E2E2700797EDC /* IntentHandler.m */,
+				35B286FA202E2E2700797EDC /* Info.plist */,
+			);
+			path = HomePodPOCSiri;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -81,15 +132,34 @@
 				35B286D4202E2D7800797EDC /* Sources */,
 				35B286D5202E2D7800797EDC /* Frameworks */,
 				35B286D6202E2D7800797EDC /* Resources */,
+				35B28701202E2E2700797EDC /* Embed App Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				35B286FC202E2E2700797EDC /* PBXTargetDependency */,
 			);
 			name = HomePodPOC;
 			productName = HomePodPOC;
 			productReference = 35B286D8202E2D7800797EDC /* HomePodPOC.app */;
 			productType = "com.apple.product-type.application";
+		};
+		35B286F4202E2E2700797EDC /* HomePodPOCSiri */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35B286FE202E2E2700797EDC /* Build configuration list for PBXNativeTarget "HomePodPOCSiri" */;
+			buildPhases = (
+				35B286F1202E2E2700797EDC /* Sources */,
+				35B286F2202E2E2700797EDC /* Frameworks */,
+				35B286F3202E2E2700797EDC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HomePodPOCSiri;
+			productName = HomePodPOCSiri;
+			productReference = 35B286F5202E2E2700797EDC /* HomePodPOCSiri.appex */;
+			productType = "com.apple.product-type.app-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -101,6 +171,15 @@
 				ORGANIZATIONNAME = "Qingchuan Zhu";
 				TargetAttributes = {
 					35B286D7202E2D7800797EDC = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Siri = {
+								enabled = 1;
+							};
+						};
+					};
+					35B286F4202E2E2700797EDC = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 					};
@@ -120,6 +199,7 @@
 			projectRoot = "";
 			targets = (
 				35B286D7202E2D7800797EDC /* HomePodPOC */,
+				35B286F4202E2E2700797EDC /* HomePodPOCSiri */,
 			);
 		};
 /* End PBXProject section */
@@ -132,6 +212,13 @@
 				35B286E8202E2D7800797EDC /* LaunchScreen.storyboard in Resources */,
 				35B286E5202E2D7800797EDC /* Assets.xcassets in Resources */,
 				35B286E3202E2D7800797EDC /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		35B286F3202E2E2700797EDC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +235,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35B286F1202E2E2700797EDC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35B286F9202E2E2700797EDC /* IntentHandler.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		35B286FC202E2E2700797EDC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35B286F4202E2E2700797EDC /* HomePodPOCSiri */;
+			targetProxy = 35B286FB202E2E2700797EDC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		35B286E1202E2D7800797EDC /* Main.storyboard */ = {
@@ -278,6 +381,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HomePodPOC/HomePodPOC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = HomePodPOC/Info.plist;
@@ -292,12 +396,41 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = HomePodPOC/HomePodPOC.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = HomePodPOC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.HomePodPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		35B286FF202E2E2700797EDC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QQ7A795Y74;
+				INFOPLIST_FILE = HomePodPOCSiri/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.HomePodPOC.HomePodPOCSiri;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		35B28700202E2E2700797EDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QQ7A795Y74;
+				INFOPLIST_FILE = HomePodPOCSiri/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @executable_path/../../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.HomePodPOC.HomePodPOCSiri;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -319,6 +452,15 @@
 			buildConfigurations = (
 				35B286EF202E2D7800797EDC /* Debug */,
 				35B286F0202E2D7800797EDC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35B286FE202E2E2700797EDC /* Build configuration list for PBXNativeTarget "HomePodPOCSiri" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35B286FF202E2E2700797EDC /* Debug */,
+				35B28700202E2E2700797EDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
