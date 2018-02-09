@@ -23,6 +23,12 @@
 import UIKit
 import CoreData
 
+// Keychain configuration
+struct KeychainConfiguration {
+    static let serviceName = "TouchMeIn"
+    static let accessGroup: String? = nil
+}
+
 class LoginViewController: UIViewController {
   
   var managedObjectContext: NSManagedObjectContext?

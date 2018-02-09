@@ -15,7 +15,7 @@ struct KeychainPasswordItem {
         case noPassword
         case unexpectedPasswordData
         case unexpectedItemData
-        case unhandledError(status: OSStatus)
+        case unhandledError(status: OSStatus) // Using enum's associated values, so unhandledError will always come with a value of type OSStatus
     }
     
     // MARK: Properties
