@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import <Intents/Intents.h>
 
 @interface AppDelegate ()
 
@@ -17,6 +18,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    [self requestSiriKitAuthentication];
     return YES;
 }
 
@@ -45,6 +47,16 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (void)requestSiriKitAuthentication{
+    [INPreferences requestSiriAuthorization:^(INSiriAuthorizationStatus status) {
+        if (status == INSiriAuthorizationStatusAuthorized) {
+            NSLog(@"Hey, Siri");
+        } else {
+            NSLog(@"No, Siri");
+        }
+    }];
 }
 
 
