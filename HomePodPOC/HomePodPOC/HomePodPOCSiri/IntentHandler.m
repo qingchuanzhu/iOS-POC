@@ -7,6 +7,7 @@
 //
 
 #import "IntentHandler.h"
+#import "AccountsIntentHandler.h"
 
 // As an example, this class is set up to handle Message intents.
 // You will want to replace this or add other intents as appropriate.
@@ -22,5 +23,13 @@
 @end
 
 @implementation IntentHandler
+
+- (id)handlerForIntent:(INIntent *)intent{
+    if ([intent isKindOfClass:[INSearchForAccountsIntent class]]) {
+        return [AccountsIntentHandler new];
+    } else {
+        return nil;
+    }
+}
 
 @end

@@ -15,6 +15,7 @@
 		35B286EB202E2D7800797EDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B286EA202E2D7800797EDC /* main.m */; };
 		35B286F9202E2E2700797EDC /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B286F8202E2E2700797EDC /* IntentHandler.m */; };
 		35B286FD202E2E2700797EDC /* HomePodPOCSiri.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 35B286F5202E2E2700797EDC /* HomePodPOCSiri.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		35B28705202E2F7B00797EDC /* AccountsIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B28704202E2F7B00797EDC /* AccountsIntentHandler.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,8 @@
 		35B286F8202E2E2700797EDC /* IntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntentHandler.m; sourceTree = "<group>"; };
 		35B286FA202E2E2700797EDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35B28702202E2E3D00797EDC /* HomePodPOC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HomePodPOC.entitlements; sourceTree = "<group>"; };
+		35B28703202E2F7B00797EDC /* AccountsIntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountsIntentHandler.h; sourceTree = "<group>"; };
+		35B28704202E2F7B00797EDC /* AccountsIntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountsIntentHandler.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -117,6 +120,8 @@
 			children = (
 				35B286F7202E2E2700797EDC /* IntentHandler.h */,
 				35B286F8202E2E2700797EDC /* IntentHandler.m */,
+				35B28703202E2F7B00797EDC /* AccountsIntentHandler.h */,
+				35B28704202E2F7B00797EDC /* AccountsIntentHandler.m */,
 				35B286FA202E2E2700797EDC /* Info.plist */,
 			);
 			path = HomePodPOCSiri;
@@ -239,6 +244,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35B28705202E2F7B00797EDC /* AccountsIntentHandler.m in Sources */,
 				35B286F9202E2E2700797EDC /* IntentHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
