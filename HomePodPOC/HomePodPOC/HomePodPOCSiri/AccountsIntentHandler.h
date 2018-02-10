@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <Intents/Intents.h>
 
+static NSString *HOMEPODPOC_TOUCHID_EN = @"enable_touchID";
+
 @interface AccountsIntentHandler : NSObject <INSearchForAccountsIntentHandling>
 
 @end

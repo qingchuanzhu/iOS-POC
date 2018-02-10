@@ -23,17 +23,27 @@
 }
 
 - (void)confirmSearchForAccounts:(INSearchForAccountsIntent *)intent completion:(void (^)(INSearchForAccountsIntentResponse * _Nonnull))completion{
-    LAContext *contextTouch = [LAContext new];
-    [contextTouch setLocalizedFallbackTitle:@"Use Passcode"];
-    [contextTouch evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"Sign In with Online ID:yes****" reply:^(BOOL success, NSError * _Nullable error) {
-        if (success) {
-            INSearchForAccountsIntentResponse *response = [[INSearchForAccountsIntentResponse alloc] initWithCode:INSearchForAccountsIntentResponseCodeReady userActivity:nil];
-            completion(response);
-        } else {
-            INSearchForAccountsIntentResponse *response = [[INSearchForAccountsIntentResponse alloc] initWithCode:INSearchForAccountsIntentResponseCodeFailure userActivity:nil];
-            completion(response);
-        }
-    }];
+    
+    NSUserDefaults *defaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.com.qingchuan.HomePodPOC"];
+    BOOL enableTouchID_auth = [defaults boolForKey:HOMEPODPOC_TOUCHID_EN];
+    
+    if (enableTouchID_auth) {
+        LAContext *contextTouch = [LAContext new];
+        [contextTouch setLocalizedFallbackTitle:@"Use Passcode"];
+        [contextTouch evaluatePolicy:LAPolicyDeviceOwnerAuthenticationWithBiometrics localizedReason:@"Sign In with Online ID:yes****" reply:^(BOOL success, NSError * _Nullable error) {
+            if (success) {
+                INSearchForAccountsIntentResponse *response = [[INSearchForAccountsIntentResponse alloc] initWithCode:INSearchForAccountsIntentResponseCodeReady userActivity:nil];
+                completion(response);
+            } else {
+                INSearchForAccountsIntentResponse *response = [[INSearchForAccountsIntentResponse alloc] initWithCode:INSearchForAccountsIntentResponseCodeFailure userActivity:nil];
+                completion(response);
+            }
+        }];
+    } else {
+        INSearchForAccountsIntentResponse *response = [[INSearchForAccountsIntentResponse alloc] initWithCode:INSearchForAccountsIntentResponseCodeReady userActivity:nil];
+        completion(response);
+    }
+    
     
 }
 @end

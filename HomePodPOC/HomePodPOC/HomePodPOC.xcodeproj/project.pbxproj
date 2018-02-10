@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3501A071202FA62200BDC272 /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 3501A070202FA62200BDC272 /* Settings.bundle */; };
 		35B286DD202E2D7800797EDC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B286DC202E2D7800797EDC /* AppDelegate.m */; };
 		35B286E0202E2D7800797EDC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B286DF202E2D7800797EDC /* ViewController.m */; };
 		35B286E3202E2D7800797EDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35B286E1202E2D7800797EDC /* Main.storyboard */; };
@@ -16,7 +17,6 @@
 		35B286F9202E2E2700797EDC /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B286F8202E2E2700797EDC /* IntentHandler.m */; };
 		35B286FD202E2E2700797EDC /* HomePodPOCSiri.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 35B286F5202E2E2700797EDC /* HomePodPOCSiri.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		35B28705202E2F7B00797EDC /* AccountsIntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B28704202E2F7B00797EDC /* AccountsIntentHandler.m */; };
-		35B28709202F922600797EDC /* Settings.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 35B28708202F922600797EDC /* Settings.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +44,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		3501A070202FA62200BDC272 /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
 		35B286D8202E2D7800797EDC /* HomePodPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HomePodPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B286DB202E2D7800797EDC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35B286DC202E2D7800797EDC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -61,7 +62,7 @@
 		35B28702202E2E3D00797EDC /* HomePodPOC.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HomePodPOC.entitlements; sourceTree = "<group>"; };
 		35B28703202E2F7B00797EDC /* AccountsIntentHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AccountsIntentHandler.h; sourceTree = "<group>"; };
 		35B28704202E2F7B00797EDC /* AccountsIntentHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AccountsIntentHandler.m; sourceTree = "<group>"; };
-		35B28708202F922600797EDC /* Settings.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Settings.bundle; sourceTree = "<group>"; };
+		35B2870A202F978500797EDC /* HomePodPOCSiri.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HomePodPOCSiri.entitlements; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,7 +86,7 @@
 		35B286CF202E2D7800797EDC = {
 			isa = PBXGroup;
 			children = (
-				35B28708202F922600797EDC /* Settings.bundle */,
+				3501A070202FA62200BDC272 /* Settings.bundle */,
 				35B286DA202E2D7800797EDC /* HomePodPOC */,
 				35B286F6202E2E2700797EDC /* HomePodPOCSiri */,
 				35B286D9202E2D7800797EDC /* Products */,
@@ -121,6 +122,7 @@
 		35B286F6202E2E2700797EDC /* HomePodPOCSiri */ = {
 			isa = PBXGroup;
 			children = (
+				35B2870A202F978500797EDC /* HomePodPOCSiri.entitlements */,
 				35B286F7202E2E2700797EDC /* IntentHandler.h */,
 				35B286F8202E2E2700797EDC /* IntentHandler.m */,
 				35B28703202E2F7B00797EDC /* AccountsIntentHandler.h */,
@@ -182,6 +184,9 @@
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
 							com.apple.Siri = {
 								enabled = 1;
 							};
@@ -190,6 +195,11 @@
 					35B286F4202E2E2700797EDC = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.ApplicationGroups.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -217,9 +227,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35B28709202F922600797EDC /* Settings.bundle in Resources */,
 				35B286E8202E2D7800797EDC /* LaunchScreen.storyboard in Resources */,
 				35B286E5202E2D7800797EDC /* Assets.xcassets in Resources */,
+				3501A071202FA62200BDC272 /* Settings.bundle in Resources */,
 				35B286E3202E2D7800797EDC /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -420,6 +430,7 @@
 		35B286FF202E2E2700797EDC /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = HomePodPOCSiri/HomePodPOCSiri.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = HomePodPOCSiri/Info.plist;
@@ -434,6 +445,7 @@
 		35B28700202E2E2700797EDC /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_ENTITLEMENTS = HomePodPOCSiri/HomePodPOCSiri.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = HomePodPOCSiri/Info.plist;
