@@ -35,6 +35,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     controller.managedObjectContext = self.managedObjectContext
     
     prepareNavigationBarAppearance()
+    
+    let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+    print("\(paths[0])")
 
     return true
   }

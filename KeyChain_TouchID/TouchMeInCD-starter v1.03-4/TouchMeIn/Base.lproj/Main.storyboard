@@ -82,7 +82,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Start by creating a username and password" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="G4t-Jg-LwO">
-                                        <rect key="frame" x="0.0" y="272" width="330" height="24"/>
+                                        <rect key="frame" x="-22.5" y="272" width="0.0" height="24"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="24" id="hF1-Uy-zOv"/>
                                         </constraints>
@@ -102,6 +102,7 @@
                     </view>
                     <connections>
                         <outlet property="createInfoLabel" destination="G4t-Jg-LwO" id="pn2-lZ-4Sq"/>
+                        <outlet property="loginButton" destination="LYv-3L-ynM" id="dmM-rq-p5t"/>
                         <outlet property="passwordTextField" destination="VBz-oZ-PB4" id="Uch-6n-rZ2"/>
                         <outlet property="usernameTextField" destination="d8k-Ay-bHW" id="Kpw-gS-9nU"/>
                         <segue destination="RxQ-Kn-NgB" kind="unwind" identifier="dismissLogin" unwindAction="unwindSegue:" id="hkh-DW-3QL"/>
