@@ -65,6 +65,12 @@ class LoginViewController: UIViewController {
         usernameTextField.text = storedUsername
     }
     touchIDButton.isHidden = !touchMe.canEvaluatePolicy()
+    switch touchMe.biometricType() {
+    case .faceID:
+        touchIDButton.setImage(UIImage(named: "FaceIcon"),  for: .normal)
+    default:
+        touchIDButton.setImage(UIImage(named: "Touch-icon-lg"),  for: .normal)
+    }
   }
   
   // MARK: - Action for checking username/password
