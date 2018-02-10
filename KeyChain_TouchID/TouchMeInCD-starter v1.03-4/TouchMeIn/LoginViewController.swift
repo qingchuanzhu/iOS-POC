@@ -127,7 +127,9 @@ class LoginViewController: UIViewController {
   }
     
     @IBAction func touchIDLoginAction() {
-        
+        touchMe.authenticateUser() { [weak self] in
+            self?.performSegue(withIdentifier: "dismissLogin", sender: self)
+        }
     }
     
     
