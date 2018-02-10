@@ -35,9 +35,10 @@ class BiometricIDAuth {
         }
     }
     
-    func authenticateUser(completion: @escaping () -> Void) {
+    func authenticateUser(completion: @escaping (String?) -> Void) {
         //use canEvaluatePolicy() to check whether the device is capable of biometric authentication.
         guard canEvaluatePolicy() else {
+            completion("Touch ID not available")
             return
         }
         context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: loginReason) { (success, evaluateError) in
@@ -46,10 +47,28 @@ class BiometricIDAuth {
                 DispatchQueue.main.async {
                     // User authenticated successfully, take appropriate action
                     // By default, the policy evaluation happens on a private thread, so your code jumps back to the main thread so it can update the UI. 
-                    completion()
+                    completion(nil)
                 }
             } else {
-                // TODO: deal with LAError cases
+                // 1. Declare a string to hold the message.
+                let message: String
+                switch evaluateError{
+                case LAError.authenticationFailed?:
+                    message = "There was a problem verifying your identity."
+                case LAError.userCancel?:
+                    message = "You pressed cancel."
+                case LAError.userFallback?:
+                    message = "You pressed password."
+                case LAError.biometryNotAvailable?:
+                    message = "Face ID/Touch ID is not available."
+                case LAError.biometryNotEnrolled?:
+                    message = "Face ID/Touch ID is not set up."
+                case LAError.biometryLockout?:
+                    message = "Face ID/Touch ID is locked."
+                default:
+                    message = "Face ID/Touch ID may not be configured"
+                }
+                completion(message)
             }
         }
         

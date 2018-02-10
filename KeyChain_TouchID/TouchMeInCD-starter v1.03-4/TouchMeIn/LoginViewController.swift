@@ -127,8 +127,19 @@ class LoginViewController: UIViewController {
   }
     
     @IBAction func touchIDLoginAction() {
-        touchMe.authenticateUser() { [weak self] in
-            self?.performSegue(withIdentifier: "dismissLogin", sender: self)
+        touchMe.authenticateUser() { [weak self] message in
+            if let message = message {
+                // if the completion is not nil show an alert
+                let alertView = UIAlertController(title: "Error",
+                                                  message: message,
+                                                  preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "Darn!", style: .default)
+                alertView.addAction(okAction)
+                self?.present(alertView, animated: true)
+            } else {
+                // 3
+                self?.performSegue(withIdentifier: "dismissLogin", sender: self)
+            }
         }
     }
     
