@@ -41,7 +41,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var usernameTextField: UITextField!
   @IBOutlet weak var passwordTextField: UITextField!
   @IBOutlet weak var createInfoLabel: UILabel!  
-
+    @IBOutlet var touchIDButton: UIButton!
+    
   override func viewDidLoad() {
     super.viewDidLoad()
     // 1
@@ -116,6 +117,11 @@ class LoginViewController: UIViewController {
         }
     }
   }
+    
+    @IBAction func touchIDLoginAction() {
+            
+    }
+    
     
     func checkLogin(username: String, password: String) -> Bool {
         guard username == UserDefaults.standard.value(forKey: "username") as? String else {

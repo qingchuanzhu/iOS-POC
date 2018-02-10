@@ -30,7 +30,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="D6T-zl-WaZ">
-                                <rect key="frame" x="22.5" y="28" width="330" height="296"/>
+                                <rect key="frame" x="22.5" y="28" width="330" height="383"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GK0-4z-kna">
                                         <rect key="frame" x="47.5" y="0.0" width="235" height="79"/>
@@ -90,6 +90,17 @@
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TT2-7l-TnN">
+                                        <rect key="frame" x="132" y="316" width="66" height="67"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="66" id="1Zj-ob-eqn"/>
+                                            <constraint firstAttribute="height" constant="67" id="u9b-kg-ena"/>
+                                        </constraints>
+                                        <state key="normal" image="Touch-icon-lg"/>
+                                        <connections>
+                                            <action selector="touchIDLoginAction" destination="YRn-d8-QPl" eventType="touchUpInside" id="hwJ-0X-Rqc"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </stackView>
                         </subviews>
@@ -104,6 +115,7 @@
                         <outlet property="createInfoLabel" destination="G4t-Jg-LwO" id="pn2-lZ-4Sq"/>
                         <outlet property="loginButton" destination="LYv-3L-ynM" id="dmM-rq-p5t"/>
                         <outlet property="passwordTextField" destination="VBz-oZ-PB4" id="Uch-6n-rZ2"/>
+                        <outlet property="touchIDButton" destination="TT2-7l-TnN" id="Bzs-f8-XWX"/>
                         <outlet property="usernameTextField" destination="d8k-Ay-bHW" id="Kpw-gS-9nU"/>
                         <segue destination="RxQ-Kn-NgB" kind="unwind" identifier="dismissLogin" unwindAction="unwindSegue:" id="hkh-DW-3QL"/>
                     </connections>
@@ -245,5 +257,6 @@
     </scenes>
     <resources>
         <image name="Button" width="131" height="53"/>
+        <image name="Touch-icon-lg" width="138" height="137"/>
     </resources>
 </document>
