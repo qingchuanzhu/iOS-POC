@@ -7,7 +7,13 @@
 //
 
 import UIKit
+import Foundation
+import LocalAuthentication
 
-class TouchIDAuthentication: NSObject {
-
+class BiometricIDAuth {
+    let context = LAContext() //authentication context, which is the main player in Local Authentication
+    
+    func canEvaluatePolicy() -> Bool {
+        return context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: nil)
+    }
 }

@@ -36,6 +36,7 @@ class LoginViewController: UIViewController {
   //determine if the Login button is being used to create some credentials, or to log in
   let createLoginButtonTag = 0
   let loginButtonTag = 1
+  let touchMe = BiometricIDAuth()
   
     @IBOutlet var loginButton: UIButton!
     @IBOutlet weak var usernameTextField: UITextField!
@@ -63,6 +64,7 @@ class LoginViewController: UIViewController {
     if let storedUsername = UserDefaults.standard.value(forKey: "username") as? String {
         usernameTextField.text = storedUsername
     }
+    touchIDButton.isHidden = !touchMe.canEvaluatePolicy()
   }
   
   // MARK: - Action for checking username/password
