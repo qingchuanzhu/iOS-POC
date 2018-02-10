@@ -17,6 +17,7 @@
 		2A94F6E619FE7D31007CED2D /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A94F6E519FE7D31007CED2D /* Note.swift */; };
 		2AC21FA11A005A88003FD06F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AC21FA01A005A88003FD06F /* LoginViewController.swift */; };
 		35B286CE202E1EDF00797EDC /* KeychainPasswordItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B286CD202E1EDF00797EDC /* KeychainPasswordItem.swift */; };
+		35B28707202E73F400797EDC /* TouchIDAuthentication.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B28706202E73F400797EDC /* TouchIDAuthentication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		2A94F6E519FE7D31007CED2D /* Note.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		2AC21FA01A005A88003FD06F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		35B286CD202E1EDF00797EDC /* KeychainPasswordItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KeychainPasswordItem.swift; path = Resources/KeychainPasswordItem.swift; sourceTree = SOURCE_ROOT; };
+		35B28706202E73F400797EDC /* TouchIDAuthentication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TouchIDAuthentication.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				2A2CDC9D19FB441200BDF4E3 /* DetailViewController.swift */,
 				2A94F6E519FE7D31007CED2D /* Note.swift */,
 				2AC21FA01A005A88003FD06F /* LoginViewController.swift */,
+				35B28706202E73F400797EDC /* TouchIDAuthentication.swift */,
 				35B286CD202E1EDF00797EDC /* KeychainPasswordItem.swift */,
 				2A2CDC9F19FB441200BDF4E3 /* Main.storyboard */,
 				2A2CDCA219FB441200BDF4E3 /* Images.xcassets */,
@@ -167,6 +170,7 @@
 				35B286CE202E1EDF00797EDC /* KeychainPasswordItem.swift in Sources */,
 				2A2CDC9719FB441200BDF4E3 /* AppDelegate.swift in Sources */,
 				2A2CDC9C19FB441200BDF4E3 /* MasterViewController.swift in Sources */,
+				35B28707202E73F400797EDC /* TouchIDAuthentication.swift in Sources */,
 				2A2CDC9E19FB441200BDF4E3 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
