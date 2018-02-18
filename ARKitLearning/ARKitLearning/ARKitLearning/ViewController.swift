@@ -147,6 +147,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         plane.updatePlane(withAnchor: planeAnchor)
     }
     
+    func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
+        self.planes?.removeValue(forKey: anchor.identifier)
+    }
+    
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
         

@@ -15,6 +15,7 @@
 		3501A09420393D7D00BDC272 /* GeometryFighter.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 3501A09320393D7C00BDC272 /* GeometryFighter.scnassets */; };
 		3501A09620393FC700BDC272 /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501A09520393FC700BDC272 /* ShapeType.swift */; };
 		3501A098203A36D500BDC272 /* Plane.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501A097203A36D500BDC272 /* Plane.swift */; };
+		3501A09A203A486600BDC272 /* ViewController+HitTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501A099203A486600BDC272 /* ViewController+HitTest.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		3501A09320393D7C00BDC272 /* GeometryFighter.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = GeometryFighter.scnassets; sourceTree = "<group>"; };
 		3501A09520393FC700BDC272 /* ShapeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeType.swift; sourceTree = "<group>"; };
 		3501A097203A36D500BDC272 /* Plane.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plane.swift; sourceTree = "<group>"; };
+		3501A099203A486600BDC272 /* ViewController+HitTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+HitTest.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 			children = (
 				3501A07E2036B8B000BDC272 /* AppDelegate.swift */,
 				3501A0822036B8B000BDC272 /* ViewController.swift */,
+				3501A099203A486600BDC272 /* ViewController+HitTest.swift */,
 				3501A09520393FC700BDC272 /* ShapeType.swift */,
 				3501A097203A36D500BDC272 /* Plane.swift */,
 				3501A0842036B8B000BDC272 /* Main.storyboard */,
@@ -148,6 +151,7 @@
 			files = (
 				3501A0832036B8B000BDC272 /* ViewController.swift in Sources */,
 				3501A09620393FC700BDC272 /* ShapeType.swift in Sources */,
+				3501A09A203A486600BDC272 /* ViewController+HitTest.swift in Sources */,
 				3501A098203A36D500BDC272 /* Plane.swift in Sources */,
 				3501A07F2036B8B000BDC272 /* AppDelegate.swift in Sources */,
 			);
