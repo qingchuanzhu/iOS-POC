@@ -127,6 +127,16 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.scene.lightingEnvironment.intensity = intensity
     }
     
+    func renderer(_ renderer: SCNSceneRenderer, didAdd node: SCNNode, for anchor: ARAnchor) {
+        // Create the 3D plane geometry with the dimensions reported
+        // by ARKit in the ARPlaneAnchor instance
+        guard let planeAnchor = anchor as? ARPlaneAnchor else {
+            return
+        }
+        let plane = Plane(withAnchor: planeAnchor)
+        node.addChildNode(plane)
+    }
+    
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
         
