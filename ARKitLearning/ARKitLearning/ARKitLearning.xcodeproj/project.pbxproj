@@ -12,6 +12,8 @@
 		3501A0862036B8B000BDC272 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3501A0842036B8B000BDC272 /* Main.storyboard */; };
 		3501A0882036B8B000BDC272 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3501A0872036B8B000BDC272 /* Assets.xcassets */; };
 		3501A08B2036B8B000BDC272 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3501A0892036B8B000BDC272 /* LaunchScreen.storyboard */; };
+		3501A09420393D7D00BDC272 /* GeometryFighter.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 3501A09320393D7C00BDC272 /* GeometryFighter.scnassets */; };
+		3501A09620393FC700BDC272 /* ShapeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501A09520393FC700BDC272 /* ShapeType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		3501A0872036B8B000BDC272 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3501A08A2036B8B000BDC272 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3501A08C2036B8B000BDC272 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3501A09320393D7C00BDC272 /* GeometryFighter.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = GeometryFighter.scnassets; sourceTree = "<group>"; };
+		3501A09520393FC700BDC272 /* ShapeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,8 +60,10 @@
 			children = (
 				3501A07E2036B8B000BDC272 /* AppDelegate.swift */,
 				3501A0822036B8B000BDC272 /* ViewController.swift */,
+				3501A09520393FC700BDC272 /* ShapeType.swift */,
 				3501A0842036B8B000BDC272 /* Main.storyboard */,
 				3501A0872036B8B000BDC272 /* Assets.xcassets */,
+				3501A09320393D7C00BDC272 /* GeometryFighter.scnassets */,
 				3501A0892036B8B000BDC272 /* LaunchScreen.storyboard */,
 				3501A08C2036B8B000BDC272 /* Info.plist */,
 			);
@@ -126,6 +132,7 @@
 				3501A08B2036B8B000BDC272 /* LaunchScreen.storyboard in Resources */,
 				3501A0882036B8B000BDC272 /* Assets.xcassets in Resources */,
 				3501A0862036B8B000BDC272 /* Main.storyboard in Resources */,
+				3501A09420393D7D00BDC272 /* GeometryFighter.scnassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,6 +144,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3501A0832036B8B000BDC272 /* ViewController.swift in Sources */,
+				3501A09620393FC700BDC272 /* ShapeType.swift in Sources */,
 				3501A07F2036B8B000BDC272 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
