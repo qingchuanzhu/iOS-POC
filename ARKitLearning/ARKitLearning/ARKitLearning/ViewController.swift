@@ -14,6 +14,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
     var scnScene: SCNScene!
+    var spotLight: SCNLight!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,9 +24,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
+        sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         
         // This property is not affect AR experience, the lighting is not following real world lights
 //        sceneView.autoenablesDefaultLighting = true
+        
+        // This property does not do anything
+//        sceneView.automaticallyUpdatesLighting = true
         
         // Create a new scene
         scnScene = SCNScene()
@@ -33,6 +38,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scnScene
         spawnShape()
+        insertSpotLight(position: SCNVector3Make(0, 0.4, -0.5))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -71,6 +77,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         geometryNode.position = SCNVector3Make(0, 0, -0.5)
         scnScene.rootNode.addChildNode(geometryNode)
     }
+    
+    func insertSpotLight(position:SCNVector3) {
+        let spotLight = SCNLight()
+        spotLight.type = .spot
+        spotLight.spotInnerAngle = 45
+        spotLight.spotOuterAngle = 45
+        let spotNode = SCNNode()
+        spotNode.light = spotLight
+        spotNode.position = position
+        spotNode.eulerAngles = SCNVector3Make(-Float.pi / 2, 0, 0)
+        self.spotLight = spotLight
+        scnScene.rootNode.addChildNode(spotNode)
+    }
 
     // MARK: - ARSCNViewDelegate
     
@@ -82,6 +101,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         return node
     }
 */
+    func renderer(_ renderer: SCNSceneRenderer, updateAtTime time: TimeInterval) {
+        guard let lightEst = sceneView.session.currentFrame?.lightEstimate else {
+            return
+        }
+        self.spotLight.intensity = lightEst.ambientIntensity
+    }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
