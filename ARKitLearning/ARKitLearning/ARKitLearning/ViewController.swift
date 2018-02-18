@@ -35,6 +35,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
+        configuration.worldAlignment = .gravity
 
         // Run the view's session
         sceneView.session.run(configuration)
@@ -47,9 +48,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.session.pause()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
+    override var prefersStatusBarHidden: Bool{
+        return true
     }
 
     // MARK: - ARSCNViewDelegate
