@@ -13,6 +13,7 @@ import ARKit
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
+    var scnScene: SCNScene!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +25,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         
         // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        scnScene = SCNScene()
         
         // Set the scene to the view
-        sceneView.scene = scene
+        sceneView.scene = scnScene
+        spawnShape()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,6 +52,19 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override var prefersStatusBarHidden: Bool{
         return true
+    }
+    
+    // MARK: - Node handling
+    func spawnShape() {
+        var geometry:SCNGeometry
+        switch ShapeType.random() {
+        default:
+            geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1,
+                              chamferRadius: 0.0)
+        }
+        let geometryNode = SCNNode(geometry: geometry)
+        geometryNode.position = SCNVector3Make(0, 0, -0.5)
+        scnScene.rootNode.addChildNode(geometryNode)
     }
 
     // MARK: - ARSCNViewDelegate
