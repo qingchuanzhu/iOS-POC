@@ -30,7 +30,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
 //        sceneView.autoenablesDefaultLighting = true
         
         // This property does not do anything
-//        sceneView.automaticallyUpdatesLighting = true
+        sceneView.automaticallyUpdatesLighting = false
         
         // Create a new scene
         scnScene = SCNScene()
@@ -38,7 +38,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Set the scene to the view
         sceneView.scene = scnScene
         spawnShape()
-        insertSpotLight(position: SCNVector3Make(0, 0.4, -0.5))
+//        insertSpotLight(position: SCNVector3Make(0, 0.4, -0.5))
+        let env = UIImage(named: "environmentMap.png")
+        
+        // Set Environment Map
+        sceneView.scene.lightingEnvironment.contents = env
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -47,7 +51,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravity
-        configuration.isLightEstimationEnabled = true;
+        configuration.isLightEstimationEnabled = true
+        configuration.planeDetection = .horizontal
 
         // Run the view's session
         sceneView.session.run(configuration)
@@ -66,13 +71,21 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     // MARK: - Node handling
     func spawnShape() {
+        
+        let mat = SCNMaterial()
+        mat.lightingModel = .physicallyBased
+        mat.diffuse.contents = UIImage(named: "wornpaintedwoodsiding-albedo")
+        mat.roughness.contents = UIImage(named:"wornpaintedwoodsiding-roughness")
+        mat.metalness.contents = UIImage(named:"wornpaintedwoodsiding-metalness")
+        mat.normal.contents = UIImage(named:"wornpaintedwoodsiding-normal-ue")
+        
         var geometry:SCNGeometry
         switch ShapeType.random() {
         default:
             geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1,
                               chamferRadius: 0.0)
         }
-        geometry.materials.first?.diffuse.contents = UIColor.red
+        geometry.materials = [mat]
         let geometryNode = SCNNode(geometry: geometry)
         geometryNode.position = SCNVector3Make(0, 0, -0.5)
         scnScene.rootNode.addChildNode(geometryNode)
@@ -105,7 +118,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         guard let lightEst = sceneView.session.currentFrame?.lightEstimate else {
             return
         }
-        self.spotLight.intensity = lightEst.ambientIntensity
+        guard let spotLight = self.spotLight else {
+            return
+        }
+        spotLight.intensity = lightEst.ambientIntensity
+        // Set intensity of the lighting environment
+        let intensity = lightEst.ambientIntensity / 1000.0
+        sceneView.scene.lightingEnvironment.intensity = intensity
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
