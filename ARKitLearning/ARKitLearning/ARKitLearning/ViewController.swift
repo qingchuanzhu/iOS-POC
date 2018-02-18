@@ -24,6 +24,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Show statistics such as fps and timing information
         sceneView.showsStatistics = true
         
+        // This property is not affect AR experience, the lighting is not following real world lights
+//        sceneView.autoenablesDefaultLighting = true
+        
         // Create a new scene
         scnScene = SCNScene()
         
@@ -38,6 +41,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
         configuration.worldAlignment = .gravity
+        configuration.isLightEstimationEnabled = true;
 
         // Run the view's session
         sceneView.session.run(configuration)
@@ -62,6 +66,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             geometry = SCNBox(width: 0.1, height: 0.1, length: 0.1,
                               chamferRadius: 0.0)
         }
+        geometry.materials.first?.diffuse.contents = UIColor.red
         let geometryNode = SCNNode(geometry: geometry)
         geometryNode.position = SCNVector3Make(0, 0, -0.5)
         scnScene.rootNode.addChildNode(geometryNode)
