@@ -15,10 +15,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     @IBOutlet var sceneView: ARSCNView!
     var scnScene: SCNScene!
     var spotLight: SCNLight!
+    var planes: [UUID : Plane]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.planes = [UUID : Plane]()
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -135,6 +136,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         let plane = Plane(withAnchor: planeAnchor)
         node.addChildNode(plane)
+        self.planes?.updateValue(plane, forKey: anchor.identifier)
+    }
+    
+    func renderer(_ renderer: SCNSceneRenderer, didUpdate node: SCNNode, for anchor: ARAnchor) {
+        guard let plane = self.planes?[anchor.identifier], let planeAnchor = anchor as? ARPlaneAnchor else {
+            return
+        }
+        
+        plane.updatePlane(withAnchor: planeAnchor)
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
