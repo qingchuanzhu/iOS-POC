@@ -23,7 +23,7 @@ class Plane: SCNNode {
         // For the physics engine to work properly give the plane some height so we get interactions
         // between the plane and the gometry we add to the scene
         
-        let planeHeight:Float = 0.01
+        let planeHeight:Float = 0.001
         
         self.planeGeometry = SCNBox(width: CGFloat(anchor.extent.x), height: CGFloat(planeHeight) , length: CGFloat(anchor.extent.z), chamferRadius: 0)
         let planeNode = SCNNode(geometry: self.planeGeometry)
