@@ -11,6 +11,8 @@ import ARKit
 
 class Plane: SCNNode {
     var planeGeometry : SCNBox?
+    var gridMaterial: SCNMaterial!
+    var transparentMaterial: SCNMaterial!
     
     init(withAnchor anchor:ARPlaneAnchor ) {
         super.init()
@@ -35,22 +37,13 @@ class Plane: SCNNode {
         // Add Grid to the 'plane'
         // Instead of just visualizing the grid as a gray plane, we will render
         // it in some Tron style colours.
-        let gridMaterial = SCNMaterial()
+        gridMaterial = SCNMaterial()
         gridMaterial.diffuse.contents = UIImage(named: "tron_grid")
         
         // Since we are using a cube, we only want to render the tron grid
         // on the top face, make the other sides transparent
-        let transparentMaterial = SCNMaterial()
+        transparentMaterial = SCNMaterial()
         transparentMaterial.diffuse.contents = UIColor.init(white: 1.0, alpha: 0.0)
-        
-//        let transparentMaterialRed = SCNMaterial()
-//        transparentMaterial.diffuse.contents = UIColor.red
-//        let transparentMaterialGreen = SCNMaterial()
-//        transparentMaterial.diffuse.contents = UIColor.green
-//        let transparentMaterialBlue = SCNMaterial()
-//        transparentMaterial.diffuse.contents = UIColor.blue
-//        let transparentMaterialYellow = SCNMaterial()
-//        transparentMaterial.diffuse.contents = UIColor.yellow
         
         self.planeGeometry?.materials = [transparentMaterial, transparentMaterial, transparentMaterial, transparentMaterial, gridMaterial, transparentMaterial]
         
@@ -88,6 +81,14 @@ class Plane: SCNNode {
         let planeNode = self.childNodes.first
         planeNode?.physicsBody = SCNPhysicsBody(type: .kinematic, shape: SCNPhysicsShape(geometry: self.planeGeometry!, options: nil))
         self.setTextureScale()
+    }
+    
+    func hide() {
+        self.planeGeometry?.materials = [transparentMaterial, transparentMaterial, transparentMaterial, transparentMaterial, transparentMaterial, transparentMaterial]
+    }
+    
+    func show() {
+        self.planeGeometry?.materials = [transparentMaterial, transparentMaterial, transparentMaterial, transparentMaterial, gridMaterial, transparentMaterial]
     }
     
     required init?(coder aDecoder: NSCoder) {

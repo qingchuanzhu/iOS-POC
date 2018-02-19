@@ -43,7 +43,7 @@ extension ViewController{
     
     func enablePlaneDetection() {
         for (_, plane) in self.planes! {
-            plane.isHidden = false
+            plane.show()
         }
         let config = self.sceneView.session.configuration as? ARWorldTrackingConfiguration
         config?.planeDetection = .horizontal
@@ -53,7 +53,7 @@ extension ViewController{
     func disablePlaneDetection() {
         // Hide all the planes
         for (_, plane) in self.planes! {
-            plane.isHidden = true
+            plane.hide()
         }
         // Stop detecting new planes or updating existing ones.
         let config = self.sceneView.session.configuration as? ARWorldTrackingConfiguration
