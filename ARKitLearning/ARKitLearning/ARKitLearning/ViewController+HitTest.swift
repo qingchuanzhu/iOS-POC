@@ -28,6 +28,6 @@ extension ViewController{
         // manipulated by the physics engine
         cubeNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         cubeNode.physicsBody?.mass = 2.0;
-        cubeNode.physicsBody.categoryBitMask = CollisionCategoryCube;
+        cubeNode.physicsBody.categoryBitMask = CollisionCategory.CollisionCategoryCube;
     }
 }
