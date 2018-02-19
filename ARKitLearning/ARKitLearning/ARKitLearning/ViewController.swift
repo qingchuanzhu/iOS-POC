@@ -38,6 +38,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // Set Environment Map
         sceneView.scene.lightingEnvironment.contents = env
+        
+        // User interactive handling
+        self.setupGestureRecognizer()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -62,6 +65,12 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override var prefersStatusBarHidden: Bool{
         return true
+    }
+    
+    func setupGestureRecognizer() {
+        let singleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTapFrom(recognizer:)))
+        singleTapRecognizer.numberOfTapsRequired = 1
+        self.sceneView.addGestureRecognizer(singleTapRecognizer)
     }
     
     // MARK: - Node handling

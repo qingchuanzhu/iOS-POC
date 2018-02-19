@@ -11,7 +11,7 @@ import ARKit
 import UIKit
 
 extension ViewController{
-    func handleTapFrom(recognizer:UITapGestureRecognizer) {
+    @objc func handleTapFrom(recognizer:UITapGestureRecognizer) {
         // Take the screen space tap coordinates and pass them to the
         // hitTest method on the ARSCNView instance
         let tapPoint = recognizer.location(in: self.sceneView)
