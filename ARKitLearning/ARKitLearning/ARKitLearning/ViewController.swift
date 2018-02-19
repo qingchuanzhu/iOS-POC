@@ -27,19 +27,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         sceneView.showsStatistics = true
         sceneView.debugOptions = [ARSCNDebugOptions.showFeaturePoints, ARSCNDebugOptions.showWorldOrigin]
         
-        // This property is not affect AR experience, the lighting is not following real world lights
-//        sceneView.autoenablesDefaultLighting = true
-        
         // This property does not do anything
         sceneView.automaticallyUpdatesLighting = false
         
         // Create a new scene
         scnScene = SCNScene()
-        
         // Set the scene to the view
         sceneView.scene = scnScene
-        spawnShape()
-//        insertSpotLight(position: SCNVector3Make(0, 0.4, -0.5))
         let env = UIImage(named: "environmentMap.png")
         
         // Set Environment Map
@@ -71,7 +65,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     }
     
     // MARK: - Node handling
-    func spawnShape() {
+    func spawnShape()->SCNNode {
         
         let mat = SCNMaterial()
         mat.lightingModel = .physicallyBased
@@ -89,22 +83,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         geometry.materials = [mat]
         let geometryNode = SCNNode(geometry: geometry)
         geometryNode.position = SCNVector3Make(0, 0, -0.5)
-        scnScene.rootNode.addChildNode(geometryNode)
+        return geometryNode
     }
     
-    func insertSpotLight(position:SCNVector3) {
-        let spotLight = SCNLight()
-        spotLight.type = .spot
-        spotLight.spotInnerAngle = 45
-        spotLight.spotOuterAngle = 45
-        let spotNode = SCNNode()
-        spotNode.light = spotLight
-        spotNode.position = position
-        spotNode.eulerAngles = SCNVector3Make(-Float.pi / 2, 0, 0)
-        self.spotLight = spotLight
-        scnScene.rootNode.addChildNode(spotNode)
-    }
-
     // MARK: - ARSCNViewDelegate
     
 /*
