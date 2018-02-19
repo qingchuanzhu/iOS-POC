@@ -16,6 +16,9 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var scnScene: SCNScene!
     var spotLight: SCNLight!
     var planes: [UUID : Plane]?
+    @IBOutlet var controlPanelSwitch: UISwitch!
+    
+    var controlPanelView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,10 +44,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         // User interactive handling
         self.setupGestureRecognizer()
+        
+        // set up switch
+        self.controlPanelSwitch.addTarget(self, action: #selector(self.switchToggled), for: UIControlEvents.allEvents)
+        self.createControlPanelView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.controlPanelSwitch.isOn = false
         
         // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()

@@ -1,27 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" systemVersion="17A278a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tXr-a1-R10">
             <objects>
-                <viewController id="BV1-FR-VrT" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <arscnView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="BrB-h1-WRS">
+                <viewController id="BV1-FR-VrT" customClass="ViewController" customModule="ARKitLearning" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zTM-Kj-NuV"/>
+                        <viewControllerLayoutGuide type="bottom" id="0Of-En-tsp"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oht-Gy-U3h">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    </arscnView>
+                        <subviews>
+                            <arscnView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PNL-Ve-iQ9">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </arscnView>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="l5x-4s-w8V">
+                                <rect key="frame" x="300" y="616" width="51" height="31"/>
+                            </switch>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="0Of-En-tsp" firstAttribute="top" secondItem="l5x-4s-w8V" secondAttribute="bottom" constant="20" id="GwK-Ie-Jc5"/>
+                            <constraint firstAttribute="trailing" secondItem="PNL-Ve-iQ9" secondAttribute="trailing" id="Nn0-dK-qYw"/>
+                            <constraint firstItem="PNL-Ve-iQ9" firstAttribute="leading" secondItem="oht-Gy-U3h" secondAttribute="leading" id="YnR-YT-8IA"/>
+                            <constraint firstAttribute="trailing" secondItem="l5x-4s-w8V" secondAttribute="trailing" constant="26" id="f6D-ep-W3x"/>
+                            <constraint firstItem="PNL-Ve-iQ9" firstAttribute="top" secondItem="zTM-Kj-NuV" secondAttribute="bottom" constant="-20" id="qKo-gd-gWx"/>
+                            <constraint firstItem="0Of-En-tsp" firstAttribute="top" secondItem="PNL-Ve-iQ9" secondAttribute="bottom" id="yuK-xd-NmY"/>
+                        </constraints>
+                    </view>
                     <connections>
-                        <outlet property="sceneView" destination="BrB-h1-WRS" id="5nT-qQ-ynl"/>
+                        <outlet property="controlPanelSwitch" destination="l5x-4s-w8V" id="BBN-rV-t5M"/>
+                        <outlet property="sceneView" destination="PNL-Ve-iQ9" id="uys-iW-5rR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="36" y="32.833583208395808"/>
+        </scene>
+        <!--Control Pannel View Controller-->
+        <scene sceneID="axz-FG-zs3">
+            <objects>
+                <viewController id="zHi-Zl-q2f" customClass="ControlPannelViewController" customModule="ARKitLearning" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="RMs-lN-kyZ"/>
+                        <viewControllerLayoutGuide type="bottom" id="Kue-e2-6Y9"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="c2S-dr-WUd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CCw-4W-HZc">
+                                <rect key="frame" x="172" y="20" width="30" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="hide"/>
+                                <connections>
+                                    <action selector="hideAction:" destination="zHi-Zl-q2f" eventType="touchUpInside" id="xdX-zO-HpP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <connections>
+                        <outlet property="hideButton" destination="CCw-4W-HZc" id="ODf-7J-hRL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FB7-n4-E09" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="797.60000000000002" y="32.833583208395808"/>
         </scene>
     </scenes>
 </document>
