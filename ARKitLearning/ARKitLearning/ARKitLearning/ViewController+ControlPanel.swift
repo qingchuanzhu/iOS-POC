@@ -37,7 +37,15 @@ extension ViewController{
         let screenHeight = UIScreen.main.bounds.height
         
         self.controlPanelView = UIView(frame: CGRect(x: screenWidth / 4, y: screenHeight / 4, width: screenWidth / 2, height: screenHeight / 2))
-        self.controlPanelView.backgroundColor = UIColor.init(white: 1.0, alpha: 0.3)
+        self.controlPanelView.layer.cornerRadius = 5
+        self.controlPanelView.clipsToBounds = true
+        
+        let contentView = Bundle.main.loadNibNamed("ControlPanelView", owner: self, options: nil)?.first as! UIView
+        contentView.frame = self.controlPanelView.frame
+        contentView.frame.origin = CGPoint(x: 0, y: 0)
+        self.controlPanelView.addSubview(contentView)
+        
+        self.controlPanelView.backgroundColor = UIColor.init(white: 1.0, alpha: 0.75)
         self.view.addSubview(self.controlPanelView)
         self.controlPanelView.isHidden = true
     }

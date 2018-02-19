@@ -20,6 +20,7 @@
 		3501A09F203A544000BDC272 /* CollisionCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501A09E203A544000BDC272 /* CollisionCategory.swift */; };
 		3501A0A1203A973900BDC272 /* ControlPannelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501A0A0203A973900BDC272 /* ControlPannelViewController.swift */; };
 		3501A0A3203A9B1500BDC272 /* ViewController+ControlPanel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3501A0A2203A9B1500BDC272 /* ViewController+ControlPanel.swift */; };
+		3501A0A5203AA03800BDC272 /* ControlPanelView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3501A0A4203AA03800BDC272 /* ControlPanelView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		3501A09E203A544000BDC272 /* CollisionCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollisionCategory.swift; sourceTree = "<group>"; };
 		3501A0A0203A973900BDC272 /* ControlPannelViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlPannelViewController.swift; sourceTree = "<group>"; };
 		3501A0A2203A9B1500BDC272 /* ViewController+ControlPanel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ControlPanel.swift"; sourceTree = "<group>"; };
+		3501A0A4203AA03800BDC272 /* ControlPanelView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ControlPanelView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				3501A097203A36D500BDC272 /* Plane.swift */,
 				3501A09E203A544000BDC272 /* CollisionCategory.swift */,
 				3501A0A0203A973900BDC272 /* ControlPannelViewController.swift */,
+				3501A0A4203AA03800BDC272 /* ControlPanelView.xib */,
 				3501A0842036B8B000BDC272 /* Main.storyboard */,
 				3501A0872036B8B000BDC272 /* Assets.xcassets */,
 				3501A09320393D7C00BDC272 /* GeometryFighter.scnassets */,
@@ -151,6 +154,7 @@
 			files = (
 				3501A08B2036B8B000BDC272 /* LaunchScreen.storyboard in Resources */,
 				3501A0882036B8B000BDC272 /* Assets.xcassets in Resources */,
+				3501A0A5203AA03800BDC272 /* ControlPanelView.xib in Resources */,
 				3501A0862036B8B000BDC272 /* Main.storyboard in Resources */,
 				3501A09420393D7D00BDC272 /* GeometryFighter.scnassets in Resources */,
 			);
