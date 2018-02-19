@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ViewController" customModule="ARKitLearning" customModuleProvider="target">
             <connections>
+                <outlet property="erasePlaneButton" destination="HQ1-Wd-lly" id="dO5-Mk-JNY"/>
                 <outlet property="planeDetectionSwitch" destination="z6O-Sd-glj" id="19W-zl-32X"/>
             </connections>
         </placeholder>
@@ -28,13 +29,27 @@
                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z6O-Sd-glj">
                     <rect key="frame" x="306" y="13.5" width="51" height="31"/>
                 </switch>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HQ1-Wd-lly">
+                    <rect key="frame" x="15" y="52" width="345" height="30"/>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <state key="normal" title="Erase Planes"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </button>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="HQ1-Wd-lly" secondAttribute="trailing" constant="15" id="9EC-V7-hRi"/>
                 <constraint firstItem="z6O-Sd-glj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="5Bu-wq-oKf" secondAttribute="trailing" constant="15" id="CLb-vd-V9C"/>
                 <constraint firstItem="5Bu-wq-oKf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="JMd-cG-IT0"/>
                 <constraint firstItem="5Bu-wq-oKf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" id="Pfi-qj-5hf"/>
+                <constraint firstItem="HQ1-Wd-lly" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="UA5-8A-Rfb"/>
                 <constraint firstAttribute="trailing" secondItem="z6O-Sd-glj" secondAttribute="trailing" constant="20" id="kbC-yK-Id5"/>
+                <constraint firstItem="HQ1-Wd-lly" firstAttribute="top" secondItem="5Bu-wq-oKf" secondAttribute="bottom" constant="15" id="mDG-55-nwQ"/>
                 <constraint firstItem="z6O-Sd-glj" firstAttribute="centerY" secondItem="5Bu-wq-oKf" secondAttribute="centerY" id="xJN-VF-w70"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

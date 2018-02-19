@@ -11,6 +11,7 @@ import UIKit
 import ARKit
 
 extension ViewController{
+    // MARK: - Panel Control
     @objc func switchToggled() {
         if controlPanelSwitch.isOn {
             self.addControlPanel()
@@ -26,13 +27,9 @@ extension ViewController{
     
     func hideControlPanel() {
         self.controlPanelView.isHidden = true
-        self.applyConfigureChanges()
     }
-    
-    func applyConfigureChanges() {
-        
-    }
-    
+
+    // MARK: - planeDetection
     @objc func planeDetectionSwitchToggled() {
         if planeDetectionSwitch.isOn {
             self.enablePlaneDetection()
@@ -59,6 +56,15 @@ extension ViewController{
         let config = self.sceneView.session.configuration as? ARWorldTrackingConfiguration
         config?.planeDetection = []
         sceneView.session.run(config!)
+    }
+    
+    // MARK: - Erase planes
+    @objc func earseAllPlanes() {
+        self.planes?.removeAll()
+        let session = self.sceneView.session
+        for (_, anchor) in self.anchors! {
+            session.remove(anchor: anchor)
+        }
     }
     
     func createControlPanelView() {

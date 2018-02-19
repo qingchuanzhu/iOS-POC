@@ -16,14 +16,18 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var scnScene: SCNScene!
     var spotLight: SCNLight!
     var planes: [UUID : Plane]?
+    var anchors: [UUID: ARAnchor]?
+    
     @IBOutlet var controlPanelSwitch: UISwitch!
     @IBOutlet var planeDetectionSwitch: UISwitch!
+    @IBOutlet var erasePlaneButton: UIButton!
     
     var controlPanelView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.planes = [UUID : Plane]()
+        self.anchors = [UUID: ARAnchor]()
         // Set the view's delegate
         sceneView.delegate = self
         
@@ -46,11 +50,10 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // User interactive handling
         self.setupGestureRecognizer()
         
-        // set up switch
+        // set up switches
         self.controlPanelSwitch.addTarget(self, action: #selector(self.switchToggled), for: UIControlEvents.allEvents)
         self.createControlPanelView()
-        
-        self.planeDetectionSwitch.addTarget(self, action: #selector(self.planeDetectionSwitchToggled), for: UIControlEvents.allEvents)
+        self.setUpControlPanelControls()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -82,6 +85,11 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         let singleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(self.handleTapFrom(recognizer:)))
         singleTapRecognizer.numberOfTapsRequired = 1
         self.sceneView.addGestureRecognizer(singleTapRecognizer)
+    }
+    
+    func setUpControlPanelControls() {
+        self.planeDetectionSwitch.addTarget(self, action: #selector(self.planeDetectionSwitchToggled), for: UIControlEvents.allEvents)
+        self.erasePlaneButton.addTarget(self, action: #selector(self.earseAllPlanes), for: UIControlEvents.touchUpInside)
     }
     
     // MARK: - Node handling
@@ -137,6 +145,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         }
         let plane = Plane(withAnchor: planeAnchor)
         node.addChildNode(plane)
+        self.anchors?.updateValue(anchor, forKey: anchor.identifier)
         self.planes?.updateValue(plane, forKey: anchor.identifier)
     }
     
@@ -150,6 +159,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     func renderer(_ renderer: SCNSceneRenderer, didRemove node: SCNNode, for anchor: ARAnchor) {
         self.planes?.removeValue(forKey: anchor.identifier)
+        self.anchors?.removeValue(forKey: anchor.identifier)
     }
     
     func session(_ session: ARSession, didFailWithError error: Error) {
