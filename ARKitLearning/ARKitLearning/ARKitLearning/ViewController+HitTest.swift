@@ -28,6 +28,16 @@ extension ViewController{
         // manipulated by the physics engine
         cubeNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
         cubeNode.physicsBody?.mass = 2.0;
-        cubeNode.physicsBody.categoryBitMask = CollisionCategory.CollisionCategoryCube;
+        cubeNode.physicsBody?.categoryBitMask = CollisionCategory.CollisionCategoryCube.rawValue
+        
+        // We insert the geometry slightly above the point the user tapped
+        // so that it drops onto the plane using the physics engine
+        let inserionYOffset:Float = 0.5
+        cubeNode.position = SCNVector3Make(
+            hitResult.worldTransform.columns.3.x,
+            hitResult.worldTransform.columns.3.y + inserionYOffset,
+            hitResult.worldTransform.columns.3.z)
+        
+        self.scnScene.rootNode.addChildNode(cubeNode)
     }
 }
