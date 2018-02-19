@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import ARKit
 
 extension ViewController{
     @objc func switchToggled() {
@@ -30,6 +31,34 @@ extension ViewController{
     
     func applyConfigureChanges() {
         
+    }
+    
+    @objc func planeDetectionSwitchToggled() {
+        if planeDetectionSwitch.isOn {
+            self.enablePlaneDetection()
+        } else {
+            self.disablePlaneDetection()
+        }
+    }
+    
+    func enablePlaneDetection() {
+        for (_, plane) in self.planes! {
+            plane.isHidden = false
+        }
+        let config = self.sceneView.session.configuration as? ARWorldTrackingConfiguration
+        config?.planeDetection = .horizontal
+        sceneView.session.run(config!)
+    }
+    
+    func disablePlaneDetection() {
+        // Hide all the planes
+        for (_, plane) in self.planes! {
+            plane.isHidden = true
+        }
+        // Stop detecting new planes or updating existing ones.
+        let config = self.sceneView.session.configuration as? ARWorldTrackingConfiguration
+        config?.planeDetection = []
+        sceneView.session.run(config!)
     }
     
     func createControlPanelView() {

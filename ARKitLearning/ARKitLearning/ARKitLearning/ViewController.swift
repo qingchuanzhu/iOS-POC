@@ -17,6 +17,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     var spotLight: SCNLight!
     var planes: [UUID : Plane]?
     @IBOutlet var controlPanelSwitch: UISwitch!
+    @IBOutlet var planeDetectionSwitch: UISwitch!
     
     var controlPanelView: UIView!
     
@@ -48,6 +49,8 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         // set up switch
         self.controlPanelSwitch.addTarget(self, action: #selector(self.switchToggled), for: UIControlEvents.allEvents)
         self.createControlPanelView()
+        
+        self.planeDetectionSwitch.addTarget(self, action: #selector(self.planeDetectionSwitchToggled), for: UIControlEvents.allEvents)
     }
     
     override func viewWillAppear(_ animated: Bool) {
