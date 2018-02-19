@@ -22,6 +22,8 @@ class Plane: SCNNode {
         planeNode.opacity = 0.5
         planeNode.position = SCNVector3Make(anchor.center.x, 0, anchor.center.z)
         planeNode.transform = SCNMatrix4MakeRotation(-Float.pi / 2.0, 1.0, 0.0, 0.0);
+        
+        planeNode.physicsBody = SCNPhysicsBody(type: .kinematic, shape: SCNPhysicsShape(geometry: self.planeGeometry!, options: nil))
         self.addChildNode(planeNode)
     }
     
@@ -34,6 +36,8 @@ class Plane: SCNNode {
         // same but it's center is updated so we need to update the 3D
         // geometry position
         self.position = SCNVector3Make(anchor.center.x, 0, anchor.center.z);
+        let planeNode = self.childNodes.first
+        planeNode?.physicsBody = SCNPhysicsBody(type: .kinematic, shape: SCNPhysicsShape(geometry: self.planeGeometry!, options: nil))
     }
     
     required init?(coder aDecoder: NSCoder) {

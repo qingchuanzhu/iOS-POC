@@ -26,7 +26,7 @@ extension ViewController{
         let cubeNode = self.spawnShape()
         // The physicsBody tells SceneKit this geometry should be
         // manipulated by the physics engine
-        cubeNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: nil)
+        cubeNode.physicsBody = SCNPhysicsBody(type: .dynamic, shape: SCNPhysicsShape(geometry: cubeNode.geometry!, options: nil))
         cubeNode.physicsBody?.mass = 2.0;
         cubeNode.physicsBody?.categoryBitMask = CollisionCategory.CollisionCategoryCube.rawValue
         
