@@ -14,6 +14,8 @@
 		35B3356820C8DE1A00248DB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35B3356620C8DE1A00248DB5 /* LaunchScreen.storyboard */; };
 		35B3356B20C8DE1A00248DB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B3356A20C8DE1A00248DB5 /* main.m */; };
 		35B3358920C8E29F00248DB5 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B3358620C8E28E00248DB5 /* Charts.framework */; };
+		35B3359120C8E44000248DB5 /* BA360ChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B3359020C8E44000248DB5 /* BA360ChartView.m */; };
+		35B3359420C8E45E00248DB5 /* BA360ChartViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B3359320C8E45E00248DB5 /* BA360ChartViewModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +54,10 @@
 		35B3356920C8DE1A00248DB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		35B3356A20C8DE1A00248DB5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		35B3358020C8E28E00248DB5 /* Charts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Charts.xcodeproj; path = "../../Charts-master/Charts.xcodeproj"; sourceTree = "<group>"; };
+		35B3358F20C8E44000248DB5 /* BA360ChartView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BA360ChartView.h; sourceTree = "<group>"; };
+		35B3359020C8E44000248DB5 /* BA360ChartView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BA360ChartView.m; sourceTree = "<group>"; };
+		35B3359220C8E45E00248DB5 /* BA360ChartViewModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BA360ChartViewModel.h; sourceTree = "<group>"; };
+		35B3359320C8E45E00248DB5 /* BA360ChartViewModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BA360ChartViewModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,10 +92,11 @@
 		35B3355A20C8DE1800248DB5 /* BA360ChartsPOC */ = {
 			isa = PBXGroup;
 			children = (
+				35B3358E20C8E3EF00248DB5 /* ViewModels */,
+				35B3358D20C8E3B800248DB5 /* Views */,
+				35B3358C20C8E3A900248DB5 /* ViewControllers */,
 				35B3355B20C8DE1800248DB5 /* AppDelegate.h */,
 				35B3355C20C8DE1800248DB5 /* AppDelegate.m */,
-				35B3355E20C8DE1800248DB5 /* ViewController.h */,
-				35B3355F20C8DE1800248DB5 /* ViewController.m */,
 				35B3356120C8DE1800248DB5 /* Main.storyboard */,
 				35B3356420C8DE1A00248DB5 /* Assets.xcassets */,
 				35B3356620C8DE1A00248DB5 /* LaunchScreen.storyboard */,
@@ -114,6 +121,33 @@
 				35B3358820C8E28E00248DB5 /* ChartsTests.xctest */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		35B3358C20C8E3A900248DB5 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				35B3355E20C8DE1800248DB5 /* ViewController.h */,
+				35B3355F20C8DE1800248DB5 /* ViewController.m */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		35B3358D20C8E3B800248DB5 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				35B3358F20C8E44000248DB5 /* BA360ChartView.h */,
+				35B3359020C8E44000248DB5 /* BA360ChartView.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		35B3358E20C8E3EF00248DB5 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				35B3359220C8E45E00248DB5 /* BA360ChartViewModel.h */,
+				35B3359320C8E45E00248DB5 /* BA360ChartViewModel.m */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,9 +244,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				35B3359120C8E44000248DB5 /* BA360ChartView.m in Sources */,
 				35B3356020C8DE1800248DB5 /* ViewController.m in Sources */,
 				35B3356B20C8DE1A00248DB5 /* main.m in Sources */,
 				35B3355D20C8DE1800248DB5 /* AppDelegate.m in Sources */,
+				35B3359420C8E45E00248DB5 /* BA360ChartViewModel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
