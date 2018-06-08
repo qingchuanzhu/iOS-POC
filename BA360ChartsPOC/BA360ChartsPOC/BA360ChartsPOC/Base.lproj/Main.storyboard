@@ -46,13 +46,30 @@
                     <view key="view" contentMode="scaleToFill" id="WrB-vx-hT4">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hCL-Ye-3L1">
+                                <rect key="frame" x="16" y="98" width="343" height="245"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="245" id="fkL-fk-hAQ"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="DuX-Rj-g1i" firstAttribute="trailing" secondItem="hCL-Ye-3L1" secondAttribute="trailing" constant="16" id="Yww-Kc-lbf"/>
+                            <constraint firstItem="hCL-Ye-3L1" firstAttribute="top" secondItem="DuX-Rj-g1i" secondAttribute="top" constant="34" id="aYQ-kj-Kg2"/>
+                            <constraint firstItem="hCL-Ye-3L1" firstAttribute="leading" secondItem="DuX-Rj-g1i" secondAttribute="leading" constant="16" id="vIX-YF-eOC"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="DuX-Rj-g1i"/>
                     </view>
+                    <connections>
+                        <outlet property="holderView" destination="hCL-Ye-3L1" id="uG2-MV-avT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EwW-xs-6oj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1585" y="-564"/>
+            <point key="canvasLocation" x="1584.8" y="-564.46776611694156"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8zA-63-PgP">
