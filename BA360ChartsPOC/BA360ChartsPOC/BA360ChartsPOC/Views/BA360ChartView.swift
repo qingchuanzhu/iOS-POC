@@ -18,5 +18,7 @@ class BA360ChartView: LineChartView {
         // Drawing code
     }
     */
+    
+    var viewModel:BA360ChartViewModelProtocol?
 
 }

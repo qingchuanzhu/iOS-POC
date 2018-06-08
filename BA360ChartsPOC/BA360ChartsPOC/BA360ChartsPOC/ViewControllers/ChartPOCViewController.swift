@@ -19,6 +19,9 @@ class ChartPOCViewController: UIViewController, ChartViewDelegate {
 
         // Do any additional setup after loading the view.
         chartView = BA360ChartView(frame: .zero)
+        
+        // set the view model of chartView
+        chartView.viewModel = BA360ChartViewModel()
         chartView.delegate = self
         chartView.dragEnabled = true
         
@@ -30,6 +33,11 @@ class ChartPOCViewController: UIViewController, ChartViewDelegate {
         leftAxis.axisMinimum = 0
         
         constraintChartView()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateChartData()
     }
 
     func constraintChartView() {
@@ -47,14 +55,8 @@ class ChartPOCViewController: UIViewController, ChartViewDelegate {
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func updateChartData() {
+        
     }
-    */
 
 }

@@ -63,6 +63,7 @@
 		35B3359520C9ACDF00248DB5 /* BA360ChartsPOC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BA360ChartsPOC-Bridging-Header.h"; sourceTree = "<group>"; };
 		35B3359620C9ACDF00248DB5 /* BA360ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BA360ChartView.swift; sourceTree = "<group>"; };
 		35B3359820C9B6BA00248DB5 /* ChartPOCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPOCViewController.swift; sourceTree = "<group>"; };
+		35B3359A20CB43FC00248DB5 /* BA360ChartProtocolBundle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BA360ChartProtocolBundle.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +155,7 @@
 			children = (
 				35B3359220C8E45E00248DB5 /* BA360ChartViewModel.h */,
 				35B3359320C8E45E00248DB5 /* BA360ChartViewModel.m */,
+				35B3359A20CB43FC00248DB5 /* BA360ChartProtocolBundle.h */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";

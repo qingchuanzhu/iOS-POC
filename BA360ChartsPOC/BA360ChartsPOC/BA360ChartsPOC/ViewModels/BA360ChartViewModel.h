@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BA360ChartProtocolBundle.h"
 
-@interface BA360ChartViewModel : NSObject
+@interface BA360ChartViewModel : NSObject<BA360ChartViewModelProtocol>
 
 @end
