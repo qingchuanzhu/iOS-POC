@@ -21,8 +21,19 @@ class BA360ChartView: LineChartView {
     
     var viewModel:BA360ChartViewModelProtocol?
     
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.dragEnabled = true
+        self.rightAxis.enabled = false
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     func updateChartData() {
         let values:[ChartDataEntry]? = self.retriveDataArray()
+        configureChartBasedOnData(data: values)
         let set1 = LineChartDataSet(values: values, label: "Data set 1")
         
         // following settings should come from VM
@@ -38,6 +49,24 @@ class BA360ChartView: LineChartView {
     
     func retriveDataArray() -> [ChartDataEntry]? {
         return viewModel?.retrive360ChartData()
+    }
+    
+    func configureChartBasedOnData(data:[ChartDataEntry]?){
+        var maxValue:Double = 0
+        let leftAxis = self.leftAxis
+        leftAxis.removeAllLimitLines()
+        
+        guard let data = data  else {
+            return
+        }
+        
+        for entry in data {
+            if entry.y > maxValue{
+                maxValue = entry.y
+            }
+        }
+        leftAxis.axisMaximum = maxValue * 1.2
+        leftAxis.axisMinimum = 0
     }
 
 }

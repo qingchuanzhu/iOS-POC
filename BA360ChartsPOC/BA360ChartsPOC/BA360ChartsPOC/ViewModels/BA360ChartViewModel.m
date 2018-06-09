@@ -18,7 +18,7 @@
 
 - (instancetype)init{
     if (self = [super init]) {
-        self.dataArray1 = @[@12.1, @14.5, @45, @34.5, @22, @67];
+        self.dataArray1 = @[@12.1, @14.5, @45, @34.5, @22, @67, @34.6, @56.8];
     }
     return self;
 }

@@ -24,15 +24,6 @@ class ChartPOCViewController: UIViewController, ChartViewDelegate {
         chartView.viewModel = BA360ChartViewModel()
         
         chartView.delegate = self
-        chartView.dragEnabled = true
-        
-        chartView.rightAxis.enabled = false
-        
-        let leftAxis = chartView.leftAxis
-        leftAxis.removeAllLimitLines()
-        leftAxis.axisMaximum = 50
-        leftAxis.axisMinimum = 0
-        
         constraintChartView()
     }
     
