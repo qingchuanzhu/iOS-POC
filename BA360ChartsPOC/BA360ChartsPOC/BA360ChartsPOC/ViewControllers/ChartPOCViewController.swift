@@ -22,6 +22,7 @@ class ChartPOCViewController: UIViewController, ChartViewDelegate {
         
         // set the view model of chartView
         chartView.viewModel = BA360ChartViewModel()
+        
         chartView.delegate = self
         chartView.dragEnabled = true
         
@@ -37,7 +38,7 @@ class ChartPOCViewController: UIViewController, ChartViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        updateChartData()
+        chartView.updateChartData()
     }
 
     func constraintChartView() {
@@ -54,9 +55,4 @@ class ChartPOCViewController: UIViewController, ChartViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-
-    func updateChartData() {
-        
-    }
-
 }

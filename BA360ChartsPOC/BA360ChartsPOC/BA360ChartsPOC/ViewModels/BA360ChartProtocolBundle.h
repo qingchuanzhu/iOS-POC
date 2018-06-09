@@ -9,11 +9,14 @@
 #ifndef BA360ChartProtocolBundle_h
 #define BA360ChartProtocolBundle_h
 
-
-#endif /* BA360ChartProtocolBundle_h */
+#import <Foundation/Foundation.h>
+@import Charts;
 
 @protocol BA360ChartViewModelProtocol<NSObject>
 
-
+@required
+- (NSArray<ChartDataEntry *>*) retrive360ChartData;
 
 @end
+
+#endif /* BA360ChartProtocolBundle_h */

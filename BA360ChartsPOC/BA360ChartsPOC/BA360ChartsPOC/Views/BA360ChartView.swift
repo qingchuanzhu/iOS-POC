@@ -20,5 +20,24 @@ class BA360ChartView: LineChartView {
     */
     
     var viewModel:BA360ChartViewModelProtocol?
+    
+    func updateChartData() {
+        let values:[ChartDataEntry]? = self.retriveDataArray()
+        let set1 = LineChartDataSet(values: values, label: "Data set 1")
+        
+        // following settings should come from VM
+        set1.drawCirclesEnabled = true
+        set1.setColor(.black)
+        set1.lineWidth = 1
+        set1.circleRadius = 3
+        set1.valueFont = .systemFont(ofSize: 9)
+        
+        let data = LineChartData(dataSet: set1)
+        self.data = data
+    }
+    
+    func retriveDataArray() -> [ChartDataEntry]? {
+        return viewModel?.retrive360ChartData()
+    }
 
 }
