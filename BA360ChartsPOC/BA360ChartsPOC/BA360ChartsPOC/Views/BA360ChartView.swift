@@ -25,10 +25,32 @@ class BA360ChartView: LineChartView {
         super.init(frame: frame)
         self.dragEnabled = true
         self.rightAxis.enabled = false
+        self.leftAxis.setLabelCount(7, force: true)
+        self.xAxis.enabled = false
+        self.leftAxis.drawLabelsEnabled = false
+        self.leftAxis.axisLineColor = .clear
+        self.legend.enabled = false
+        self.chartDescription = nil
+        self.drawGridBackgroundEnabled = true
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func addGradientLayer() {
+        let gradient = CAGradientLayer()
+        gradient.frame = self.bounds
+        gradient.startPoint = CGPoint(x: 0, y: 0.5)
+        gradient.endPoint = CGPoint(x: 1, y: 0.5)
+        gradient.colors = [UIColor.clear.cgColor, UIColor.black.cgColor, UIColor.black.cgColor, UIColor.clear.cgColor]
+        gradient.locations = [0, 0.1, 0.9, 1]
+        self.layer.mask = gradient
+    }
+    
+    override func draw(_ rect: CGRect) {
+        addGradientLayer()
+        super.draw(rect)
     }
     
     func updateChartData() {
