@@ -11,14 +11,6 @@ import Charts
 
 class BA360ChartView: LineChartView {
 
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
-    }
-    */
-    
     var viewModel:BA360ChartViewModelProtocol?
     
     override init(frame: CGRect) {
@@ -54,23 +46,34 @@ class BA360ChartView: LineChartView {
     }
     
     func updateChartData() {
-        let values:[ChartDataEntry]? = self.retriveDataArray()
-        configureChartBasedOnData(data: values)
-        let set1 = LineChartDataSet(values: values, label: "Data set 1")
+        let historyValues:[ChartDataEntry]? = self.viewModel?.retrive360HistoricalChartData()
+        let forecastValues:[ChartDataEntry]? = self.viewModel?.retrive360ForcastChartData()
+        let allValues:[ChartDataEntry]? = self.viewModel?.retrive360ChartData()
+        configureChartBasedOnData(data: allValues)
+        let historySet = LineChartDataSet(values: historyValues, label: "History")
+        let forecastSet = LineChartDataSet(values: forecastValues, label: "Forecast")
         
-        // following settings should come from VM
-        set1.drawCirclesEnabled = true
-        set1.setColor(.black)
-        set1.lineWidth = 1
-        set1.circleRadius = 3
-        set1.valueFont = .systemFont(ofSize: 9)
+        configureHistoryDataSet(dataSet: historySet)
+        configureForecastDataSet(dataSet: forecastSet)
         
-        let data = LineChartData(dataSet: set1)
+        let data = LineChartData(dataSets: [historySet, forecastSet])
         self.data = data
     }
     
-    func retriveDataArray() -> [ChartDataEntry]? {
-        return viewModel?.retrive360ChartData()
+    func configureHistoryDataSet(dataSet:LineChartDataSet) {
+        dataSet.drawCirclesEnabled = true
+        dataSet.setColor(.black)
+        dataSet.lineWidth = 1
+        dataSet.circleRadius = 3
+        dataSet.valueFont = .systemFont(ofSize: 9)
+    }
+    
+    func configureForecastDataSet(dataSet:LineChartDataSet) {
+        dataSet.drawCirclesEnabled = true
+        dataSet.setColor(.black)
+        dataSet.lineWidth = 1
+        dataSet.circleRadius = 3
+        dataSet.valueFont = .systemFont(ofSize: 9)
     }
     
     func configureChartBasedOnData(data:[ChartDataEntry]?){
