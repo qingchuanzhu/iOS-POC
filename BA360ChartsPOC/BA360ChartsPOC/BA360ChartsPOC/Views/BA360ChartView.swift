@@ -66,6 +66,15 @@ class BA360ChartView: LineChartView {
         dataSet.lineWidth = 1
         dataSet.circleRadius = 3
         dataSet.valueFont = .systemFont(ofSize: 9)
+        // fill the color of history part
+        dataSet.fillAlpha = 1
+        
+        let gradientColors = [ChartColorTemplates.colorFromString("#00B3FE").cgColor,
+                              ChartColorTemplates.colorFromString("#029AD9").cgColor]
+        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)
+        
+        dataSet.fill = Fill(linearGradient: gradient!, angle: 45)
+        dataSet.drawFilledEnabled = true
     }
     
     func configureForecastDataSet(dataSet:LineChartDataSet) {
@@ -74,6 +83,14 @@ class BA360ChartView: LineChartView {
         dataSet.lineWidth = 1
         dataSet.circleRadius = 3
         dataSet.valueFont = .systemFont(ofSize: 9)
+        // fill the color of forecast part
+        dataSet.fillAlpha = 1
+        let gradientColors = [ChartColorTemplates.colorFromString("#D4EFFC").cgColor,
+                              ChartColorTemplates.colorFromString("#DFF5FF").cgColor]
+        let gradient = CGGradient(colorsSpace: nil, colors: gradientColors as CFArray, locations: nil)
+        
+        dataSet.fill = Fill(linearGradient: gradient!, angle: -45)
+        dataSet.drawFilledEnabled = true
     }
     
     func configureChartBasedOnData(data:[ChartDataEntry]?){
