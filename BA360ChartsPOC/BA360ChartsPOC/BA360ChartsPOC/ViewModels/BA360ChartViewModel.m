@@ -25,6 +25,7 @@
     return self;
 }
 
+#pragma mark - BA360ChartViewModelProtocol implementation
 - (NSArray<ChartDataEntry *>*)retrive360ChartData{
     NSArray *hisdataArray = [self retrive360HistoricalChartData];
     NSArray *forcastArray = [self retrive360ForcastChartData];
@@ -46,9 +47,11 @@
 
 - (NSArray<ChartDataEntry *> *)retrive360ForcastChartData{
     __block NSMutableArray<ChartDataEntry *> *dataArray = [NSMutableArray new];
-    NSUInteger historyDataCount = self.historyData.count;
-    [self.forcastData enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        double yValue = (self.forcastData[idx]).doubleValue;
+    NSUInteger historyDataCount = self.historyData.count - 1; // the first of forecast should have same index as last of history data
+    NSMutableArray<NSNumber*> *forecastArray = [NSMutableArray arrayWithArray:self.forcastData];
+    [forecastArray insertObject:[self.historyData lastObject] atIndex:0];
+    [forecastArray enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        double yValue = forecastArray[idx].doubleValue;
         ChartDataEntry *entry = [[ChartDataEntry alloc] initWithX:idx+historyDataCount y:yValue];
         [dataArray addObject:entry];
     }];
