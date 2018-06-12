@@ -15,7 +15,14 @@
 @protocol BA360ChartViewModelProtocol<NSObject>
 
 @required
+/// returns all the data entries used to plot the chart
 - (NSArray<ChartDataEntry *>*) retrive360ChartData;
+
+/// returns historical data entries
+- (NSArray<ChartDataEntry *>*) retrive360HistoricalChartData;
+
+/// returns future data entries
+- (NSArray<ChartDataEntry *>*) retrive360ForcastChartData;
 
 @end
 

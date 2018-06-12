@@ -17,6 +17,7 @@
 		35B3359420C8E45E00248DB5 /* BA360ChartViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B3359320C8E45E00248DB5 /* BA360ChartViewModel.m */; };
 		35B3359720C9ACDF00248DB5 /* BA360ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B3359620C9ACDF00248DB5 /* BA360ChartView.swift */; };
 		35B3359920C9B6BA00248DB5 /* ChartPOCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B3359820C9B6BA00248DB5 /* ChartPOCViewController.swift */; };
+		35B335A220D0424900248DB5 /* BA360ChartsPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B335A120D0424900248DB5 /* BA360ChartsPOCTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +42,13 @@
 			remoteGlobalIDString = A58A4ED274A941CA248EA921;
 			remoteInfo = Charts;
 		};
+		35B335A420D0424900248DB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35B3355020C8DE1800248DB5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 35B3355720C8DE1800248DB5;
+			remoteInfo = BA360ChartsPOC;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +69,9 @@
 		35B3359620C9ACDF00248DB5 /* BA360ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BA360ChartView.swift; sourceTree = "<group>"; };
 		35B3359820C9B6BA00248DB5 /* ChartPOCViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPOCViewController.swift; sourceTree = "<group>"; };
 		35B3359A20CB43FC00248DB5 /* BA360ChartProtocolBundle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BA360ChartProtocolBundle.h; sourceTree = "<group>"; };
+		35B3359F20D0424800248DB5 /* BA360ChartsPOCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BA360ChartsPOCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		35B335A120D0424900248DB5 /* BA360ChartsPOCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BA360ChartsPOCTests.swift; sourceTree = "<group>"; };
+		35B335A320D0424900248DB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +83,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35B3359C20D0424800248DB5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -79,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				35B3355A20C8DE1800248DB5 /* BA360ChartsPOC */,
+				35B335A020D0424900248DB5 /* BA360ChartsPOCTests */,
 				35B3355920C8DE1800248DB5 /* Products */,
 				35B3357120C8DFCF00248DB5 /* Frameworks */,
 			);
@@ -88,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				35B3355820C8DE1800248DB5 /* BA360ChartsPOC.app */,
+				35B3359F20D0424800248DB5 /* BA360ChartsPOCTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -155,6 +175,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		35B335A020D0424900248DB5 /* BA360ChartsPOCTests */ = {
+			isa = PBXGroup;
+			children = (
+				35B335A120D0424900248DB5 /* BA360ChartsPOCTests.swift */,
+				35B335A320D0424900248DB5 /* Info.plist */,
+			);
+			path = BA360ChartsPOCTests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -176,18 +205,41 @@
 			productReference = 35B3355820C8DE1800248DB5 /* BA360ChartsPOC.app */;
 			productType = "com.apple.product-type.application";
 		};
+		35B3359E20D0424800248DB5 /* BA360ChartsPOCTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 35B335A620D0424900248DB5 /* Build configuration list for PBXNativeTarget "BA360ChartsPOCTests" */;
+			buildPhases = (
+				35B3359B20D0424800248DB5 /* Sources */,
+				35B3359C20D0424800248DB5 /* Frameworks */,
+				35B3359D20D0424800248DB5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				35B335A520D0424900248DB5 /* PBXTargetDependency */,
+			);
+			name = BA360ChartsPOCTests;
+			productName = BA360ChartsPOCTests;
+			productReference = 35B3359F20D0424800248DB5 /* BA360ChartsPOCTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		35B3355020C8DE1800248DB5 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0940;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "Qingchuan Zhu";
 				TargetAttributes = {
 					35B3355720C8DE1800248DB5 = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 0940;
+					};
+					35B3359E20D0424800248DB5 = {
+						CreatedOnToolsVersion = 9.4;
+						TestTargetID = 35B3355720C8DE1800248DB5;
 					};
 				};
 			};
@@ -211,6 +263,7 @@
 			projectRoot = "";
 			targets = (
 				35B3355720C8DE1800248DB5 /* BA360ChartsPOC */,
+				35B3359E20D0424800248DB5 /* BA360ChartsPOCTests */,
 			);
 		};
 /* End PBXProject section */
@@ -243,6 +296,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35B3359D20D0424800248DB5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -259,6 +319,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		35B3359B20D0424800248DB5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				35B335A220D0424900248DB5 /* BA360ChartsPOCTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -266,6 +334,11 @@
 			isa = PBXTargetDependency;
 			name = Charts;
 			targetProxy = 35B3358A20C8E2AB00248DB5 /* PBXContainerItemProxy */;
+		};
+		35B335A520D0424900248DB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 35B3355720C8DE1800248DB5 /* BA360ChartsPOC */;
+			targetProxy = 35B335A420D0424900248DB5 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -440,6 +513,50 @@
 			};
 			name = Release;
 		};
+		35B335A720D0424900248DB5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QQ7A795Y74;
+				INFOPLIST_FILE = BA360ChartsPOCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.BA360ChartsPOCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BA360ChartsPOC.app/BA360ChartsPOC";
+			};
+			name = Debug;
+		};
+		35B335A820D0424900248DB5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = QQ7A795Y74;
+				INFOPLIST_FILE = BA360ChartsPOCTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.BA360ChartsPOCTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BA360ChartsPOC.app/BA360ChartsPOC";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -457,6 +574,15 @@
 			buildConfigurations = (
 				35B3356F20C8DE1A00248DB5 /* Debug */,
 				35B3357020C8DE1A00248DB5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		35B335A620D0424900248DB5 /* Build configuration list for PBXNativeTarget "BA360ChartsPOCTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				35B335A720D0424900248DB5 /* Debug */,
+				35B335A820D0424900248DB5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
