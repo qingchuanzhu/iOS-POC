@@ -21,7 +21,7 @@
 /// returns historical data entries
 - (NSArray<ChartDataEntry *>*) retrive360HistoricalChartData;
 
-/// returns future data entries
+/// returns future data entries, the future data's x indice are based on the count of history data
 - (NSArray<ChartDataEntry *>*) retrive360ForcastChartData;
 
 @end

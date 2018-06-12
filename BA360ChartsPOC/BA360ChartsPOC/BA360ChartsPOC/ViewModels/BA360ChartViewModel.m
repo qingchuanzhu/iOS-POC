@@ -46,9 +46,10 @@
 
 - (NSArray<ChartDataEntry *> *)retrive360ForcastChartData{
     __block NSMutableArray<ChartDataEntry *> *dataArray = [NSMutableArray new];
+    NSUInteger historyDataCount = self.historyData.count;
     [self.forcastData enumerateObjectsUsingBlock:^(NSNumber * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
         double yValue = (self.forcastData[idx]).doubleValue;
-        ChartDataEntry *entry = [[ChartDataEntry alloc] initWithX:idx y:yValue];
+        ChartDataEntry *entry = [[ChartDataEntry alloc] initWithX:idx+historyDataCount y:yValue];
         [dataArray addObject:entry];
     }];
     return dataArray;
