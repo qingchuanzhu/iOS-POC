@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import CoreGraphics
 
 class BA360ChartView: LineChartView {
 
@@ -41,8 +42,12 @@ class BA360ChartView: LineChartView {
     }
     
     override func draw(_ rect: CGRect) {
-        addGradientLayer()
+        // 1. draw the filled shape
+        // 2. draw the grid lines
+        // 3. draw the chart line
         super.draw(rect)
+        self.leftYAxisRenderer.renderGridLines(context: UIGraphicsGetCurrentContext()!)
+        addGradientLayer()
     }
     
     func updateChartData() {
