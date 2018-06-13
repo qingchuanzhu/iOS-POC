@@ -13,7 +13,7 @@ import CoreGraphics
 class BA360ChartView: LineChartView {
 
     var viewModel:BA360ChartViewModelProtocol?
-
+    var overlayLineChart: LineChartView?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -26,6 +26,9 @@ class BA360ChartView: LineChartView {
         self.legend.enabled = false
         self.chartDescription = nil
         self.drawGridBackgroundEnabled = true
+        self.overlayLineChart = LineChartView(frame: frame)
+        self.highlightPerTapEnabled = false
+        configureOverlayLineChartAppearence()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -51,6 +54,7 @@ class BA360ChartView: LineChartView {
         addGradientLayer()
     }
     
+    // will be called by the view controller
     func updateChartData() {
         let historyValues:[ChartDataEntry]? = self.viewModel?.retrive360HistoricalChartData()
         let forecastValues:[ChartDataEntry]? = self.viewModel?.retrive360ForcastChartData()
@@ -64,6 +68,9 @@ class BA360ChartView: LineChartView {
         
         let data = LineChartData(dataSets: [historySet, forecastSet])
         self.data = data
+        
+        // overlay chart data depends on self.data, so call it at last
+        configureOverlayLineChartData()
     }
     
     func configureHistoryDataSet(dataSet:LineChartDataSet) {
@@ -109,6 +116,30 @@ class BA360ChartView: LineChartView {
         }
         leftAxis.axisMaximum = maxValue * 1.2
         leftAxis.axisMinimum = 0
+    }
+    
+    func configureOverlayLineChartAppearence() {
+        self.overlayLineChart?.dragEnabled = true
+        self.overlayLineChart?.rightAxis.enabled = false
+//        self.overlayLineChart?.leftAxis.setLabelCount(7, force: true)
+        self.overlayLineChart?.xAxis.enabled = false
+//        self.overlayLineChart?.leftAxis.drawLabelsEnabled = false
+//        self.overlayLineChart?.leftAxis.axisLineColor = .clear
+        self.overlayLineChart?.legend.enabled = false
+        self.overlayLineChart?.chartDescription = nil
+        self.overlayLineChart?.leftAxis.enabled = false
+//        self.overlayLineChart?.drawGridBackgroundEnabled = true
+    }
+    
+    func configureOverlayLineChartData() {
+        self.overlayLineChart?.leftAxis.axisMaximum = self.leftAxis.axisMaximum
+        self.overlayLineChart?.leftAxis.axisMinimum = self.leftAxis.axisMinimum
+        let allValues:[ChartDataEntry]? = self.viewModel?.retrive360ChartData()
+        let allDataSet = LineChartDataSet(values: allValues, label: "ALL")
+        allDataSet.circleRadius = 3
+        allDataSet.lineWidth = 2
+        let data = LineChartData(dataSet: allDataSet)
+        self.overlayLineChart?.data = data
     }
 
 }
