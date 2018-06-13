@@ -27,7 +27,7 @@ class BA360ChartView: LineChartView {
         self.chartDescription = nil
         self.drawGridBackgroundEnabled = true
         self.overlayLineChart = LineChartView(frame: frame)
-        self.highlightPerTapEnabled = false
+        self.doubleTapToZoomEnabled = false
         configureOverlayLineChartAppearence()
     }
     
@@ -78,6 +78,8 @@ class BA360ChartView: LineChartView {
     func configureHistoryDataSet(dataSet:LineChartDataSet) {
         dataSet.drawValuesEnabled = false
         dataSet.drawCirclesEnabled = false
+        dataSet.highlightColor = ChartColorTemplates.colorFromString("#0073CF")
+        dataSet.highlightLineWidth = 3
         // fill the color of history part
         dataSet.fillAlpha = 1
         
@@ -92,6 +94,8 @@ class BA360ChartView: LineChartView {
     func configureForecastDataSet(dataSet:LineChartDataSet) {
         dataSet.drawValuesEnabled = false
         dataSet.drawCirclesEnabled = false
+        dataSet.highlightColor = ChartColorTemplates.colorFromString("#0073CF")
+        dataSet.highlightLineWidth = 3
         // fill the color of forecast part
         dataSet.fillAlpha = 1
         let gradientColors = [ChartColorTemplates.colorFromString("#D4EFFC").cgColor,
@@ -123,14 +127,10 @@ class BA360ChartView: LineChartView {
     func configureOverlayLineChartAppearence() {
         self.overlayLineChart?.dragEnabled = true
         self.overlayLineChart?.rightAxis.enabled = false
-//        self.overlayLineChart?.leftAxis.setLabelCount(7, force: true)
         self.overlayLineChart?.xAxis.enabled = false
-//        self.overlayLineChart?.leftAxis.drawLabelsEnabled = false
-//        self.overlayLineChart?.leftAxis.axisLineColor = .clear
         self.overlayLineChart?.legend.enabled = false
         self.overlayLineChart?.chartDescription = nil
         self.overlayLineChart?.leftAxis.enabled = false
-//        self.overlayLineChart?.drawGridBackgroundEnabled = true
     }
     
     func configureOverlayLineChartData() {
@@ -146,5 +146,9 @@ class BA360ChartView: LineChartView {
         let data = LineChartData(dataSet: allDataSet)
         self.overlayLineChart?.data = data
     }
-
+    
+    // MARK: - Chart tap actions
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight){
+        
+    }
 }

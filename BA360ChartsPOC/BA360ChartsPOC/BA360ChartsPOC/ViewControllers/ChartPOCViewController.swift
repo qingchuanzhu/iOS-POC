@@ -46,4 +46,12 @@ class ChartPOCViewController: UIViewController, ChartViewDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    // MARK: - Chart View Delegate callbacks
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        // Logics view controller needs to coordinate
+        if chartView === self.chartView {
+            self.chartView.chartValueSelected(chartView, entry: entry, highlight: highlight)
+        }
+    }
+    
 }
