@@ -13,6 +13,7 @@ import CoreGraphics
 class BA360ChartView: LineChartView {
 
     var viewModel:BA360ChartViewModelProtocol?
+
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -66,11 +67,8 @@ class BA360ChartView: LineChartView {
     }
     
     func configureHistoryDataSet(dataSet:LineChartDataSet) {
-        dataSet.drawCirclesEnabled = true
-        dataSet.setColor(.black)
-        dataSet.lineWidth = 1
-        dataSet.circleRadius = 3
-        dataSet.valueFont = .systemFont(ofSize: 9)
+        dataSet.drawValuesEnabled = false
+        dataSet.drawCirclesEnabled = false
         // fill the color of history part
         dataSet.fillAlpha = 1
         
@@ -83,11 +81,8 @@ class BA360ChartView: LineChartView {
     }
     
     func configureForecastDataSet(dataSet:LineChartDataSet) {
-        dataSet.drawCirclesEnabled = true
-        dataSet.setColor(.black)
-        dataSet.lineWidth = 1
-        dataSet.circleRadius = 3
-        dataSet.valueFont = .systemFont(ofSize: 9)
+        dataSet.drawValuesEnabled = false
+        dataSet.drawCirclesEnabled = false
         // fill the color of forecast part
         dataSet.fillAlpha = 1
         let gradientColors = [ChartColorTemplates.colorFromString("#D4EFFC").cgColor,
