@@ -51,6 +51,8 @@ class BA360ChartView: LineChartView {
         // 3. draw the chart line
         super.draw(rect)
         self.leftYAxisRenderer.renderGridLines(context: UIGraphicsGetCurrentContext()!)
+        self.overlayLineChart?.frame = self.frame
+        self.overlayLineChart?.draw(rect)
         addGradientLayer()
     }
     
@@ -136,8 +138,11 @@ class BA360ChartView: LineChartView {
         self.overlayLineChart?.leftAxis.axisMinimum = self.leftAxis.axisMinimum
         let allValues:[ChartDataEntry]? = self.viewModel?.retrive360ChartData()
         let allDataSet = LineChartDataSet(values: allValues, label: "ALL")
-        allDataSet.circleRadius = 3
+        allDataSet.circleRadius = 5
+        allDataSet.circleHoleRadius = 4.5
+        allDataSet.circleHoleColor = UIColor.white
         allDataSet.lineWidth = 2
+        allDataSet.setCircleColor(UIColor.black)
         let data = LineChartData(dataSet: allDataSet)
         self.overlayLineChart?.data = data
     }
