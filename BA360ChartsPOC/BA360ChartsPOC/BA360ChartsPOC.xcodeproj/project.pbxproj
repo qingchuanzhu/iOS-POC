@@ -19,6 +19,7 @@
 		35B335A220D0424900248DB5 /* BA360ChartsPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B335A120D0424900248DB5 /* BA360ChartsPOCTests.swift */; };
 		35B335AA20D186C900248DB5 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B3358620C8E28E00248DB5 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		35B335AE20D186E000248DB5 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B3358620C8E28E00248DB5 /* Charts.framework */; };
+		35D7458E20D1DF5E00144AF1 /* BA360ChartSelectionDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7458D20D1DF5E00144AF1 /* BA360ChartSelectionDot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +95,7 @@
 		35B3359F20D0424800248DB5 /* BA360ChartsPOCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BA360ChartsPOCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B335A120D0424900248DB5 /* BA360ChartsPOCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BA360ChartsPOCTests.swift; sourceTree = "<group>"; };
 		35B335A320D0424900248DB5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		35D7458D20D1DF5E00144AF1 /* BA360ChartSelectionDot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BA360ChartSelectionDot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				35B3359620C9ACDF00248DB5 /* BA360ChartView.swift */,
+				35D7458D20D1DF5E00144AF1 /* BA360ChartSelectionDot.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -336,6 +339,7 @@
 			files = (
 				35B3356020C8DE1800248DB5 /* ViewController.m in Sources */,
 				35B3359720C9ACDF00248DB5 /* BA360ChartView.swift in Sources */,
+				35D7458E20D1DF5E00144AF1 /* BA360ChartSelectionDot.swift in Sources */,
 				35B3356B20C8DE1A00248DB5 /* main.m in Sources */,
 				35B3355D20C8DE1800248DB5 /* AppDelegate.m in Sources */,
 				35B3359920C9B6BA00248DB5 /* ChartPOCViewController.swift in Sources */,
