@@ -13,11 +13,12 @@
 		35B3356520C8DE1A00248DB5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 35B3356420C8DE1A00248DB5 /* Assets.xcassets */; };
 		35B3356820C8DE1A00248DB5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35B3356620C8DE1A00248DB5 /* LaunchScreen.storyboard */; };
 		35B3356B20C8DE1A00248DB5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B3356A20C8DE1A00248DB5 /* main.m */; };
-		35B3358920C8E29F00248DB5 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B3358620C8E28E00248DB5 /* Charts.framework */; };
 		35B3359420C8E45E00248DB5 /* BA360ChartViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B3359320C8E45E00248DB5 /* BA360ChartViewModel.m */; };
 		35B3359720C9ACDF00248DB5 /* BA360ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B3359620C9ACDF00248DB5 /* BA360ChartView.swift */; };
 		35B3359920C9B6BA00248DB5 /* ChartPOCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B3359820C9B6BA00248DB5 /* ChartPOCViewController.swift */; };
 		35B335A220D0424900248DB5 /* BA360ChartsPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B335A120D0424900248DB5 /* BA360ChartsPOCTests.swift */; };
+		35B335AA20D186C900248DB5 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B3358620C8E28E00248DB5 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		35B335AE20D186E000248DB5 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B3358620C8E28E00248DB5 /* Charts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,7 +50,28 @@
 			remoteGlobalIDString = 35B3355720C8DE1800248DB5;
 			remoteInfo = BA360ChartsPOC;
 		};
+		35B335AB20D186C900248DB5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 35B3358020C8E28E00248DB5 /* Charts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = A58A4ED274A941CA248EA921;
+			remoteInfo = Charts;
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		35B335AD20D186C900248DB5 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				35B335AA20D186C900248DB5 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		35B3355820C8DE1800248DB5 /* BA360ChartsPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BA360ChartsPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35B3358920C8E29F00248DB5 /* Charts.framework in Frameworks */,
+				35B335AE20D186E000248DB5 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -194,11 +216,13 @@
 				35B3355420C8DE1800248DB5 /* Sources */,
 				35B3355520C8DE1800248DB5 /* Frameworks */,
 				35B3355620C8DE1800248DB5 /* Resources */,
+				35B335AD20D186C900248DB5 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 				35B3358B20C8E2AB00248DB5 /* PBXTargetDependency */,
+				35B335AC20D186C900248DB5 /* PBXTargetDependency */,
 			);
 			name = BA360ChartsPOC;
 			productName = BA360ChartsPOC;
@@ -340,6 +364,11 @@
 			target = 35B3355720C8DE1800248DB5 /* BA360ChartsPOC */;
 			targetProxy = 35B335A420D0424900248DB5 /* PBXContainerItemProxy */;
 		};
+		35B335AC20D186C900248DB5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = Charts;
+			targetProxy = 35B335AB20D186C900248DB5 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
@@ -475,6 +504,7 @@
 		35B3356F20C8DE1A00248DB5 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -496,6 +526,7 @@
 		35B3357020C8DE1A00248DB5 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
