@@ -17,8 +17,6 @@
 		35B3359720C9ACDF00248DB5 /* BA360ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B3359620C9ACDF00248DB5 /* BA360ChartView.swift */; };
 		35B3359920C9B6BA00248DB5 /* ChartPOCViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B3359820C9B6BA00248DB5 /* ChartPOCViewController.swift */; };
 		35B335A220D0424900248DB5 /* BA360ChartsPOCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35B335A120D0424900248DB5 /* BA360ChartsPOCTests.swift */; };
-		35B335AA20D186C900248DB5 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 35B3358620C8E28E00248DB5 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		35B335AE20D186E000248DB5 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 35B3358620C8E28E00248DB5 /* Charts.framework */; };
 		35D7458E20D1DF5E00144AF1 /* BA360ChartSelectionDot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35D7458D20D1DF5E00144AF1 /* BA360ChartSelectionDot.swift */; };
 		9ECEB36AC0F2A54A773621C7 /* Pods_BA360ChartsPOC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 252AFFD10364DBC12168CB36 /* Pods_BA360ChartsPOC.framework */; };
 /* End PBXBuildFile section */
@@ -68,7 +66,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				35B335AA20D186C900248DB5 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -107,7 +104,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				35B335AE20D186E000248DB5 /* Charts.framework in Frameworks */,
 				9ECEB36AC0F2A54A773621C7 /* Pods_BA360ChartsPOC.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -569,6 +565,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = BA360ChartsPOC/Info.plist;
@@ -592,6 +589,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = BA360ChartsPOC/Info.plist;
