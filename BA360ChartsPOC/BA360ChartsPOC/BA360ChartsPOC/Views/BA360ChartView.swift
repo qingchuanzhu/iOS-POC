@@ -14,6 +14,7 @@ class BA360ChartView: LineChartView {
 
     var viewModel:BA360ChartViewModelProtocol?
     var overlayLineChart: LineChartView?
+    var selectionDot:BA360ChartSelectionDot?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -149,6 +150,26 @@ class BA360ChartView: LineChartView {
     
     // MARK: - Chart tap actions
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight){
+        let point = self.getPosition(entry: entry, axis: YAxis.AxisDependency.left)
+        guard selectionDot != nil else {
+            addDotToView()
+            changeDotToPosition(xPos: point.x, yPos: point.y)
+            return
+        }
         
+        changeDotToPosition(xPos: point.x, yPos: point.y)
+    }
+    
+    func addDotToView() {
+        selectionDot = BA360ChartSelectionDot()
+        selectionDot?.radius = 8
+        selectionDot?.lineColor = UIColor.clear
+        selectionDot?.fillColor = ChartColorTemplates.colorFromString("#0073CF")
+        selectionDot?.center = center
+        self.addSubview(selectionDot!)
+    }
+    
+    func changeDotToPosition(xPos x:CGFloat, yPos y:CGFloat) {
+        selectionDot?.center = CGPoint(x: x, y: y)
     }
 }
