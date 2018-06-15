@@ -58,4 +58,12 @@
     return dataArray;
 }
 
+- (NSString *)historyPartString{
+    return @"History";
+}
+
+- (NSString *)forecastPartString{
+    return @"Forecast";
+}
+
 @end

@@ -24,6 +24,12 @@
 /// returns future data entries, the future data's x indice are based on the count of history data
 - (NSArray<ChartDataEntry *>*) retrive360ForcastChartData;
 
+/// returns the string shown bottom right at history part
+- (NSString *)historyPartString;
+
+/// returns the string shown bottom left at forecast part
+- (NSString *)forecastPartString;
+
 @end
 
 #endif /* BA360ChartProtocolBundle_h */
