@@ -46,17 +46,72 @@ class BA360ChartView: LineChartView {
         self.layer.mask = gradient
     }
     
+    // MARK: - Label Drawing
+    func drawLabels(_ rect: CGRect) {
+        let historyLabel = UILabel(frame: .zero)
+        historyLabel.text = self.viewModel?.historyPartString()
+        historyLabel.sizeToFit()
+        historyLabel.frame.origin = determineOriginForHistoryLabel(historyLabel)
+        if historyLabel.frame.origin == .zero {
+            // today entry not found, something wrong, don't draw the label
+        } else {
+            let string:NSString = self.viewModel?.historyPartString() as! NSString
+            string .draw(in: historyLabel.frame, withAttributes: [:])
+        }
+        
+        
+        let forecastLabel = UILabel(frame: .zero)
+        forecastLabel.text = self.viewModel?.forecastPartString()
+        forecastLabel.sizeToFit()
+        forecastLabel.frame.origin = determineOriginForForecastLabel(forecastLabel)
+        if forecastLabel.frame.origin == .zero {
+            // today entry not found, something wrong, don't draw the label
+        } else {
+            forecastLabel.draw(forecastLabel.frame)
+        }
+    }
+    
+    func determineOriginForHistoryLabel(_ label:UILabel) -> CGPoint {
+        var origin:CGPoint = .zero
+        let size = label.frame.size
+        let xPos = xPositionOfTodayEntry()
+        origin.x = xPos - size.width - 5
+        origin.y = self.frame.size.height - 5 - size.height
+        return origin
+    }
+    
+    func determineOriginForForecastLabel(_ label:UILabel) -> CGPoint {
+        var origin:CGPoint = .zero
+        let size = label.frame.size
+        let xPos = xPositionOfTodayEntry()
+        origin.x = xPos + 5
+        origin.y = self.frame.size.height - 5 - size.height
+        return origin
+    }
+    
+    func xPositionOfTodayEntry() -> CGFloat {
+        let entry = self.viewModel?.retrive360HistoricalChartData().last
+        if let entry = entry {
+            let point = self.getPosition(entry: entry, axis: YAxis.AxisDependency.left)
+            return point.x
+        }
+        return 0.0
+    }
+    
+    // MARK: - custom drawing
     override func draw(_ rect: CGRect) {
         // 1. draw the filled shape
         // 2. draw the grid lines
         // 3. draw the chart line
         super.draw(rect)
         self.leftYAxisRenderer.renderGridLines(context: UIGraphicsGetCurrentContext()!)
+        drawLabels(rect)
         self.overlayLineChart?.frame = self.frame
         self.overlayLineChart?.draw(rect)
         addGradientLayer()
     }
     
+    // MARK: - Chart data updates
     // will be called by the view controller
     func updateChartData() {
         let historyValues:[ChartDataEntry]? = self.viewModel?.retrive360HistoricalChartData()
