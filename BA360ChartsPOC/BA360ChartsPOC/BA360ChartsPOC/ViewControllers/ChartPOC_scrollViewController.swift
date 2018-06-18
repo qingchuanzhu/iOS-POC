@@ -8,29 +8,33 @@
 
 import UIKit
 
-class ChartPOC_scrollViewController: UIViewController {
+class ChartPOC_scrollViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet var holderScrollView: BA360ChartScrollView!
+    var chartView:BA360ChartView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        chartView = holderScrollView.embeddingChartView
+        
+        // set the view model of chartView
+        chartView.viewModel = BA360ChartViewModel()
+        
+        chartView.delegate = self
+        // chartView is ready, now configure its appearence
+        holderScrollView.constrainTheChartView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        chartView.updateChartData()
     }
-    */
 
+    // MARK: - Chart View Delegate callbacks
+    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        // Logics view controller needs to coordinate
+        if chartView === self.chartView {
+            self.chartView.chartValueSelected(chartView, entry: entry, highlight: highlight)
+        }
+    }
 }
