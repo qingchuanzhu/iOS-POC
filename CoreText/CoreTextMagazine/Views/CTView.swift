@@ -14,6 +14,11 @@ class CTView: UIView {
         guard let context = UIGraphicsGetCurrentContext() else {
             return
         }
+        // Flip the coordinate system, basically performs a view transform
+        context.textMatrix = .identity // The identity transform
+        context.translateBy(x: 0, y: bounds.size.height) // change the origin of the coordinate system
+        context.scaleBy(x: 1.0, y: -1.0)
+        
         let path = CGMutablePath()
         path.addRect(bounds)
         let attrString = NSAttributedString(string: "Hello World")
