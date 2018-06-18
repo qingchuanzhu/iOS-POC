@@ -58,19 +58,25 @@ class BA360ChartView: LineChartView {
             // today entry not found, something wrong, don't draw the label
         } else {
             let string:NSString = NSString(string: (self.viewModel?.historyPartString())!)
-            string.draw(in: historyLabel.frame, withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor:ChartColorTemplates.colorFromString("#575757")])
+            string.draw(in: historyLabel.frame, withAttributes: labelDrawingAttributes())
         }
-        
         
         let forecastLabel = UILabel(frame: .zero)
         forecastLabel.text = self.viewModel?.forecastPartString()
+        forecastLabel.font = UIFont.systemFont(ofSize: 13)
         forecastLabel.sizeToFit()
         forecastLabel.frame.origin = determineOriginForForecastLabel(forecastLabel)
         if forecastLabel.frame.origin == .zero {
             // today entry not found, something wrong, don't draw the label
         } else {
-            forecastLabel.draw(forecastLabel.frame)
+            let string:NSString = NSString(string: (self.viewModel?.forecastPartString())!)
+            string.draw(in: forecastLabel.frame, withAttributes: labelDrawingAttributes())
         }
+    }
+    
+    func labelDrawingAttributes() -> Dictionary<NSAttributedStringKey, Any> {
+        let attrDict = [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor:ChartColorTemplates.colorFromString("#333333")]
+        return attrDict
     }
     
     func determineOriginForHistoryLabel(_ label:UILabel) -> CGPoint {
