@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3558520720D8684A00E74339 /* BA360ChartScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558520620D8684A00E74339 /* BA360ChartScrollView.swift */; };
+		3558520920D868D100E74339 /* ChartPOC_scrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558520820D868D100E74339 /* ChartPOC_scrollViewController.swift */; };
 		35B3355D20C8DE1800248DB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B3355C20C8DE1800248DB5 /* AppDelegate.m */; };
 		35B3356020C8DE1800248DB5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B3355F20C8DE1800248DB5 /* ViewController.m */; };
 		35B3356320C8DE1800248DB5 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 35B3356120C8DE1800248DB5 /* Main.storyboard */; };
@@ -74,6 +76,8 @@
 
 /* Begin PBXFileReference section */
 		252AFFD10364DBC12168CB36 /* Pods_BA360ChartsPOC.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BA360ChartsPOC.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3558520620D8684A00E74339 /* BA360ChartScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BA360ChartScrollView.swift; sourceTree = "<group>"; };
+		3558520820D868D100E74339 /* ChartPOC_scrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPOC_scrollViewController.swift; sourceTree = "<group>"; };
 		35B3355820C8DE1800248DB5 /* BA360ChartsPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BA360ChartsPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		35B3355B20C8DE1800248DB5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		35B3355C20C8DE1800248DB5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -180,6 +184,7 @@
 				35B3355E20C8DE1800248DB5 /* ViewController.h */,
 				35B3355F20C8DE1800248DB5 /* ViewController.m */,
 				35B3359820C9B6BA00248DB5 /* ChartPOCViewController.swift */,
+				3558520820D868D100E74339 /* ChartPOC_scrollViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -189,6 +194,7 @@
 			children = (
 				35B3359620C9ACDF00248DB5 /* BA360ChartView.swift */,
 				35D7458D20D1DF5E00144AF1 /* BA360ChartSelectionDot.swift */,
+				3558520620D8684A00E74339 /* BA360ChartScrollView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -391,10 +397,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				35B3356020C8DE1800248DB5 /* ViewController.m in Sources */,
+				3558520920D868D100E74339 /* ChartPOC_scrollViewController.swift in Sources */,
 				35B3359720C9ACDF00248DB5 /* BA360ChartView.swift in Sources */,
 				35D7458E20D1DF5E00144AF1 /* BA360ChartSelectionDot.swift in Sources */,
 				35B3356B20C8DE1A00248DB5 /* main.m in Sources */,
 				35B3355D20C8DE1800248DB5 /* AppDelegate.m in Sources */,
+				3558520720D8684A00E74339 /* BA360ChartScrollView.swift in Sources */,
 				35B3359920C9B6BA00248DB5 /* ChartPOCViewController.swift in Sources */,
 				35B3359420C8E45E00248DB5 /* BA360ChartViewModel.m in Sources */,
 			);
