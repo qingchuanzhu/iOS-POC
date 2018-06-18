@@ -13,6 +13,8 @@
 		355851E820D8237600E74339 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 355851E720D8237600E74339 /* Assets.xcassets */; };
 		355851EB20D8237600E74339 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 355851E920D8237600E74339 /* LaunchScreen.storyboard */; };
 		355851F620D8237700E74339 /* CoreTextMagazineTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 355851F520D8237700E74339 /* CoreTextMagazineTests.swift */; };
+		3558520220D823D600E74339 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3558520120D823D600E74339 /* CoreText.framework */; };
+		3558520520D8242800E74339 /* CTView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558520420D8242800E74339 /* CTView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +38,8 @@
 		355851F120D8237700E74339 /* CoreTextMagazineTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTextMagazineTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		355851F520D8237700E74339 /* CoreTextMagazineTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTextMagazineTests.swift; sourceTree = "<group>"; };
 		355851F720D8237700E74339 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3558520120D823D600E74339 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		3558520420D8242800E74339 /* CTView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CTView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3558520220D823D600E74339 /* CoreText.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,9 +64,11 @@
 		355851D420D8237100E74339 = {
 			isa = PBXGroup;
 			children = (
+				3558520320D823ED00E74339 /* Views */,
 				355851DF20D8237100E74339 /* CoreTextMagazine */,
 				355851F420D8237700E74339 /* CoreTextMagazineTests */,
 				355851DE20D8237100E74339 /* Products */,
+				3558520020D823D600E74339 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +101,22 @@
 				355851F720D8237700E74339 /* Info.plist */,
 			);
 			path = CoreTextMagazineTests;
+			sourceTree = "<group>";
+		};
+		3558520020D823D600E74339 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				3558520120D823D600E74339 /* CoreText.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3558520320D823ED00E74339 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3558520420D8242800E74339 /* CTView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +221,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				355851E320D8237100E74339 /* ViewController.swift in Sources */,
+				3558520520D8242800E74339 /* CTView.swift in Sources */,
 				355851E120D8237100E74339 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
