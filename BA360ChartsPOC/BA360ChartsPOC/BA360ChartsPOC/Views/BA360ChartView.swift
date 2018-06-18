@@ -18,6 +18,7 @@ class BA360ChartView: LineChartView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        
         self.dragEnabled = true
         self.rightAxis.enabled = false
         self.leftAxis.setLabelCount(7, force: true)
@@ -50,13 +51,14 @@ class BA360ChartView: LineChartView {
     func drawLabels(_ rect: CGRect) {
         let historyLabel = UILabel(frame: .zero)
         historyLabel.text = self.viewModel?.historyPartString()
+        historyLabel.font = UIFont.systemFont(ofSize: 13)
         historyLabel.sizeToFit()
         historyLabel.frame.origin = determineOriginForHistoryLabel(historyLabel)
         if historyLabel.frame.origin == .zero {
             // today entry not found, something wrong, don't draw the label
         } else {
-            let string:NSString = self.viewModel?.historyPartString() as! NSString
-            string .draw(in: historyLabel.frame, withAttributes: [:])
+            let string:NSString = NSString(string: (self.viewModel?.historyPartString())!)
+            string.draw(in: historyLabel.frame, withAttributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 13), NSAttributedStringKey.foregroundColor:ChartColorTemplates.colorFromString("#575757")])
         }
         
         
@@ -76,7 +78,7 @@ class BA360ChartView: LineChartView {
         let size = label.frame.size
         let xPos = xPositionOfTodayEntry()
         origin.x = xPos - size.width - 5
-        origin.y = self.frame.size.height - 5 - size.height
+        origin.y = self.frame.size.height - 5 - size.height - self.minOffset
         return origin
     }
     
@@ -85,7 +87,7 @@ class BA360ChartView: LineChartView {
         let size = label.frame.size
         let xPos = xPositionOfTodayEntry()
         origin.x = xPos + 5
-        origin.y = self.frame.size.height - 5 - size.height
+        origin.y = self.frame.size.height - 5 - size.height - self.minOffset
         return origin
     }
     
