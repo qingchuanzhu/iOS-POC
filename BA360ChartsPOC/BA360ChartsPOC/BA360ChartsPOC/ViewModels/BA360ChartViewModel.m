@@ -28,7 +28,8 @@
 #pragma mark - BA360ChartViewModelProtocol implementation
 - (NSArray<ChartDataEntry *>*)retrive360ChartData{
     NSArray *hisdataArray = [self retrive360HistoricalChartData];
-    NSArray *forcastArray = [self retrive360ForcastChartData];
+    NSMutableArray *forcastArray = [NSMutableArray arrayWithArray:[self retrive360ForcastChartData]];
+    [forcastArray removeObjectAtIndex:0];
     NSMutableArray *dataArray = [NSMutableArray new];
     [dataArray addObjectsFromArray:hisdataArray];
     [dataArray addObjectsFromArray:forcastArray];

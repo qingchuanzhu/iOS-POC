@@ -19,7 +19,7 @@ class BA360ChartView: LineChartView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.dragEnabled = true
+        self.dragEnabled = false
         self.rightAxis.enabled = false
         self.leftAxis.setLabelCount(7, force: true)
         self.xAxis.enabled = false
@@ -30,6 +30,7 @@ class BA360ChartView: LineChartView {
         self.drawGridBackgroundEnabled = true
         self.overlayLineChart = LineChartView(frame: frame)
         self.doubleTapToZoomEnabled = false
+        self.setScaleEnabled(false)
         configureOverlayLineChartAppearence()
     }
     
@@ -189,7 +190,8 @@ class BA360ChartView: LineChartView {
     }
     
     func configureOverlayLineChartAppearence() {
-        self.overlayLineChart?.dragEnabled = true
+        self.overlayLineChart?.dragEnabled = false
+        self.overlayLineChart?.setScaleEnabled(false)
         self.overlayLineChart?.rightAxis.enabled = false
         self.overlayLineChart?.xAxis.enabled = false
         self.overlayLineChart?.legend.enabled = false

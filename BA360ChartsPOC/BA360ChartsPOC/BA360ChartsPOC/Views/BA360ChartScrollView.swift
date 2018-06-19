@@ -11,10 +11,21 @@ import UIKit
 class BA360ChartScrollView: UIScrollView {
 
     let embeddingChartView:BA360ChartView!
+    var contentWidth:CGFloat?
     
     override init(frame: CGRect) {
         embeddingChartView = BA360ChartView(frame: .zero)
         super.init(frame: frame)
+        commonInit()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        embeddingChartView = BA360ChartView(frame: .zero)
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    private func commonInit() {
         addSubview(embeddingChartView)
     }
     
@@ -28,11 +39,23 @@ class BA360ChartScrollView: UIScrollView {
          So, total chart widht would be:
             (number of data - 1) * SCREEN_WIDTH * 0.8 / 5
          */
+        let screen_width = UIScreen.main.bounds.width
+        guard let numberOfData = embeddingChartView.viewModel?.retrive360ChartData().count else {
+            // something wrong with view model
+            return
+        }
+        contentWidth = CGFloat(numberOfData - 1) * screen_width * 0.8 / 5
+        embeddingChartView.translatesAutoresizingMaskIntoConstraints = false
+        embeddingChartView.widthAnchor.constraint(equalToConstant: contentWidth!).isActive = true
+        embeddingChartView.heightAnchor.constraint(equalToConstant: self.bounds.height).isActive = true
+        embeddingChartView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
+        embeddingChartView.setNeedsLayout()
+//        self.contentSize = CGSize(width: width, height: self.bounds.height)
+//        self.setNeedsLayout()
     }
     
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    override func layoutSubviews() {
+        self.contentSize = CGSize(width: contentWidth!, height: self.bounds.height)
+        super.layoutSubviews()
     }
-    
-
 }
