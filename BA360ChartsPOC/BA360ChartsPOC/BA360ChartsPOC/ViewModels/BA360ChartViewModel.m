@@ -83,9 +83,11 @@
     self.fetchStatus = BA360ChartDataFetchStatus_In_progress;
     NSDate *startTime = [NSDate date];
     NSLog(@"%@", [NSString stringWithFormat:@"Start fetching data at %@", [self.formatter stringFromDate:startTime]]);
-    dispatch_after(2.5, myCustomQueue, ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.5 * NSEC_PER_SEC)), myCustomQueue, ^{
 //        NSArray<ChartDataEntry *> *dataArray = self.retrive360HistoricalChartData;
-        callBack();
+        dispatch_async(dispatch_get_main_queue(), ^{
+            callBack();
+        });
         self.fetchStatus = BA360ChartDataFetchStatus_Idle;
         NSDate *endTime = [NSDate date];
         NSLog(@"%@", [NSString stringWithFormat:@"fetching complete at %@", [self.formatter stringFromDate:endTime]]);
