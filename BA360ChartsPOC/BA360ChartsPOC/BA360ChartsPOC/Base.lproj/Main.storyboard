@@ -32,6 +32,14 @@
                                     <segue destination="cAH-ZK-eFR" kind="show" id="5SB-r1-RIj"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kjZ-Fk-wq8">
+                                <rect key="frame" x="128" y="572" width="80" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Long-Scroll"/>
+                                <connections>
+                                    <segue destination="TyA-P5-7ew" kind="show" id="EJb-gj-gbb"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -111,6 +119,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jq5-px-pqo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="848.79999999999995" y="151.57421289355324"/>
+        </scene>
+        <!--ChartPOC longscroll View Controller-->
+        <scene sceneID="V3V-T1-nMn">
+            <objects>
+                <viewController id="TyA-P5-7ew" customClass="ChartPOC_longscrollViewController" customModule="BA360ChartsPOC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="S7k-Va-H4z">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="K6S-gV-7jq" customClass="BA360ChartLongScrollView" customModule="BA360ChartsPOC" customModuleProvider="target">
+                                <rect key="frame" x="16" y="112" width="343" height="224"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="224" id="I36-Wf-6V7"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="K6S-gV-7jq" firstAttribute="leading" secondItem="SzO-px-pgR" secondAttribute="leading" constant="16" id="NMw-Ve-luQ"/>
+                            <constraint firstItem="SzO-px-pgR" firstAttribute="trailing" secondItem="K6S-gV-7jq" secondAttribute="trailing" constant="16" id="P0O-QF-Mnt"/>
+                            <constraint firstItem="K6S-gV-7jq" firstAttribute="top" secondItem="SzO-px-pgR" secondAttribute="top" constant="48" id="fT0-dS-X3S"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="SzO-px-pgR"/>
+                    </view>
+                    <connections>
+                        <outlet property="holderView" destination="K6S-gV-7jq" id="0K3-Y9-p0O"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yWs-jM-mn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1584.8" y="151.57421289355324"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="8zA-63-PgP">

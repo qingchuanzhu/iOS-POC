@@ -117,7 +117,7 @@ class BA360ChartView: LineChartView {
         drawLabels(rect)
         self.overlayLineChart?.frame = self.frame
         self.overlayLineChart?.draw(rect)
-        addGradientLayer()
+//        addGradientLayer()
     }
     
     // MARK: - Chart data updates
