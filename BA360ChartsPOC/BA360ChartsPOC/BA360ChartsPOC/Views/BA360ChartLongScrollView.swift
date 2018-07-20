@@ -20,6 +20,7 @@ class BA360ChartLongScrollView: UIScrollView {
     let screen_width = UIScreen.main.bounds.width
     let sectionWidth = CGFloat(15 - 1) * UIScreen.main.bounds.width * 0.8 / 5
     var contentViewWidthConstraint:NSLayoutConstraint?
+    weak var callBack:ChartPOC_longscrollViewController?
     
     var counter:Int = 0
     
@@ -62,13 +63,15 @@ class BA360ChartLongScrollView: UIScrollView {
         let chartView = BA360ChartView(frame: self.frame)
         chartView.viewModel = self.chartViewModel
         chartView.updateChartData()
-        chartView.counter = self.counter
         // add to subView and charts array
         addSubview(chartView)
         dataCount += dataForEachSection
         // constraint it
         contentWidth = CGFloat(dataForEachSection - 1) * screen_width * 0.8 / 5
         self.contentSize = CGSize(width: contentWidth, height: self.bounds.height)
+        
+        //TODO: adding loading indicator when scrolling next section
+        //TODO: fix gaps between each section
         
         chartView.translatesAutoresizingMaskIntoConstraints = false
         chartView.heightAnchor.constraint(equalToConstant:self.bounds.height).isActive = true
@@ -90,6 +93,7 @@ class BA360ChartLongScrollView: UIScrollView {
         chartsArray.append(chartView)
         let insetChange = CGFloat(chartsArray.count - 1) * sectionWidth
         self.contentInset = UIEdgeInsetsMake(0, insetChange, 0, 0)
+        callBack?.updateNextFetchOffset(-insetChange)
         
         
         chartView.setNeedsLayout()
