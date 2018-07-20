@@ -8,15 +8,19 @@
 
 import UIKit
 
+private let numberOfSections:Int = 2
+
 class ChartPOC_longscrollViewController: UIViewController, UIScrollViewDelegate{
 
     @IBOutlet var holderView: BA360ChartLongScrollView!
+    var numOfSectionFetched:Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         holderView.delegate = self
+        numOfSectionFetched = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -26,9 +30,10 @@ class ChartPOC_longscrollViewController: UIViewController, UIScrollViewDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset
-        if currentOffset.x <= 0 {
+        if currentOffset.x <= 0 && numOfSectionFetched < numberOfSections {
             if holderView.chartViewModel.currentFetchStatus() == .idle {
                 holderView.fetchNewData()
+                numOfSectionFetched += 1
             }
         }
     }
@@ -36,6 +41,7 @@ class ChartPOC_longscrollViewController: UIViewController, UIScrollViewDelegate{
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.holderView.fetchNewData()
+        numOfSectionFetched += 1
     }
 
     /*
