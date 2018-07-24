@@ -16,6 +16,8 @@
 @property (nonatomic, assign) BA360ChartDataFetchStatus fetchStatus;
 @property (nonatomic, strong) NSDateFormatter *formatter;
 
+@property (nonatomic, assign) BOOL firstUpdate;
+@property (nonatomic, assign) NSInteger fetchedDataCount;
 @end
 
 @implementation BA360ChartViewModel
@@ -25,6 +27,8 @@
         self.formatter = [NSDateFormatter new];
         [self.formatter setDateFormat:@"HH:MM:SS"];
         self.fetchStatus = BA360ChartDataFetchStatus_Idle;
+        self.firstUpdate = YES;
+        self.fetchedDataCount = 0;
         self.historyData = @[@12.1, @14.5, @45, @34.5, @22, @67, @34.6, @56.8, @34, @56, @41.4, @22.2];
         self.forcastData = @[@45.1, @67.1, @45];
     }
@@ -77,14 +81,26 @@
     return self.fetchStatus;
 }
 
+- (void)doubleHistoryData{
+    if (self.firstUpdate) {
+        self.firstUpdate = NO;
+        self.fetchedDataCount = 15;
+    } else {
+        NSArray *tempArray = @[@12.1, @14.5, @45, @34.5, @22, @67, @34.6, @56.8, @34, @56, @41.4, @22.2];
+        self.fetchedDataCount = 12;
+        self.historyData = [self.historyData arrayByAddingObjectsFromArray:tempArray];
+    }
+}
+
 - (void)fetchNewDataForDay:(NSInteger) startDay andEndDay:(NSInteger) endDay withCallBack:(void (^)(void))callBack{
     dispatch_queue_t myCustomQueue;
     myCustomQueue = dispatch_queue_create("com.qingchuan.MyCustomQueue", DISPATCH_QUEUE_SERIAL);
     self.fetchStatus = BA360ChartDataFetchStatus_In_progress;
     NSDate *startTime = [NSDate date];
     NSLog(@"%@", [NSString stringWithFormat:@"Start fetching data at %@", [self.formatter stringFromDate:startTime]]);
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), myCustomQueue, ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), myCustomQueue, ^{
 //        NSArray<ChartDataEntry *> *dataArray = self.retrive360HistoricalChartData;
+        [self doubleHistoryData];
         dispatch_async(dispatch_get_main_queue(), ^{
             callBack();
         });
@@ -92,6 +108,10 @@
         NSDate *endTime = [NSDate date];
         NSLog(@"%@", [NSString stringWithFormat:@"fetching complete at %@", [self.formatter stringFromDate:endTime]]);
     });
+}
+
+- (NSInteger)newlyFetchDataCount{
+    return self.fetchedDataCount;
 }
 
 @end

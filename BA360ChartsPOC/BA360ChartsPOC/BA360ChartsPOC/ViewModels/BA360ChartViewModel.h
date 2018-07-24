@@ -18,5 +18,6 @@ typedef NS_ENUM(NSInteger, BA360ChartDataFetchStatus){
 
 - (BA360ChartDataFetchStatus)currentFetchStatus;
 - (void)fetchNewDataForDay:(NSInteger) startDay andEndDay:(NSInteger) endDay withCallBack:(void (^)(void))callBack;
+- (NSInteger)newlyFetchDataCount;
 
 @end
