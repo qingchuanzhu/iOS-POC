@@ -8,6 +8,8 @@
 
 import UIKit
 
+private let indicatorWidth:CGFloat = 30.0
+
 class BA360ChartLongScrollView: UIScrollView {
     
     var chartsArray:[BA360ChartView] = []
@@ -66,8 +68,10 @@ class BA360ChartLongScrollView: UIScrollView {
             self.addSubview(loadingIndicator)
             loadingIndicator.heightAnchor.constraint(equalToConstant:self.bounds.height).isActive = true
             loadingIndicator.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-            loadingIndicator.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
+            loadingIndicator.widthAnchor.constraint(equalToConstant: indicatorWidth).isActive = true
             loadingIndicator.rightAnchor.constraint(equalTo: (previewsChart.leftAnchor)).isActive = true
+            let insetChange = CGFloat(chartsArray.count - 1) * sectionWidth + indicatorWidth
+            self.contentInset = UIEdgeInsetsMake(0, insetChange, 0, 0)
             loadingIndicator.startAnimating()
         }
     }
