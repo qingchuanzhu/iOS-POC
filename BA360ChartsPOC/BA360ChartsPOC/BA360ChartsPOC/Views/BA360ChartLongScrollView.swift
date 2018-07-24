@@ -22,6 +22,9 @@ class BA360ChartLongScrollView: UIScrollView {
     var contentViewWidthConstraint:NSLayoutConstraint?
     weak var callBack:ChartPOC_longscrollViewController?
     
+    // loading indicator, will be always resued
+    let loadingIndicator:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
+    
     var counter:Int = 0
     
     override init(frame: CGRect) {
@@ -49,6 +52,8 @@ class BA360ChartLongScrollView: UIScrollView {
 //        contentViewWidthConstraint?.isActive = true
 //        contentView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
 //        contentView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
     }
     
     func fetchNewData()  {
@@ -56,9 +61,22 @@ class BA360ChartLongScrollView: UIScrollView {
             self.counter += 1
             self.appendNewChart()
         }
+        // add loading indicator whenever there is chartView at its right
+        if let previewsChart = chartsArray.last{
+            self.addSubview(loadingIndicator)
+            loadingIndicator.heightAnchor.constraint(equalToConstant:self.bounds.height).isActive = true
+            loadingIndicator.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+            loadingIndicator.widthAnchor.constraint(equalToConstant: 30.0).isActive = true
+            loadingIndicator.rightAnchor.constraint(equalTo: (previewsChart.leftAnchor)).isActive = true
+            loadingIndicator.startAnimating()
+        }
     }
     
     func appendNewChart(){
+        // remove the loading indicator, we don't care here if it is added to scroll view
+        loadingIndicator.stopAnimating()
+        loadingIndicator.removeFromSuperview()
+        
         // create a new BA360ChartView
         let chartView = BA360ChartView(frame: self.frame)
         chartView.viewModel = self.chartViewModel
@@ -70,7 +88,6 @@ class BA360ChartLongScrollView: UIScrollView {
         contentWidth = CGFloat(dataForEachSection - 1) * screen_width * 0.8 / 5
         self.contentSize = CGSize(width: contentWidth, height: self.bounds.height)
         
-        //TODO: adding loading indicator when scrolling next section
         //TODO: fix gaps between each section
         
         chartView.translatesAutoresizingMaskIntoConstraints = false
