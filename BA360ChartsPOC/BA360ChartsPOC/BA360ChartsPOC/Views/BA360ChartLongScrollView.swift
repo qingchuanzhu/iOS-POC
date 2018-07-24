@@ -73,24 +73,28 @@ class BA360ChartLongScrollView: UIScrollView {
             loadingIndicator.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
             loadingIndicator.widthAnchor.constraint(equalToConstant: indicatorWidth).isActive = true
             loadingIndicator.rightAnchor.constraint(equalTo: (chartView.leftAnchor)).isActive = true
-//            let insetChange = CGFloat(chartsArray.count - 1) * sectionWidth + indicatorWidth
-//            self.contentInset = UIEdgeInsetsMake(0, insetChange, 0, 0)
+            self.contentInset = UIEdgeInsetsMake(0, indicatorWidth, 0, 0)
+            
             loadingIndicator.startAnimating()
         }
     }
     
     func expendChart(){
-        loadingIndicator.stopAnimating()
-        loadingIndicator.removeFromSuperview()
+        var adjContentOffset = self.contentOffset
+        
         chartView.updateChartData()
         
         dataCount += self.chartViewModel.newlyFetchDataCount()
         contentWidth = CGFloat(dataCount - 1) * screen_width * 0.8 / 5
         contentViewWidthConstraint.constant = contentWidth
         
-        var adjContentOffset = self.contentOffset
         adjContentOffset.x += (12 * UIScreen.main.bounds.width * 0.8 / 5)
         self.contentOffset = adjContentOffset
+        
+        // need to stop and remove after calculation of new contentwidth, otherwise system will
+        // shift the view first by indicatorWidth, then adjust the new width
+        loadingIndicator.stopAnimating()
+        loadingIndicator.removeFromSuperview()
         
         callBack?.updateNextFetchOffset(0)
     }
