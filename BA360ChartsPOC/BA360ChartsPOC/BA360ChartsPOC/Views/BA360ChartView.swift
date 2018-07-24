@@ -15,7 +15,7 @@ class BA360ChartView: LineChartView {
     var viewModel:BA360ChartViewModelProtocol?
     var overlayLineChart: LineChartView?
     var selectionDot:BA360ChartSelectionDot?
-    var boarderWidth:CGFloat = 0 {
+    var boarderWidth:CGFloat = 10 {
         didSet(newValue){
             self.minOffset = newValue
             self.overlayLineChart?.minOffset = newValue
@@ -39,7 +39,7 @@ class BA360ChartView: LineChartView {
         self.overlayLineChart?.clipsToBounds = false
         self.doubleTapToZoomEnabled = false
         self.setScaleEnabled(false)
-        self.minOffset = borderLineWidth
+        self.minOffset = boarderWidth
         configureOverlayLineChartAppearence()
     }
     

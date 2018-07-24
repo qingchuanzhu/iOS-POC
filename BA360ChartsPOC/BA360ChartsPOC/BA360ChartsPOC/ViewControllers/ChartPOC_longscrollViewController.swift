@@ -8,7 +8,7 @@
 
 import UIKit
 
-private let numberOfSections:Int = 3
+private let numberOfSections:Int = 6
 
 class ChartPOC_longscrollViewController: UIViewController, UIScrollViewDelegate{
 

@@ -85,68 +85,25 @@ class BA360ChartLongScrollView: UIScrollView {
         chartView.updateChartData()
         
         dataCount += self.chartViewModel.newlyFetchDataCount()
-        contentWidth = CGFloat(dataCount - 1) * screen_width * 0.8 / 5
+        contentWidth = CGFloat(dataCount - 1) * (screen_width * 0.8) / 5 + 20
         contentViewWidthConstraint.constant = contentWidth
         
-        adjContentOffset.x += (12 * UIScreen.main.bounds.width * 0.8 / 5)
+        adjContentOffset.x += (12 * (screen_width * 0.8) / 5)
         self.contentOffset = adjContentOffset
         
         // need to stop and remove after calculation of new contentwidth, otherwise system will
         // shift the view first by indicatorWidth, then adjust the new width
-        loadingIndicator.stopAnimating()
-        loadingIndicator.removeFromSuperview()
-        
-        callBack?.updateNextFetchOffset(0)
-    }
-    
-    func appendNewChart(){
-        // remove the loading indicator, we don't care here if it is added to scroll view
-//        loadingIndicator.stopAnimating()
-//        loadingIndicator.removeFromSuperview()
-        
-        // create a new BA360ChartView
-        let chartView = BA360ChartView(frame: self.frame)
-        chartView.boarderWidth = 0
-        chartView.viewModel = self.chartViewModel
-        chartView.updateChartData()
-        // add to subView and charts array
-        addSubview(chartView)
-        dataCount += dataForEachSection
-        // constraint it
-        contentWidth = CGFloat(dataForEachSection - 1) * screen_width * 0.8 / 5
-        self.contentSize = CGSize(width: contentWidth, height: self.bounds.height)
-        
-        //TODO: fix gaps between each section
-        
-        chartView.translatesAutoresizingMaskIntoConstraints = false
-        chartView.heightAnchor.constraint(equalToConstant:self.bounds.height).isActive = true
-        chartView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-        chartView.widthAnchor.constraint(equalToConstant: sectionWidth).isActive = true
-        // leadig constraint
-        if chartsArray.count == 0 {
-            chartView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-            chartView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
-        } else {
-            let previewsChart = chartsArray.last
-            chartView.rightAnchor.constraint(equalTo: (previewsChart?.leftAnchor)!).isActive = true
+        if loadingIndicator.superview != nil {
+//            self.contentInset = .zero
+            loadingIndicator.stopAnimating()
+            loadingIndicator.removeFromSuperview()
         }
         
-        /*
-         The idea here is not change the contentsize of the scroll view, which if changed will
-         reposition the whole scroll view, instead we change the contentInset to adjust the scrollable area
-         */
-        chartsArray.append(chartView)
-        let insetChange = CGFloat(chartsArray.count - 1) * sectionWidth
-        self.contentInset = UIEdgeInsetsMake(0, insetChange, 0, 0)
-        callBack?.updateNextFetchOffset(-insetChange)
-        
-        
-        chartView.setNeedsLayout()
+        callBack?.updateNextFetchOffset(0)
     }
     
     override func layoutSubviews() {
         self.contentSize = CGSize(width: contentWidth, height: self.bounds.height)
         super.layoutSubviews()
     }
-
 }
