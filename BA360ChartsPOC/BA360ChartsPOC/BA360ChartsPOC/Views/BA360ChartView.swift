@@ -15,10 +15,16 @@ class BA360ChartView: LineChartView {
     var viewModel:BA360ChartViewModelProtocol?
     var overlayLineChart: LineChartView?
     var selectionDot:BA360ChartSelectionDot?
+    var boarderWidth:CGFloat = 0 {
+        didSet(newValue){
+            self.minOffset = newValue
+            self.overlayLineChart?.minOffset = newValue
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        self.clipsToBounds = false
         self.dragEnabled = false
         self.rightAxis.enabled = false
         self.leftAxis.setLabelCount(7, force: true)
@@ -29,8 +35,11 @@ class BA360ChartView: LineChartView {
         self.chartDescription = nil
         self.drawGridBackgroundEnabled = true
         self.overlayLineChart = LineChartView(frame: frame)
+        self.overlayLineChart?.minOffset = boarderWidth
+        self.overlayLineChart?.clipsToBounds = false
         self.doubleTapToZoomEnabled = false
         self.setScaleEnabled(false)
+        self.minOffset = borderLineWidth
         configureOverlayLineChartAppearence()
     }
     

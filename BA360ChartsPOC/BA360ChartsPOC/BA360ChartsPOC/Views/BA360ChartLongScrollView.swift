@@ -44,16 +44,6 @@ class BA360ChartLongScrollView: UIScrollView {
     }
     
     private func commonInit() {
-//        addSubview(contentView)
-//
-////        contentView.layer.anchorPoint = CGPoint(x: 0, y: 1)
-//        contentView.translatesAutoresizingMaskIntoConstraints = false
-//        contentView.heightAnchor.constraint(equalToConstant: self.bounds.height).isActive = true
-//        contentView.topAnchor.constraint(equalTo: self.topAnchor, constant: 0).isActive = true
-//        contentViewWidthConstraint = contentView.widthAnchor.constraint(equalToConstant: sectionWidth)
-//        contentViewWidthConstraint?.isActive = true
-//        contentView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
-//        contentView.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         loadingIndicator.hidesWhenStopped = true
         loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
     }
@@ -83,6 +73,7 @@ class BA360ChartLongScrollView: UIScrollView {
         
         // create a new BA360ChartView
         let chartView = BA360ChartView(frame: self.frame)
+        chartView.boarderWidth = 0
         chartView.viewModel = self.chartViewModel
         chartView.updateChartData()
         // add to subView and charts array
@@ -118,8 +109,6 @@ class BA360ChartLongScrollView: UIScrollView {
         
         
         chartView.setNeedsLayout()
-//        contentView.setNeedsLayout()
-//        self.setNeedsLayout()
     }
     
     override func layoutSubviews() {

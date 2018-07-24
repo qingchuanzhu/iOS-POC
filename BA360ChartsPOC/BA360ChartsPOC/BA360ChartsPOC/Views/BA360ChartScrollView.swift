@@ -54,6 +54,7 @@ class BA360ChartScrollView: UIScrollView {
 //        self.setNeedsLayout()
     }
     
+    
     override func layoutSubviews() {
         self.contentSize = CGSize(width: contentWidth!, height: self.bounds.height)
         super.layoutSubviews()
