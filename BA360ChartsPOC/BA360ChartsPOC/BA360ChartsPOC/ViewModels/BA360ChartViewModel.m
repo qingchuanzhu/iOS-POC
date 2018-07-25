@@ -103,8 +103,9 @@
         [self doubleHistoryData];
         dispatch_async(dispatch_get_main_queue(), ^{
             callBack();
+            self.fetchStatus = BA360ChartDataFetchStatus_Idle;
         });
-        self.fetchStatus = BA360ChartDataFetchStatus_Idle;
+        
         NSDate *endTime = [NSDate date];
         NSLog(@"%@", [NSString stringWithFormat:@"fetching complete at %@", [self.formatter stringFromDate:endTime]]);
     });

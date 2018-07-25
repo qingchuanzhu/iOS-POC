@@ -80,17 +80,23 @@ class BA360ChartLongScrollView: UIScrollView {
     }
     
     func expendChart(){
+        
         var adjContentOffset = self.contentOffset
+        print("offset when expending = \(adjContentOffset)")
         
+        // seting this to zero will have a bounce back effect, so reassign the adjContentOffset back to compensate it
+        self.contentInset = .zero
+        self.contentOffset = adjContentOffset
+
         chartView.updateChartData()
-        
+
         dataCount += self.chartViewModel.newlyFetchDataCount()
         contentWidth = CGFloat(dataCount - 1) * (screen_width * 0.8) / 5 + 20
         contentViewWidthConstraint.constant = contentWidth
-        
+
         adjContentOffset.x += (12 * (screen_width * 0.8) / 5)
         self.contentOffset = adjContentOffset
-        
+
         // need to stop and remove after calculation of new contentwidth, otherwise system will
         // shift the view first by indicatorWidth, then adjust the new width
         if loadingIndicator.superview != nil {
@@ -98,7 +104,7 @@ class BA360ChartLongScrollView: UIScrollView {
             loadingIndicator.stopAnimating()
             loadingIndicator.removeFromSuperview()
         }
-        
+
         callBack?.updateNextFetchOffset(0)
     }
     
