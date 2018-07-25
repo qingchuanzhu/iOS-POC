@@ -92,6 +92,10 @@
     }
 }
 
+- (void)doubleFutureData{
+    
+}
+
 - (void)fetchNewDataForDay:(NSInteger) startDay andEndDay:(NSInteger) endDay withCallBack:(void (^)(void))callBack{
     dispatch_queue_t myCustomQueue;
     myCustomQueue = dispatch_queue_create("com.qingchuan.MyCustomQueue", DISPATCH_QUEUE_SERIAL);
