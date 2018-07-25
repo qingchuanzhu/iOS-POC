@@ -93,25 +93,41 @@
 }
 
 - (void)doubleFutureData{
-    
+    if (self.firstUpdate) {
+        self.firstUpdate = NO;
+        self.fetchedDataCount = 15;
+    } else {
+        NSArray *tempArray = @[@45.1, @67.1, @45];
+        self.fetchedDataCount = 3;
+        self.forcastData = [self.forcastData arrayByAddingObjectsFromArray:tempArray];
+    }
 }
+
+/***
+ endDay == 1: fetch history data
+ startDay == 1: fetch forecast data
+ ***/
 
 - (void)fetchNewDataForDay:(NSInteger) startDay andEndDay:(NSInteger) endDay withCallBack:(void (^)(void))callBack{
     dispatch_queue_t myCustomQueue;
     myCustomQueue = dispatch_queue_create("com.qingchuan.MyCustomQueue", DISPATCH_QUEUE_SERIAL);
     self.fetchStatus = BA360ChartDataFetchStatus_In_progress;
     NSDate *startTime = [NSDate date];
-    NSLog(@"%@", [NSString stringWithFormat:@"Start fetching data at %@", [self.formatter stringFromDate:startTime]]);
+    NSString *fetchTime = endDay == 1 ? @"History" : @"Forecast";
+    NSLog(@"%@", [NSString stringWithFormat:@"Start fetching %@ data at %@", fetchTime, [self.formatter stringFromDate:startTime]]);
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(4 * NSEC_PER_SEC)), myCustomQueue, ^{
-//        NSArray<ChartDataEntry *> *dataArray = self.retrive360HistoricalChartData;
-        [self doubleHistoryData];
+        if (endDay == 1) {
+            [self doubleHistoryData];
+        } else if (startDay == 1){
+            [self doubleFutureData];
+        }
         dispatch_async(dispatch_get_main_queue(), ^{
             callBack();
             self.fetchStatus = BA360ChartDataFetchStatus_Idle;
         });
         
         NSDate *endTime = [NSDate date];
-        NSLog(@"%@", [NSString stringWithFormat:@"fetching complete at %@", [self.formatter stringFromDate:endTime]]);
+        NSLog(@"%@", [NSString stringWithFormat:@"fetching %@ data complete at %@", fetchTime, [self.formatter stringFromDate:endTime]]);
     });
 }
 

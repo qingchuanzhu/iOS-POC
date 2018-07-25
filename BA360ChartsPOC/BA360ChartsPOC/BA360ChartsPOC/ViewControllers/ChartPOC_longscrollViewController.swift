@@ -9,12 +9,14 @@
 import UIKit
 
 private let numberOfSections:Int = 6
+private let numberOfForecastSections:Int = 6
 
 class ChartPOC_longscrollViewController: UIViewController, UIScrollViewDelegate{
 
     @IBOutlet var holderView: BA360ChartLongScrollView!
     var numOfSectionFetched:Int = 0
-    var nextFetchOffset:CGFloat = 0
+    var numOfForecastSectionFetched:Int = 0
+    var nextFetchOffset:CGFloat = 1000000.0 // rightFetch offset
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +25,7 @@ class ChartPOC_longscrollViewController: UIViewController, UIScrollViewDelegate{
         holderView.delegate = self
         holderView.callBack = self
         numOfSectionFetched = 0
+        numOfForecastSectionFetched = 0
     }
 
     override func didReceiveMemoryWarning() {
@@ -32,10 +35,15 @@ class ChartPOC_longscrollViewController: UIViewController, UIScrollViewDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         let currentOffset = scrollView.contentOffset
-        if currentOffset.x <= nextFetchOffset && numOfSectionFetched < numberOfSections {
+        if currentOffset.x <= 0 && numOfSectionFetched < numberOfSections {
             if holderView.chartViewModel.currentFetchStatus() == .idle {
-                holderView.fetchNewData()
+                holderView.fetchNewData(true)
                 numOfSectionFetched += 1
+            }
+        } else if currentOffset.x >= nextFetchOffset && numOfForecastSectionFetched < numberOfForecastSections{
+            if holderView.chartViewModel.currentFetchStatus() == .idle{
+                holderView.fetchNewData(false)
+                numOfForecastSectionFetched += 1
             }
         }
     }
@@ -46,7 +54,7 @@ class ChartPOC_longscrollViewController: UIViewController, UIScrollViewDelegate{
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.holderView.fetchNewData()
+        self.holderView.fetchNewData(true)
         numOfSectionFetched += 1
     }
 
