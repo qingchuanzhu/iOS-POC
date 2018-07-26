@@ -51,6 +51,7 @@
 			children = (
 				352AD317210A403300AEAC35 /* Flickr */,
 				352AD2FD210A314C00AEAC35 /* CollectionViewPOC */,
+				352AD318210A406200AEAC35 /* CollectionViewPOC-Bridging-Header.h */,
 				352AD2FC210A314C00AEAC35 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -75,7 +76,6 @@
 				352AD309210A315900AEAC35 /* LaunchScreen.storyboard */,
 				352AD30C210A315900AEAC35 /* Info.plist */,
 				352AD30D210A315900AEAC35 /* main.m */,
-				352AD318210A406200AEAC35 /* CollectionViewPOC-Bridging-Header.h */,
 			);
 			path = CollectionViewPOC;
 			sourceTree = "<group>";
@@ -317,7 +317,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.CollectionViewPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Flickr/CollectionViewPOC-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "CollectionViewPOC-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -339,7 +339,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.CollectionViewPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Flickr/CollectionViewPOC-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "CollectionViewPOC-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
