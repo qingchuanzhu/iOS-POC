@@ -9,7 +9,7 @@
 #import "FlickrPhototsViewController.h"
 #import "CollectionViewPOC-Swift.h"
 
-@interface FlickrPhototsViewController ()
+@interface FlickrPhototsViewController ()<UITextFieldDelegate>
 
 @property (nonatomic, assign) UIEdgeInsets const sectionInsets;
 @property (nonatomic, strong) NSMutableArray<FlickrSearchResults *> *searches;
@@ -102,5 +102,35 @@ static NSString * const reuseIdentifier = @"FlickrCell";
 	
 }
 */
+
+#pragma mark Utilities
+- (FlickrPhoto *)photoForIndexPath:(NSIndexPath *)indexPath{
+    return self.searches[indexPath.section].searchResults[indexPath.row];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField{
+    UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [textField addSubview:activityIndicator];
+    activityIndicator.frame = textField.bounds;
+    [activityIndicator startAnimating];
+    __weak FlickrPhototsViewController *weakSelf = self;
+    
+    [self.flickr searchFlickrForTerm:textField.text completion:^(FlickrSearchResults * _Nullable results, NSError * _Nullable error) {
+        [activityIndicator removeFromSuperview];
+        if (error) {
+            NSLog(@"error happened: %@", error.description);
+            return;
+        }
+        if (results) {
+            NSLog(@"Found %ld results matching %@", results.searchResults.count, results.searchTerm);
+            [weakSelf.searches insertObject:results atIndex:0];
+            [weakSelf.collectionView reloadData];
+        }
+    }];
+    
+    textField.text = nil;
+    [textField resignFirstResponder];
+    return YES;
+}
 
 @end
