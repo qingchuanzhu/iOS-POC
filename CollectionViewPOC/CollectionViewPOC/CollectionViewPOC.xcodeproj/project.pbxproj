@@ -13,6 +13,9 @@
 		352AD30B210A315900AEAC35 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 352AD309210A315900AEAC35 /* LaunchScreen.storyboard */; };
 		352AD30E210A315900AEAC35 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 352AD30D210A315900AEAC35 /* main.m */; };
 		352AD316210A3B7B00AEAC35 /* FlickrPhototsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 352AD315210A3B7B00AEAC35 /* FlickrPhototsViewController.m */; };
+		352AD31C210A406300AEAC35 /* Flickr.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AD319210A406300AEAC35 /* Flickr.swift */; };
+		352AD31D210A406300AEAC35 /* FlickrPhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AD31A210A406300AEAC35 /* FlickrPhoto.swift */; };
+		352AD31E210A406300AEAC35 /* FlickrSearchResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AD31B210A406300AEAC35 /* FlickrSearchResults.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +29,10 @@
 		352AD30D210A315900AEAC35 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		352AD314210A3B7B00AEAC35 /* FlickrPhototsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FlickrPhototsViewController.h; sourceTree = "<group>"; };
 		352AD315210A3B7B00AEAC35 /* FlickrPhototsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FlickrPhototsViewController.m; sourceTree = "<group>"; };
+		352AD318210A406200AEAC35 /* CollectionViewPOC-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "CollectionViewPOC-Bridging-Header.h"; sourceTree = "<group>"; };
+		352AD319210A406300AEAC35 /* Flickr.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Flickr.swift; sourceTree = "<group>"; };
+		352AD31A210A406300AEAC35 /* FlickrPhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrPhoto.swift; sourceTree = "<group>"; };
+		352AD31B210A406300AEAC35 /* FlickrSearchResults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlickrSearchResults.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,6 +49,7 @@
 		352AD2F2210A314C00AEAC35 = {
 			isa = PBXGroup;
 			children = (
+				352AD317210A403300AEAC35 /* Flickr */,
 				352AD2FD210A314C00AEAC35 /* CollectionViewPOC */,
 				352AD2FC210A314C00AEAC35 /* Products */,
 			);
@@ -67,8 +75,19 @@
 				352AD309210A315900AEAC35 /* LaunchScreen.storyboard */,
 				352AD30C210A315900AEAC35 /* Info.plist */,
 				352AD30D210A315900AEAC35 /* main.m */,
+				352AD318210A406200AEAC35 /* CollectionViewPOC-Bridging-Header.h */,
 			);
 			path = CollectionViewPOC;
+			sourceTree = "<group>";
+		};
+		352AD317210A403300AEAC35 /* Flickr */ = {
+			isa = PBXGroup;
+			children = (
+				352AD319210A406300AEAC35 /* Flickr.swift */,
+				352AD31A210A406300AEAC35 /* FlickrPhoto.swift */,
+				352AD31B210A406300AEAC35 /* FlickrSearchResults.swift */,
+			);
+			path = Flickr;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -102,6 +121,7 @@
 				TargetAttributes = {
 					352AD2FA210A314C00AEAC35 = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 				};
 			};
@@ -142,7 +162,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				352AD316210A3B7B00AEAC35 /* FlickrPhototsViewController.m in Sources */,
+				352AD31E210A406300AEAC35 /* FlickrSearchResults.swift in Sources */,
 				352AD30E210A315900AEAC35 /* main.m in Sources */,
+				352AD31C210A406300AEAC35 /* Flickr.swift in Sources */,
+				352AD31D210A406300AEAC35 /* FlickrPhoto.swift in Sources */,
 				352AD300210A314C00AEAC35 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -283,6 +306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = CollectionViewPOC/Info.plist;
@@ -293,6 +317,9 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.CollectionViewPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Flickr/CollectionViewPOC-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -301,6 +328,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = QQ7A795Y74;
 				INFOPLIST_FILE = CollectionViewPOC/Info.plist;
@@ -311,6 +339,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.qingchuanzhu.CollectionViewPOC;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Flickr/CollectionViewPOC-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
