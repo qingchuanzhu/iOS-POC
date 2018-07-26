@@ -22,7 +22,7 @@
 
 import UIKit
 
-class FlickrPhoto : Equatable {
+@objc class FlickrPhoto : NSObject {
   var thumbnail : UIImage?
   var largeImage : UIImage?
   let photoID : String

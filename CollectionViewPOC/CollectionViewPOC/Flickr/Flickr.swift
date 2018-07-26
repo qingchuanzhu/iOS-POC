@@ -24,7 +24,7 @@ import UIKit
 
 let apiKey = "4bbf3e84e0b58c2c6750b6ec88fcf8ea"
 
-class Flickr {
+@objc class Flickr : NSObject {
   
   let processingQueue = OperationQueue()
   

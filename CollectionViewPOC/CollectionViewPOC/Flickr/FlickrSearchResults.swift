@@ -22,7 +22,18 @@
 
 import Foundation
 
-struct FlickrSearchResults {
+@objc class FlickrSearchResults:NSObject {
   let searchTerm : String
   let searchResults : [FlickrPhoto]
+    
+    override init() {
+        searchTerm = ""
+        searchResults = []
+        super.init()
+    }
+    
+    init(searchTerm:String, searchResults:[FlickrPhoto]) {
+        self.searchTerm = searchTerm
+        self.searchResults = searchResults
+    }
 }

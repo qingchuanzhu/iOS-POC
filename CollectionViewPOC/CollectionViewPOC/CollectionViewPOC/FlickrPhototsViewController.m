@@ -7,10 +7,13 @@
 //
 
 #import "FlickrPhototsViewController.h"
+#import "CollectionViewPOC-Swift.h"
 
 @interface FlickrPhototsViewController ()
 
 @property (nonatomic, assign) UIEdgeInsets const sectionInsets;
+@property (nonatomic, strong) NSMutableArray<FlickrSearchResults *> *searches;
+@property (nonatomic, strong) Flickr *flickr;
 
 @end
 
@@ -21,6 +24,8 @@ static NSString * const reuseIdentifier = @"FlickrCell";
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.sectionInsets = UIEdgeInsetsMake(50.0, 20.0, 50.0, 20.0);
+    self.searches = [NSMutableArray new];
+    self.flickr = [Flickr new];
     
     // Uncomment the following line to preserve selection between presentations
     // self.clearsSelectionOnViewWillAppear = NO;
