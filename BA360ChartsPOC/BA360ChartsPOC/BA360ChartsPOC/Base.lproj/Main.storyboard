@@ -40,6 +40,14 @@
                                     <segue destination="TyA-P5-7ew" kind="show" id="EJb-gj-gbb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1xv-Ao-3SU">
+                                <rect key="frame" x="152" y="205" width="71" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="AutoChart"/>
+                                <connections>
+                                    <segue destination="twn-gw-BII" kind="show" id="N6v-sN-ajg"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -87,6 +95,38 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EwW-xs-6oj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1584.8" y="-564.46776611694156"/>
+        </scene>
+        <!--ChartPOC auto View Controller-->
+        <scene sceneID="Qiy-qG-vsC">
+            <objects>
+                <viewController id="twn-gw-BII" customClass="ChartPOC_autoViewController" customModule="BA360ChartsPOC" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UFV-1f-CnR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rba-Ts-CI4">
+                                <rect key="frame" x="16" y="94" width="343" height="200"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="f9x-Yr-8Pw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Rba-Ts-CI4" firstAttribute="leading" secondItem="qot-8u-07k" secondAttribute="leading" constant="16" id="doW-0i-EXt"/>
+                            <constraint firstItem="qot-8u-07k" firstAttribute="trailing" secondItem="Rba-Ts-CI4" secondAttribute="trailing" constant="16" id="e90-FL-Kfb"/>
+                            <constraint firstItem="Rba-Ts-CI4" firstAttribute="top" secondItem="qot-8u-07k" secondAttribute="top" constant="30" id="y9b-wx-Efb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qot-8u-07k"/>
+                    </view>
+                    <connections>
+                        <outlet property="holderView" destination="Rba-Ts-CI4" id="xch-V2-QeB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="U3F-UJ-pj7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2280.8000000000002" y="-564.46776611694156"/>
         </scene>
         <!--ChartPOC scroll View Controller-->
         <scene sceneID="Fho-XA-rdM">
