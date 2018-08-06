@@ -48,6 +48,11 @@ class ChartPOC_longscrollViewController: UIViewController, UIScrollViewDelegate{
         }
     }
     
+    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
+        let currentOffset = scrollView.contentOffset
+        holderView.scaleLeftAixsForOffset(currentOffset)
+    }
+    
     func updateNextFetchOffset(_ nextOffset:CGFloat) {
         nextFetchOffset = nextOffset
     }

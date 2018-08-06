@@ -116,6 +116,10 @@ class BA360ChartLongScrollView: UIScrollView {
         callBack?.updateNextFetchOffset(contentWidth - self.bounds.width)
     }
     
+    func scaleLeftAixsForOffset(_ currentOffset:CGPoint) {
+        
+    }
+    
     override func layoutSubviews() {
         self.contentSize = CGSize(width: contentWidth, height: self.bounds.height)
         super.layoutSubviews()

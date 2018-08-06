@@ -198,6 +198,13 @@ class BA360ChartView: LineChartView {
         leftAxis.axisMinimum = 0
     }
     
+    func updateLeftAxisScale(_ newMax:Double, newMin:Double) {
+        let leftAxis = self.leftAxis
+        leftAxis.removeAllLimitLines()
+        leftAxis.axisMaximum = newMax * 1.2
+        leftAxis.axisMinimum = newMin
+    }
+    
     func configureOverlayLineChartAppearence() {
         self.overlayLineChart?.dragEnabled = false
         self.overlayLineChart?.setScaleEnabled(false)
