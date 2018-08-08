@@ -8,10 +8,13 @@
 
 import UIKit
 
-class ChartPOC_autoViewController: UIViewController {
+let numOfFetch:Int = 1
+
+class ChartPOC_autoViewController: UIViewController, ChartViewDelegate {
 
     @IBOutlet var holderView: UIView!
     var chartView: BA360AutoChartView!
+    var fetchCount = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,13 +22,15 @@ class ChartPOC_autoViewController: UIViewController {
         // Do any additional setup after loading the view.
         // Do any additional setup after loading the view.
         chartView = BA360AutoChartView(frame: .zero)
-//        chartView.delegate = self
+        chartView.viewModel = BA360AutoChartViewModel()
+        chartView.delegate = self
+        fetchCount = 0
         constraintChartView()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        chartView.updateChartData()
+        chartView.updateChartData(false)
     }
     
     func constraintChartView() {
@@ -42,7 +47,17 @@ class ChartPOC_autoViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
+    // chart view callbacks
+    func chartTranslated(_ chartView: ChartViewBase, dX: CGFloat, dY: CGFloat) {
+        let chartView = chartView as! BA360AutoChartView
+        let minIndex = chartView.lowestVisibleX
+//        let maxIndex = chartView.highestVisibleX
+        if 0.0 == floor(minIndex) && fetchCount < numOfFetch {
+            print("reach left end")
+            chartView.insertDataToLeft()
+            fetchCount += 1
+        }
+    }
 
     /*
     // MARK: - Navigation
