@@ -120,7 +120,14 @@ class BA360AutoChartView: LineChartView {
     func configureAllDataSet(dataSet:LineChartDataSet, history:Bool, belowTH:Bool) {
         dataSet.drawValuesEnabled = false
         dataSet.drawCirclesEnabled = true
-        dataSet.highlightColor = ChartColorTemplates.colorFromString("#0073CF")
+        
+        if belowTH{
+            dataSet.setCircleColor(ChartColorTemplates.colorFromString("#DC1431"))
+            dataSet.highlightColor = ChartColorTemplates.colorFromString("#DC1431")
+        } else {
+            dataSet.setCircleColor(ChartColorTemplates.colorFromString("#575757"))
+            dataSet.highlightColor = ChartColorTemplates.colorFromString("#0073CF")
+        }
         
         dataSet.highlightLineWidth = 3
         // fill the color of history part
