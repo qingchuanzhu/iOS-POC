@@ -13,13 +13,28 @@ enum BA360AutoChartViewModelFetchStatus {
     case idle
 }
 
-let randomCount:Int = 200
+let randomCount:Int = 20
+let dummyThreshold:Double = 11.0
+
+class BA360DataSection {
+    var belowTH:Bool = false
+    var history:Bool = false
+    var rawData:[Double] = []
+    
+    init(_ belowTH:Bool, history:Bool, rawData:[Double]) {
+        self.belowTH = belowTH
+        self.history = history
+        self.rawData = rawData
+    }
+}
 
 class BA360AutoChartViewModel: NSObject {
     
-    var historyData:[Double] = [11.0, 12.0, 13.0, 14.0, 15.0, 13.0, 12.0, 11.0, 11.0, 12.0, 13.0, 14.0, 15.0, 13.0, 12.0, 11.0, 24.0, 45.0, 67.0, 56.0, 45.0, 67.0, 56.0, 45.0, 67.0, 56.0]
+    private var historyData:[Double] = [11.0, 12.0, 13.0, 14.0, 15.0, 13.0, 12.0, 11.0, 11.0, 12.0, 13.0, 14.0, 15.0, 13.0, 12.0, 11.0, 24.0, 45.0, 67.0, 56.0, 45.0, 67.0, 56.0, 45.0, 67.0, 56.0]
     var currentFetchStatus:BA360AutoChartViewModelFetchStatus = .idle
-    
+    private var unappendHistoryData:[Double] = [11.0, 12.0, 13.0, 14.0, 15.0, 13.0, 12.0, 11.0, 11.0, 12.0, 13.0, 14.0, 15.0, 13.0, 12.0, 11.0, 24.0, 45.0, 67.0, 56.0, 45.0, 67.0, 56.0, 45.0, 67.0, 56.0]
+    private var unappendForecastData:[Double] = []
+    private var currentDataSection:[BA360DataSection] = []
     
     func generateRandom(_ low:Double, high:Double, count:Int) -> [Double] {
         let diff = high - low
@@ -32,6 +47,65 @@ class BA360AutoChartViewModel: NSObject {
         return rslt
     }
     
+    func dataToPresent() -> [BA360DataSection] {
+        if unappendHistoryData.count > 0{
+            var index = 0
+            var result:[BA360DataSection] = []
+            
+            var belowTHTemp:BA360DataSection? = nil
+            var aboveTHTemp:BA360DataSection? = nil
+            while index < unappendHistoryData.count {
+                let val = unappendHistoryData[index]
+                
+                if val <= dummyThreshold{
+                    if let section = belowTHTemp{
+                        section.rawData.append(val)
+                    } else {
+                        // THIS IS THE FIRST BELOW VALUE AFTER POTENTIAL ABOVE VALUES
+                        // 1. append above section if any
+                        if let section = aboveTHTemp{
+                            result.append(section)
+                            // 2. clear the ref to above section
+                            aboveTHTemp = nil
+                        }
+                        // 3.create a below section
+                        let belowSection = BA360DataSection(true, history: true, rawData: [val])
+                        belowTHTemp = belowSection
+                    }
+                } else {
+                    if let section = aboveTHTemp{
+                        section.rawData.append(val)
+                    } else{
+                        if let section = belowTHTemp{
+                            result.append(section)
+                            belowTHTemp = nil
+                        }
+                        let aboveSection = BA360DataSection(false, history: true, rawData: [val])
+                        aboveTHTemp = aboveSection
+                    }
+                }
+                
+                index += 1
+            }
+            if let section = belowTHTemp{
+                result.append(section)
+            }
+            if let section = aboveTHTemp{
+                result.append(section)
+            }
+            unappendHistoryData.removeAll()
+            currentDataSection = result + currentDataSection
+        }
+        
+        if unappendForecastData.count > 0 {
+            var result:[BA360DataSection] = []
+            unappendForecastData.removeAll()
+            currentDataSection = currentDataSection + result
+        }
+        
+        return currentDataSection
+    }
+    
     func fetchHistoryData(_ callBack:@escaping () -> Void) {
         currentFetchStatus = .in_progress
         
@@ -39,33 +113,13 @@ class BA360AutoChartViewModel: NSObject {
             let randomData = self.generateRandom(0, high: 100, count: randomCount)
             for data in randomData{
                 self.historyData.insert(data, at: 0)
+                self.unappendHistoryData.insert(data, at: 0)
             }
             DispatchQueue.main.async {
                 self.currentFetchStatus = .idle
                 callBack()
             }
         }
-        
-//        dispatch_queue_t myCustomQueue;
-//        myCustomQueue = dispatch_queue_create("com.qingchuan.MyCustomQueue", DISPATCH_QUEUE_SERIAL);
-//        self.fetchStatus = BA360ChartDataFetchStatus_In_progress;
-//        NSDate *startTime = [NSDate date];
-//        NSString *fetchTime = endDay == 1 ? @"History" : @"Forecast";
-//        NSLog(@"%@", [NSString stringWithFormat:@"Start fetching %@ data at %@", fetchTime, [self.formatter stringFromDate:startTime]]);
-//        dispatch_after(, myCustomQueue, ^{
-//            if (endDay == 1) {
-//                [self doubleHistoryData];
-//            } else if (startDay == 1){
-//                [self doubleFutureData];
-//            }
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                callBack();
-//                self.fetchStatus = BA360ChartDataFetchStatus_Idle;
-//                });
-//
-//            NSDate *endTime = [NSDate date];
-//            NSLog(@"%@", [NSString stringWithFormat:@"fetching %@ data complete at %@", fetchTime, [self.formatter stringFromDate:endTime]]);
-//            });
     }
     
     

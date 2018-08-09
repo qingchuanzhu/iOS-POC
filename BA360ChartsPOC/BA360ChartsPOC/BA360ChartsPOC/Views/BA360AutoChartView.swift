@@ -17,6 +17,7 @@ enum BA360DataSetType:Int {
 class BA360AutoChartView: LineChartView {
     
     var viewModel:BA360AutoChartViewModel?
+    
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -49,12 +50,21 @@ class BA360AutoChartView: LineChartView {
     }
     
     func createData()  {
-        let allValues:[ChartDataEntry] = self.retrive360ChartData()
-        let allSet = LineChartDataSet(values: allValues, label: "History")
+        let allValues:[BA360DataSection]? = self.viewModel?.dataToPresent()
+        var indexCounter:Int = 0
         
-        configureAllDataSet(dataSet: allSet)
+        guard let sections = allValues else {
+            return
+        }
         
-        let data = LineChartData(dataSets: [allSet])
+        var allSets:[LineChartDataSet] = []
+        
+        for section in sections {
+            let set = createDataSetForDataSection(section, startIndex: &indexCounter)
+            allSets.append(set)
+        }
+        
+        let data = LineChartData(dataSets: allSets)
         self.data = data
     }
     
@@ -69,10 +79,30 @@ class BA360AutoChartView: LineChartView {
         if forHistory {
             self.moveViewToX(Double(3))
         } else {
-            self.moveViewToX(Double(viewModel.historyData.count - 1))
+//            self.moveViewToX(Double(viewModel.historyData.count - 1))
         }
     }
+    
+    func createDataSetForDataSection(_ dataSection:BA360DataSection, startIndex:inout Int) -> LineChartDataSet {
+        let values:[Double] = dataSection.rawData
+        let history:Bool = dataSection.history
+        let belowTH:Bool = dataSection.belowTH
         
+        var dataArray:[ChartDataEntry] = []
+        
+        for (index, data) in values.enumerated(){
+            let yValue = data
+            let entry = ChartDataEntry(x: Double(startIndex + index), y: yValue)
+            dataArray.append(entry)
+        }
+        
+        let dataSet = LineChartDataSet(values: dataArray, label: nil)
+        configureAllDataSet(dataSet: dataSet, history: history, belowTH: belowTH)
+        
+        startIndex += dataArray.count
+        return dataSet
+    }
+    
     func insertDataToLeft() {
         // TODO: show loading indicator
         if viewModel?.currentFetchStatus == BA360AutoChartViewModelFetchStatus.idle{
@@ -80,30 +110,18 @@ class BA360AutoChartView: LineChartView {
                 // TODO: weak self
                 self.createData()
                 // TODO: hide loading indicator
+                
                 // TODO: move chart to correct position
                 self.changeViewPort(true)
             }
         }
     }
     
-    func retrive360ChartData() -> [ChartDataEntry] {
-        
-        var dataArray:[ChartDataEntry] = []
-        guard let viewModel = self.viewModel else {
-            return []
-        }
-        for (index, data) in viewModel.historyData.enumerated(){
-            let yValue = data
-            let entry = ChartDataEntry(x: Double(index), y: yValue)
-            dataArray.append(entry)
-        }
-        return dataArray
-    }
-    
-    func configureAllDataSet(dataSet:LineChartDataSet) {
+    func configureAllDataSet(dataSet:LineChartDataSet, history:Bool, belowTH:Bool) {
         dataSet.drawValuesEnabled = false
         dataSet.drawCirclesEnabled = true
         dataSet.highlightColor = ChartColorTemplates.colorFromString("#0073CF")
+        
         dataSet.highlightLineWidth = 3
         // fill the color of history part
         dataSet.fillAlpha = 1
