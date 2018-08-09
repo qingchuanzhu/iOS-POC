@@ -71,9 +71,14 @@ class BA360AutoChartView: LineChartView {
                     let prevAboveSec = sections[index - 1]
                     prevAbove = prevAboveSec.rawData.last
                 }
-                if index + 1 < sections.count{
-                    let postAboveSec = sections[index + 1]
-                    postAbove = postAboveSec.rawData.first
+//                if index + 1 < sections.count{
+//                    let postAboveSec = sections[index + 1]
+//                    postAbove = postAboveSec.rawData.first
+//                }
+            } else {
+                if index - 1 >= 0 {
+                    let prevAboveSec = sections[index - 1]
+                    prevAbove = prevAboveSec.rawData.last
                 }
             }
             let set = createDataSetForDataSection(section, startIndex: &indexCounter, prevAbove: prevAbove, afterAbove: postAbove)
@@ -117,7 +122,7 @@ class BA360AutoChartView: LineChartView {
             dataArray.append(entry)
         }
         
-        startIndex += dataArray.count
+        startIndex += (dataArray.count - (prevAbove == nil ? 0 : 1))
         
         // append any post values if any
         if let post = afterAbove{
@@ -126,7 +131,7 @@ class BA360AutoChartView: LineChartView {
         }
         
         let dataSet = LineChartDataSet(values: dataArray, label: nil)
-        configureAllDataSet(dataSet: dataSet, history: history, belowTH: belowTH)
+        configureAllDataSet(dataSet: dataSet, history: history, belowTH: belowTH, dataCount: dataArray.count)
         
         return dataSet
     }
@@ -145,15 +150,31 @@ class BA360AutoChartView: LineChartView {
         }
     }
     
-    func configureAllDataSet(dataSet:LineChartDataSet, history:Bool, belowTH:Bool) {
-        dataSet.drawValuesEnabled = false
+    func configureAllDataSet(dataSet:LineChartDataSet, history:Bool, belowTH:Bool, dataCount:Int) {
+        dataSet.drawValuesEnabled = true
         dataSet.drawCirclesEnabled = true
         
         if belowTH{
-            dataSet.setCircleColor(ChartColorTemplates.colorFromString("#DC1431"))
+            var colorArray:[NSUIColor] = []
+            for i in 0...dataCount - 1{
+                if i == 0 {
+                    colorArray.append(ChartColorTemplates.colorFromString("#575757"))
+                } else {
+                    colorArray.append(ChartColorTemplates.colorFromString("#DC1431"))
+                }
+            }
+            dataSet.circleColors = colorArray
             dataSet.highlightColor = ChartColorTemplates.colorFromString("#DC1431")
         } else {
-            dataSet.setCircleColor(ChartColorTemplates.colorFromString("#575757"))
+            var colorArray:[NSUIColor] = []
+            for i in 0...dataCount - 1{
+                if i == 0 {
+                    colorArray.append(ChartColorTemplates.colorFromString("#DC1431"))
+                } else {
+                    colorArray.append(ChartColorTemplates.colorFromString("#575757"))
+                }
+            }
+            dataSet.circleColors = colorArray
             dataSet.highlightColor = ChartColorTemplates.colorFromString("#0073CF")
         }
         
