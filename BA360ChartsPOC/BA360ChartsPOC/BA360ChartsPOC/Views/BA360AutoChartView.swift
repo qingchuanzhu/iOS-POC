@@ -59,8 +59,24 @@ class BA360AutoChartView: LineChartView {
         
         var allSets:[LineChartDataSet] = []
         
-        for section in sections {
-            let set = createDataSetForDataSection(section, startIndex: &indexCounter)
+        for (index,section) in sections.enumerated() {
+            // For the below section, we need to pass:
+            // 1. the last point from above section preceeds it if any
+            // 2. the first point from above section after it if any
+            
+            var prevAbove:Double? = nil
+            var postAbove:Double? = nil
+            if section.belowTH {
+                if index - 1 >= 0 {
+                    let prevAboveSec = sections[index - 1]
+                    prevAbove = prevAboveSec.rawData.last
+                }
+                if index + 1 < sections.count{
+                    let postAboveSec = sections[index + 1]
+                    postAbove = postAboveSec.rawData.first
+                }
+            }
+            let set = createDataSetForDataSection(section, startIndex: &indexCounter, prevAbove: prevAbove, afterAbove: postAbove)
             allSets.append(set)
         }
         
@@ -83,12 +99,17 @@ class BA360AutoChartView: LineChartView {
         }
     }
     
-    func createDataSetForDataSection(_ dataSection:BA360DataSection, startIndex:inout Int) -> LineChartDataSet {
+    func createDataSetForDataSection(_ dataSection:BA360DataSection, startIndex:inout Int, prevAbove:Double?, afterAbove:Double?) -> LineChartDataSet {
         let values:[Double] = dataSection.rawData
         let history:Bool = dataSection.history
         let belowTH:Bool = dataSection.belowTH
         
         var dataArray:[ChartDataEntry] = []
+        // append any prev values if any
+        if let prev = prevAbove{
+            let prevEntry = ChartDataEntry(x: Double(startIndex - 1), y: prev)
+            dataArray.append(prevEntry)
+        }
         
         for (index, data) in values.enumerated(){
             let yValue = data
@@ -96,10 +117,17 @@ class BA360AutoChartView: LineChartView {
             dataArray.append(entry)
         }
         
+        startIndex += dataArray.count
+        
+        // append any post values if any
+        if let post = afterAbove{
+            let postEntry = ChartDataEntry(x: Double(startIndex), y: post)
+            dataArray.append(postEntry)
+        }
+        
         let dataSet = LineChartDataSet(values: dataArray, label: nil)
         configureAllDataSet(dataSet: dataSet, history: history, belowTH: belowTH)
         
-        startIndex += dataArray.count
         return dataSet
     }
     
