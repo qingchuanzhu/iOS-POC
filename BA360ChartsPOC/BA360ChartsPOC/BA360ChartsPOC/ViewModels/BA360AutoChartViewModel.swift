@@ -13,7 +13,7 @@ enum BA360AutoChartViewModelFetchStatus {
     case idle
 }
 
-let randomCount:Int = 10
+let randomCount:Int = 200
 
 class BA360AutoChartViewModel: NSObject {
     

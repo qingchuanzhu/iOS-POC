@@ -25,6 +25,8 @@ class BA360AutoChartView: LineChartView {
         self.rightAxis.enabled = false
         self.leftAxis.setLabelCount(7, force: true)
         self.xAxis.enabled = true
+        self.xAxis.granularityEnabled = true
+        self.xAxis.granularity = 1.0
         self.setVisibleXRangeMaximum(4)
         self.setVisibleXRangeMinimum(4)
         self.leftAxis.drawLabelsEnabled = true
@@ -79,6 +81,7 @@ class BA360AutoChartView: LineChartView {
                 self.createData()
                 // TODO: hide loading indicator
                 // TODO: move chart to correct position
+                self.changeViewPort(true)
             }
         }
     }
@@ -99,7 +102,7 @@ class BA360AutoChartView: LineChartView {
     
     func configureAllDataSet(dataSet:LineChartDataSet) {
         dataSet.drawValuesEnabled = false
-        dataSet.drawCirclesEnabled = false
+        dataSet.drawCirclesEnabled = true
         dataSet.highlightColor = ChartColorTemplates.colorFromString("#0073CF")
         dataSet.highlightLineWidth = 3
         // fill the color of history part
