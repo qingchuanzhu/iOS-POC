@@ -14,6 +14,11 @@ enum BA360DataSetType:Int {
     case BA360DataSetTypeForecast = 1
 }
 
+enum BA360ChartColors:String {
+    case BA360ChartColorDotGray = "#575757"
+    case BA360ChartColorDotRed = "#DC1431"
+}
+
 class BA360AutoChartView: LineChartView {
     
     var viewModel:BA360AutoChartViewModel?
@@ -65,23 +70,12 @@ class BA360AutoChartView: LineChartView {
             // 2. the first point from above section after it if any
             
             var prevAbove:Double? = nil
-            var postAbove:Double? = nil
-            if section.belowTH {
-                if index - 1 >= 0 {
-                    let prevAboveSec = sections[index - 1]
-                    prevAbove = prevAboveSec.rawData.last
-                }
-//                if index + 1 < sections.count{
-//                    let postAboveSec = sections[index + 1]
-//                    postAbove = postAboveSec.rawData.first
-//                }
-            } else {
-                if index - 1 >= 0 {
-                    let prevAboveSec = sections[index - 1]
-                    prevAbove = prevAboveSec.rawData.last
-                }
+            
+            if index - 1 >= 0 {
+                let prevAboveSec = sections[index - 1]
+                prevAbove = prevAboveSec.rawData.last
             }
-            let set = createDataSetForDataSection(section, startIndex: &indexCounter, prevAbove: prevAbove, afterAbove: postAbove)
+            let set = createDataSetForDataSection(section, startIndex: &indexCounter, prevAbove: prevAbove)
             allSets.append(set)
         }
         
@@ -100,11 +94,11 @@ class BA360AutoChartView: LineChartView {
         if forHistory {
             self.moveViewToX(Double(3))
         } else {
-//            self.moveViewToX(Double(viewModel.historyData.count - 1))
+            self.moveViewToX(Double(viewModel.dataCount - 1))
         }
     }
     
-    func createDataSetForDataSection(_ dataSection:BA360DataSection, startIndex:inout Int, prevAbove:Double?, afterAbove:Double?) -> LineChartDataSet {
+    func createDataSetForDataSection(_ dataSection:BA360DataSection, startIndex:inout Int, prevAbove:Double?) -> LineChartDataSet {
         let values:[Double] = dataSection.rawData
         let history:Bool = dataSection.history
         let belowTH:Bool = dataSection.belowTH
@@ -124,14 +118,8 @@ class BA360AutoChartView: LineChartView {
         
         startIndex += (dataArray.count - (prevAbove == nil ? 0 : 1))
         
-        // append any post values if any
-        if let post = afterAbove{
-            let postEntry = ChartDataEntry(x: Double(startIndex), y: post)
-            dataArray.append(postEntry)
-        }
-        
         let dataSet = LineChartDataSet(values: dataArray, label: nil)
-        configureAllDataSet(dataSet: dataSet, history: history, belowTH: belowTH, dataCount: dataArray.count)
+        configureAllDataSet(dataSet: dataSet, history: history, belowTH: belowTH, dataCount: dataArray.count, hasPrev: (prevAbove == nil ? false : true))
         
         return dataSet
     }
@@ -150,28 +138,28 @@ class BA360AutoChartView: LineChartView {
         }
     }
     
-    func configureAllDataSet(dataSet:LineChartDataSet, history:Bool, belowTH:Bool, dataCount:Int) {
+    func configureAllDataSet(dataSet:LineChartDataSet, history:Bool, belowTH:Bool, dataCount:Int, hasPrev:Bool) {
         dataSet.drawValuesEnabled = true
         dataSet.drawCirclesEnabled = true
         
         if belowTH{
             var colorArray:[NSUIColor] = []
             for i in 0...dataCount - 1{
-                if i == 0 {
-                    colorArray.append(ChartColorTemplates.colorFromString("#575757"))
+                if i == 0 && hasPrev{
+                    colorArray.append(ChartColorTemplates.colorFromString(BA360ChartColors.BA360ChartColorDotGray.rawValue))
                 } else {
-                    colorArray.append(ChartColorTemplates.colorFromString("#DC1431"))
+                    colorArray.append(ChartColorTemplates.colorFromString(BA360ChartColors.BA360ChartColorDotRed.rawValue))
                 }
             }
             dataSet.circleColors = colorArray
-            dataSet.highlightColor = ChartColorTemplates.colorFromString("#DC1431")
+            dataSet.highlightColor = ChartColorTemplates.colorFromString(BA360ChartColors.BA360ChartColorDotRed.rawValue)
         } else {
             var colorArray:[NSUIColor] = []
             for i in 0...dataCount - 1{
-                if i == 0 {
-                    colorArray.append(ChartColorTemplates.colorFromString("#DC1431"))
+                if i == 0 && hasPrev{
+                    colorArray.append(ChartColorTemplates.colorFromString(BA360ChartColors.BA360ChartColorDotRed.rawValue))
                 } else {
-                    colorArray.append(ChartColorTemplates.colorFromString("#575757"))
+                    colorArray.append(ChartColorTemplates.colorFromString(BA360ChartColors.BA360ChartColorDotGray.rawValue))
                 }
             }
             dataSet.circleColors = colorArray

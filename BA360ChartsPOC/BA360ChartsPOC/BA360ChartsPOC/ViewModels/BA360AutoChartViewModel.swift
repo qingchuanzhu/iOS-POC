@@ -36,6 +36,10 @@ class BA360AutoChartViewModel: NSObject {
     private var unappendForecastData:[Double] = []
     private var currentDataSection:[BA360DataSection] = []
     
+    var dataCount:Int{
+        return historyData.count
+    }
+    
     func generateRandom(_ low:Double, high:Double, count:Int) -> [Double] {
         let diff = high - low
         var rslt:[Double] = []
