@@ -43,6 +43,8 @@ class BA360AutoChartView: LineChartView {
         self.drawGridBackgroundEnabled = true
         self.doubleTapToZoomEnabled = false
         self.setScaleEnabled(true)
+        
+        self.renderer = BA360LineChartRender(dataProvider: self, animator: self.chartAnimator, viewPortHandler: self.viewPortHandler)
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -128,6 +130,8 @@ class BA360AutoChartView: LineChartView {
         // TODO: show loading indicator
         if viewModel?.currentFetchStatus == BA360AutoChartViewModelFetchStatus.idle{
             viewModel?.fetchHistoryData {
+                // remove cross line if any
+                
                 // TODO: weak self
                 self.createData()
                 // TODO: hide loading indicator
