@@ -8,6 +8,7 @@
 
 import UIKit
 import Charts
+import CoreGraphics
 
 enum BA360DataSetType:Int {
     case BA360DataSetTypeHistory = 0
@@ -145,8 +146,8 @@ class BA360AutoChartView: LineChartView {
     func configureAllDataSet(dataSet:LineChartDataSet, history:Bool, belowTH:Bool, dataCount:Int, hasPrev:Bool) {
         dataSet.drawValuesEnabled = true
         dataSet.drawCirclesEnabled = true
-        dataSet.circleRadius = 5
-        dataSet.circleHoleRadius = 4
+        dataSet.circleRadius = 4
+        dataSet.circleHoleRadius = 3
         dataSet.circleHoleColor = UIColor.white
         
         if belowTH{
@@ -183,5 +184,16 @@ class BA360AutoChartView: LineChartView {
         
         dataSet.fill = Fill(linearGradient: gradient!, angle: 45)
         dataSet.drawFilledEnabled = true
+    }
+    
+    override func draw(_ rect: CGRect) {
+        super.draw(rect)
+        let optionalContext = UIGraphicsGetCurrentContext()
+        guard let context = optionalContext else { return }
+        // if highlighting is enabled
+        if (valuesToHighlight())
+        {
+            self.renderer?.drawHighlighted(context: context, indices: self.highlighted)
+        }
     }
 }
