@@ -141,6 +141,9 @@ class BA360AutoChartView: LineChartView {
     func configureAllDataSet(dataSet:LineChartDataSet, history:Bool, belowTH:Bool, dataCount:Int, hasPrev:Bool) {
         dataSet.drawValuesEnabled = true
         dataSet.drawCirclesEnabled = true
+        dataSet.circleRadius = 5
+        dataSet.circleHoleRadius = 4
+        dataSet.circleHoleColor = UIColor.white
         
         if belowTH{
             var colorArray:[NSUIColor] = []
@@ -168,7 +171,7 @@ class BA360AutoChartView: LineChartView {
         
         dataSet.highlightLineWidth = 3
         // fill the color of history part
-        dataSet.fillAlpha = 1
+        dataSet.fillAlpha = 0.7
         
         let gradientColors = [ChartColorTemplates.colorFromString("#00B3FE").cgColor,
                               ChartColorTemplates.colorFromString("#029AD9").cgColor]
