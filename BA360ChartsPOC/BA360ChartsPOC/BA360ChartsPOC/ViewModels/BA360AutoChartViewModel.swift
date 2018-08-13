@@ -36,6 +36,8 @@ class BA360AutoChartViewModel: NSObject {
     private var unappendForecastData:[Double] = []
     private var currentDataSection:[BA360DataSection] = []
     
+    var lastHighLight:Highlight? = nil
+    
     var dataCount:Int{
         return historyData.count
     }

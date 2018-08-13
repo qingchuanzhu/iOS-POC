@@ -23,6 +23,8 @@ enum BA360ChartColors:String {
 class BA360AutoChartView: LineChartView {
     
     var viewModel:BA360AutoChartViewModel?
+    var numberOfDataSet:Int = 0
+    var numberOfNewDataSet:Int = 0
     
 
     override init(frame: CGRect) {
@@ -82,6 +84,9 @@ class BA360AutoChartView: LineChartView {
             allSets.append(set)
         }
         
+        numberOfNewDataSet = allSets.count - numberOfDataSet
+        numberOfDataSet = allSets.count
+        
         let data = LineChartData(dataSets: allSets)
         self.data = data
     }
@@ -129,19 +134,30 @@ class BA360AutoChartView: LineChartView {
     
     func insertDataToLeft() {
         // TODO: show loading indicator
+        if let highLight = self.lastHighlighted{
+            self.viewModel?.lastHighLight = highLight
+        }
+        
         if viewModel?.currentFetchStatus == BA360AutoChartViewModelFetchStatus.idle{
             viewModel?.fetchHistoryData {
-                // remove cross line if any
-                
                 // TODO: weak self
                 self.createData()
                 // TODO: hide loading indicator
                 
+                // TODO: add back cross line
+                if let highLight = self.viewModel?.lastHighLight{
+                    let hx = highLight.x + 20
+                    let hy = highLight.y
+                    let newHighLight = Highlight(x: hx, y: hy, dataSetIndex: self.numberOfNewDataSet + highLight.dataSetIndex)
+                    self.highlightValue(newHighLight)
+                    self.viewModel?.lastHighLight = nil
+                }
                 // TODO: move chart to correct position
                 self.changeViewPort(true)
             }
         }
     }
+    
     
     func configureAllDataSet(dataSet:LineChartDataSet, history:Bool, belowTH:Bool, dataCount:Int, hasPrev:Bool) {
         dataSet.drawValuesEnabled = true
