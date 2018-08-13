@@ -61,15 +61,13 @@ class BA360LineChartRender: LineChartRenderer {
             drawHighlightLines(context: context, point: pt, set: set)
             
             // draw the top layer circle
-            
-            
             let circlePath = UIBezierPath(arcCenter: CGPoint(x: pt.x, y: pt.y), radius: 6, startAngle: CGFloat(0.0), endAngle: CGFloat(2.0 * .pi), clockwise: true)
             
             let shapeLayer = CAShapeLayer()
             
             shapeLayer.lineWidth = 1.0
             shapeLayer.strokeColor = UIColor.clear.cgColor
-            shapeLayer.fillColor = ChartColorTemplates.colorFromString("#0073CF").cgColor
+            shapeLayer.fillColor = set.highlightColor.cgColor
             shapeLayer.path = circlePath.cgPath
             
             shapeLayer.render(in: context)
