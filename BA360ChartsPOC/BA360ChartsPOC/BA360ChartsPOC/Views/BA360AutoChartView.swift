@@ -27,41 +27,35 @@ class BA360AutoChartView: LineChartView {
     var numberOfNewDataSet:Int = 0
     let loadingIndicator:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
 
+    // MARK: - Initializers
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.clipsToBounds = false
         self.dragEnabled = true
-        self.rightAxis.enabled = false
-        self.leftAxis.setLabelCount(7, force: true)
-        self.xAxis.enabled = true
-        self.xAxis.granularityEnabled = true
-        self.xAxis.granularity = 1.0
-        self.setVisibleXRangeMaximum(4)
-        self.setVisibleXRangeMinimum(4)
-        self.leftAxis.drawLabelsEnabled = true
-        self.leftAxis.axisLineColor = .clear
         self.autoScaleMinMaxEnabled = true
         self.legend.enabled = false
         self.chartDescription = nil
         self.drawGridBackgroundEnabled = true
         self.doubleTapToZoomEnabled = false
         self.setScaleEnabled(true)
+        
         self.renderer = BA360LineChartRender(dataProvider: self, animator: self.chartAnimator, viewPortHandler: self.viewPortHandler)
+        
         addLoadingIndicator()
+        setUpAxis()
+        setAxisFormatter()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Loading Indicator
     func addLoadingIndicator() {
         self.addSubview(self.loadingIndicator)
         //constraint loading indicator
         loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
-//        loadingIndicator.heightAnchor.constraint(equalToConstant:self.bounds.height).isActive = true
         loadingIndicator.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
-//        loadingIndicator.widthAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
-        
         loadingIndicator.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
         loadingIndicator.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
         loadingIndicator.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
@@ -77,7 +71,36 @@ class BA360AutoChartView: LineChartView {
         self.loadingIndicator.stopAnimating()
         self.isUserInteractionEnabled = true
     }
+    
+    // MARK: - Axis settings
+    func setUpAxis() {
+        // X Axis
+        self.xAxis.enabled = true
+        self.xAxis.granularityEnabled = true
+        self.xAxis.granularity = 1.0
+        self.xAxis.setLabelCount(5, force: false)
+        self.setVisibleXRangeMaximum(4)
+        self.setVisibleXRangeMinimum(4)
+        self.xAxis.granularityEnabled = true
+        self.xAxis.granularity = 1
+        
+        // Y Axis
+        self.rightAxis.enabled = false
+        self.leftAxis.setLabelCount(4, force: true)
+        self.leftAxis.drawLabelsEnabled = true
+        self.leftAxis.axisLineColor = .clear
+    }
+    
+    func setAxisFormatter() {
+        let leftAxis = self.leftAxis
+        let leftAxisFormatter = NumberFormatter()
+        leftAxisFormatter.maximumFractionDigits = 0
+        leftAxisFormatter.negativePrefix = "    $"
+        leftAxisFormatter.positivePrefix = "    $"
+        leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
+    }
 
+    // MARK: - Chart Data setters
     func updateChartData(_ forHistory:Bool) {
         createData()
         changeViewPort(forHistory)
@@ -116,11 +139,7 @@ class BA360AutoChartView: LineChartView {
     }
     
     func changeViewPort(_ forHistory:Bool) {
-        self.xAxis.setLabelCount(5, force: false)
-        self.setVisibleXRangeMaximum(4)
-        self.setVisibleXRangeMinimum(4)
-        self.xAxis.granularityEnabled = true
-        self.xAxis.granularity = 1
+        setUpAxis()
         guard let viewModel = self.viewModel else {
             return
         }
@@ -157,6 +176,7 @@ class BA360AutoChartView: LineChartView {
         return dataSet
     }
     
+    // MARK: - Chart Data Updates
     func insertDataToLeft() {
         runLoadingIndicator()
         
@@ -228,6 +248,7 @@ class BA360AutoChartView: LineChartView {
         dataSet.drawFilledEnabled = true
     }
     
+    // MARK: - Custom Drawing
     override func draw(_ rect: CGRect) {
         super.draw(rect)
         let optionalContext = UIGraphicsGetCurrentContext()
