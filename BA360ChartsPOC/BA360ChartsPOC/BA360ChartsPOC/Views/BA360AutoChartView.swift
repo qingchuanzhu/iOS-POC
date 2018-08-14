@@ -18,6 +18,7 @@ enum BA360DataSetType:Int {
 enum BA360ChartColors:String {
     case BA360ChartColorDotGray = "#575757"
     case BA360ChartColorDotRed = "#DC1431"
+    case BA360ChartLeftAxisLabelColor = "#666666"
 }
 
 class BA360AutoChartView: LineChartView {
@@ -89,6 +90,9 @@ class BA360AutoChartView: LineChartView {
         self.leftAxis.setLabelCount(4, force: true)
         self.leftAxis.drawLabelsEnabled = true
         self.leftAxis.axisLineColor = .clear
+        self.leftAxis.labelPosition = .outsideChart
+        self.leftAxis.labelFont = .systemFont(ofSize: 12)
+        self.leftAxis.labelTextColor = ChartColorTemplates.colorFromString(BA360ChartColors.BA360ChartLeftAxisLabelColor.rawValue)
     }
     
     func setAxisFormatter() {
@@ -97,6 +101,8 @@ class BA360AutoChartView: LineChartView {
         leftAxisFormatter.maximumFractionDigits = 0
         leftAxisFormatter.negativePrefix = "    $"
         leftAxisFormatter.positivePrefix = "    $"
+        leftAxisFormatter.negativeSuffix = " "
+        leftAxisFormatter.positiveSuffix = " "
         leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
     }
 
