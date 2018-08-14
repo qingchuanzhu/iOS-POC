@@ -25,7 +25,7 @@ class BA360AutoChartView: LineChartView {
     var viewModel:BA360AutoChartViewModel?
     var numberOfDataSet:Int = 0
     var numberOfNewDataSet:Int = 0
-    
+    let loadingIndicator:UIActivityIndicatorView = UIActivityIndicatorView(activityIndicatorStyle: UIActivityIndicatorViewStyle.gray)
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -46,12 +46,36 @@ class BA360AutoChartView: LineChartView {
         self.drawGridBackgroundEnabled = true
         self.doubleTapToZoomEnabled = false
         self.setScaleEnabled(true)
-        
         self.renderer = BA360LineChartRender(dataProvider: self, animator: self.chartAnimator, viewPortHandler: self.viewPortHandler)
+        addLoadingIndicator()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func addLoadingIndicator() {
+        self.addSubview(self.loadingIndicator)
+        //constraint loading indicator
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+//        loadingIndicator.heightAnchor.constraint(equalToConstant:self.bounds.height).isActive = true
+        loadingIndicator.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
+//        loadingIndicator.widthAnchor.constraint(equalToConstant: self.bounds.width).isActive = true
+        
+        loadingIndicator.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+        loadingIndicator.leftAnchor.constraint(equalTo: self.leftAnchor).isActive = true
+        loadingIndicator.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
+    }
+    
+    func runLoadingIndicator() {
+        self.loadingIndicator.isHidden = false
+        self.loadingIndicator.startAnimating()
+        self.isUserInteractionEnabled = false
+    }
+    
+    func stopLoadingIndicator() {
+        self.loadingIndicator.stopAnimating()
+        self.isUserInteractionEnabled = true
     }
 
     func updateChartData(_ forHistory:Bool) {
@@ -92,9 +116,10 @@ class BA360AutoChartView: LineChartView {
     }
     
     func changeViewPort(_ forHistory:Bool) {
-        self.xAxis.setLabelCount(5, force: true)
+        self.xAxis.setLabelCount(5, force: false)
         self.setVisibleXRangeMaximum(4)
         self.setVisibleXRangeMinimum(4)
+        self.xAxis.granularityEnabled = true
         self.xAxis.granularity = 1
         guard let viewModel = self.viewModel else {
             return
@@ -133,7 +158,8 @@ class BA360AutoChartView: LineChartView {
     }
     
     func insertDataToLeft() {
-        // TODO: show loading indicator
+        runLoadingIndicator()
+        
         if let highLight = self.lastHighlighted{
             self.viewModel?.lastHighLight = highLight
         }
@@ -142,9 +168,9 @@ class BA360AutoChartView: LineChartView {
             viewModel?.fetchHistoryData {
                 // TODO: weak self
                 self.createData()
-                // TODO: hide loading indicator
                 
-                // TODO: add back cross line
+                self.stopLoadingIndicator()
+                
                 if let highLight = self.viewModel?.lastHighLight{
                     let hx = highLight.x + 20
                     let hy = highLight.y
