@@ -84,15 +84,19 @@ class BA360AutoChartView: LineChartView {
         self.setVisibleXRangeMinimum(4)
         self.xAxis.granularityEnabled = true
         self.xAxis.granularity = 1
+        self.xAxis.yOffset = 20 // distance from label to chart
+        self.xAxis.drawGridLinesEnabled = false
         
         // Y Axis
-        self.rightAxis.enabled = false
+        self.rightAxis.drawLabelsEnabled = false
+        self.rightAxis.setLabelCount(7, force: true)
         self.leftAxis.setLabelCount(4, force: true)
         self.leftAxis.drawLabelsEnabled = true
         self.leftAxis.axisLineColor = .clear
         self.leftAxis.labelPosition = .outsideChart
         self.leftAxis.labelFont = .systemFont(ofSize: 12)
         self.leftAxis.labelTextColor = ChartColorTemplates.colorFromString(BA360ChartColors.BA360ChartLeftAxisLabelColor.rawValue)
+        self.leftAxis.xOffset = 10
     }
     
     func setAxisFormatter() {
@@ -101,9 +105,9 @@ class BA360AutoChartView: LineChartView {
         leftAxisFormatter.maximumFractionDigits = 0
         leftAxisFormatter.negativePrefix = "    $"
         leftAxisFormatter.positivePrefix = "    $"
-        leftAxisFormatter.negativeSuffix = " "
-        leftAxisFormatter.positiveSuffix = " "
         leftAxis.valueFormatter = DefaultAxisValueFormatter(formatter: leftAxisFormatter)
+        
+        
     }
 
     // MARK: - Chart Data setters

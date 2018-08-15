@@ -13,6 +13,7 @@
 		352AD3232118EB8100AEAC35 /* ChartPOC_autoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AD3222118EB8100AEAC35 /* ChartPOC_autoViewController.swift */; };
 		352AD3252119045200AEAC35 /* BA360AutoChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AD3242119045200AEAC35 /* BA360AutoChartViewModel.swift */; };
 		352AD3292121FD7000AEAC35 /* BA360LineChartRender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AD3282121FD6F00AEAC35 /* BA360LineChartRender.swift */; };
+		352AD32B21238D0200AEAC35 /* BA360LineChartXAxisValueFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 352AD32A21238D0200AEAC35 /* BA360LineChartXAxisValueFormatter.swift */; };
 		3558520720D8684A00E74339 /* BA360ChartScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558520620D8684A00E74339 /* BA360ChartScrollView.swift */; };
 		3558520920D868D100E74339 /* ChartPOC_scrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3558520820D868D100E74339 /* ChartPOC_scrollViewController.swift */; };
 		35B3355D20C8DE1800248DB5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 35B3355C20C8DE1800248DB5 /* AppDelegate.m */; };
@@ -88,6 +89,7 @@
 		352AD3222118EB8100AEAC35 /* ChartPOC_autoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPOC_autoViewController.swift; sourceTree = "<group>"; };
 		352AD3242119045200AEAC35 /* BA360AutoChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BA360AutoChartViewModel.swift; sourceTree = "<group>"; };
 		352AD3282121FD6F00AEAC35 /* BA360LineChartRender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BA360LineChartRender.swift; sourceTree = "<group>"; };
+		352AD32A21238D0200AEAC35 /* BA360LineChartXAxisValueFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BA360LineChartXAxisValueFormatter.swift; sourceTree = "<group>"; };
 		3558520620D8684A00E74339 /* BA360ChartScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BA360ChartScrollView.swift; sourceTree = "<group>"; };
 		3558520820D868D100E74339 /* ChartPOC_scrollViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartPOC_scrollViewController.swift; sourceTree = "<group>"; };
 		35B3355820C8DE1800248DB5 /* BA360ChartsPOC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BA360ChartsPOC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -209,6 +211,7 @@
 				35B3359620C9ACDF00248DB5 /* BA360ChartView.swift */,
 				352AD3202118E7CB00AEAC35 /* BA360AutoChartView.swift */,
 				352AD3282121FD6F00AEAC35 /* BA360LineChartRender.swift */,
+				352AD32A21238D0200AEAC35 /* BA360LineChartXAxisValueFormatter.swift */,
 				35D7458D20D1DF5E00144AF1 /* BA360ChartSelectionDot.swift */,
 				3558520620D8684A00E74339 /* BA360ChartScrollView.swift */,
 				352AD2CF2101490A00AEAC35 /* BA360ChartLongScrollView.swift */,
@@ -420,6 +423,7 @@
 				352AD3252119045200AEAC35 /* BA360AutoChartViewModel.swift in Sources */,
 				3558520920D868D100E74339 /* ChartPOC_scrollViewController.swift in Sources */,
 				35B3359720C9ACDF00248DB5 /* BA360ChartView.swift in Sources */,
+				352AD32B21238D0200AEAC35 /* BA360LineChartXAxisValueFormatter.swift in Sources */,
 				352AD2D2210149A400AEAC35 /* ChartPOC_longscrollViewController.swift in Sources */,
 				35D7458E20D1DF5E00144AF1 /* BA360ChartSelectionDot.swift in Sources */,
 				352AD3232118EB8100AEAC35 /* ChartPOC_autoViewController.swift in Sources */,
