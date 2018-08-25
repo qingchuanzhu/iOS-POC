@@ -27,3 +27,25 @@ extension List:ExpressibleByArrayLiteral{
         }
     }
 }
+
+extension List{
+    mutating func push(_ x:Element){
+        self = .node(x, next:self)
+    }
+    
+    mutating func pop() -> Element?{
+        switch self {
+        case .end:
+            return nil
+        case let .node(x, next:remaining):
+            self = remaining
+            return x
+        }
+    }
+}
+
+extension List:IteratorProtocol, Sequence{
+    mutating func next() -> Element? {
+        return pop()
+    }
+}
